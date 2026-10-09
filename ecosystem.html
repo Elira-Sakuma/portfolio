@@ -1,0 +1,2342 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     PAGE ID: ECOSYSTEM-HOMEPAGE
+     这是游戏内容生态求职版的首页（主页）。
+     请勿将其他页面（如实习详细页）的内容覆盖到此文件。
+     如果需要修改详细页，请分别编辑：
+       - meituan-creator.html (美团达人内容成长)
+       - meituan-poi.html (美团兴趣POI内容运营)
+       - trip.html (携程定制游内容运营)
+     ============================================================ -->
+<html lang="zh-CN" data-theme="light"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Ecosystem · Ellen Portfolio</title>
+  <meta name="description" content="Ellen 的游戏内容生态作品集：达人运营、KOL选人、游戏发行拆解与AI内容工具赋能。绝区零 UI 风格。">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Noto+Sans+SC:wght@300;400;500;700;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+
+  <style>
+    /* ========================================
+       DESIGN TOKENS — ZZZ Inspired
+    ======================================== */
+    :root {
+      --zzz-yellow: #FFD93D;
+      --zzz-yellow-dim: #C9A800;
+      --zzz-yellow-glow: rgba(255, 217, 61, 0.25);
+      --zzz-black: #0A0A0A;
+      --zzz-gray: #1A1A1A;
+      --zzz-gray-light: #2A2A2A;
+      --zzz-gray-border: #333333;
+
+      --neon-cyan: #00F0FF;
+      --neon-cyan-glow: rgba(0, 240, 255, 0.2);
+      --neon-magenta: #FF2D95;
+      --neon-magenta-glow: rgba(255, 45, 149, 0.2);
+
+      --text-primary: #F5F5F5;
+      --text-secondary: #888888;
+      --text-tertiary: #555555;
+      --text-accent: var(--zzz-yellow);
+
+      --cut-sm: 8px;
+      --cut-md: 12px;
+      --cut-lg: 16px;
+      --skew-angle: -6deg;
+
+      --shadow-layered: 0 2px 0 rgba(255,255,255,0.06) inset, 0 -2px 0 rgba(0,0,0,0.4) inset, 0 8px 24px rgba(0,0,0,0.6);
+      --shadow-yellow-glow: 0 0 20px var(--zzz-yellow-glow), 0 4px 12px rgba(0,0,0,0.5);
+      --highlight-top: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 30%);
+
+      --ease-industrial: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-glitch: steps(2, end);
+      --transition-fast: 0.2s var(--ease-industrial);
+      --transition-base: 0.4s var(--ease-industrial);
+
+      --font-display: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+      --font-body: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+    }
+
+    /* ========================================
+       RESET
+    ======================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-primary);
+      background: var(--zzz-black);
+      line-height: 1.6;
+      overflow-x: hidden;
+      letter-spacing: -0.01em;
+      position: relative;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+    ::selection { background: var(--zzz-yellow); color: var(--zzz-black); }
+
+    /* ========================================
+       GLOBAL NOISE OVERLAY
+    ======================================== */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ========================================
+       CLIP-PATH CUT CORNERS
+    ======================================== */
+    .cut-tl-br-md {
+      clip-path: polygon(var(--cut-md) 0, 100% 0, 100% calc(100% - var(--cut-md)), calc(100% - var(--cut-md)) 100%, 0 100%, 0 var(--cut-md));
+    }
+    .cut-tl-br-lg {
+      clip-path: polygon(var(--cut-lg) 0, 100% 0, 100% calc(100% - var(--cut-lg)), calc(100% - var(--cut-lg)) 100%, 0 100%, 0 var(--cut-lg));
+    }
+    .cut-tl-br-sm {
+      clip-path: polygon(var(--cut-sm) 0, 100% 0, 100% calc(100% - var(--cut-sm)), calc(100% - var(--cut-sm)) 100%, 0 100%, 0 var(--cut-sm));
+    }
+    .cut-all-md {
+      clip-path: polygon(var(--cut-md) 0, calc(100% - var(--cut-md)) 0, 100% var(--cut-md), 100% calc(100% - var(--cut-md)), calc(100% - var(--cut-md)) 100%, var(--cut-md) 100%, 0 calc(100% - var(--cut-md)), 0 var(--cut-md));
+    }
+
+    /* ========================================
+       UTILITIES
+    ======================================== */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s var(--ease-industrial), transform 0.6s var(--ease-industrial);
+      will-change: opacity, transform;
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--zzz-yellow);
+      margin-bottom: 16px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 3px;
+      height: 16px;
+      background: var(--zzz-yellow);
+      transform: skewX(var(--skew-angle));
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+
+    .section-subtitle {
+      font-size: clamp(0.85rem, 1.4vw, 1rem);
+      color: var(--text-secondary);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* ========================================
+       GLITCH TEXT (Hero only)
+    ======================================== */
+    .glitch {
+      position: relative;
+      display: inline-block;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.8;
+    }
+
+    .glitch::before {
+      color: var(--neon-cyan);
+      animation: glitch-cyan 3s infinite alternate-reverse;
+    }
+
+    .glitch::after {
+      color: var(--neon-magenta);
+      animation: glitch-magenta 3s infinite alternate-reverse;
+    }
+
+    @keyframes glitch-cyan {
+      0% { clip-path: inset(0 0 85% 0); transform: translateX(-2px); }
+      20% { clip-path: inset(20% 0 60% 0); transform: translateX(1px); }
+      40% { clip-path: inset(50% 0 30% 0); transform: translateX(-1px); }
+      60% { clip-path: inset(70% 0 10% 0); transform: translateX(2px); }
+      80% { clip-path: inset(30% 0 50% 0); transform: translateX(-2px); }
+      100% { clip-path: inset(10% 0 75% 0); transform: translateX(1px); }
+    }
+
+    @keyframes glitch-magenta {
+      0% { clip-path: inset(80% 0 5% 0); transform: translateX(2px); }
+      20% { clip-path: inset(40% 0 40% 0); transform: translateX(-1px); }
+      40% { clip-path: inset(10% 0 70% 0); transform: translateX(1px); }
+      60% { clip-path: inset(60% 0 20% 0); transform: translateX(-2px); }
+      80% { clip-path: inset(25% 0 55% 0); transform: translateX(2px); }
+      100% { clip-path: inset(75% 0 15% 0); transform: translateX(-1px); }
+    }
+
+    /* ========================================
+       CRT SCANLINES
+    ======================================== */
+    .crt-lines {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.15) 2px,
+        rgba(0, 0, 0, 0.15) 4px
+      );
+      opacity: 0.4;
+    }
+
+    /* ========================================
+       NAVIGATION
+    ======================================== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(10, 10, 10, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--zzz-gray-border);
+      transition: background var(--transition-base);
+    }
+
+    .nav.scrolled {
+      background: rgba(10, 10, 10, 0.92);
+    }
+
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      color: var(--text-primary);
+      position: relative;
+    }
+
+    .nav-logo .glitch-mark {
+      color: var(--zzz-yellow);
+      margin-right: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-link {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      transition: color var(--transition-fast);
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--zzz-yellow);
+      transform: skewX(var(--skew-angle));
+      transition: width var(--transition-fast);
+    }
+
+    .nav-link:hover { color: var(--text-primary); }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link.active { color: var(--zzz-yellow); }
+    .nav-link.active::after { width: 100%; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+
+    /* ========================================
+       BUTTONS
+    ======================================== */
+    .zzz-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--zzz-black);
+      background: var(--zzz-yellow);
+      clip-path: polygon(var(--cut-lg) 0, 100% 0, 100% calc(100% - var(--cut-lg)), calc(100% - var(--cut-lg)) 100%, 0 100%, 0 var(--cut-lg));
+      transition: filter var(--transition-fast), transform var(--transition-fast);
+      position: relative;
+      cursor: pointer;
+    }
+
+    .zzz-btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--highlight-top);
+      pointer-events: none;
+    }
+
+    .zzz-btn-primary:hover {
+      filter: brightness(1.1);
+      transform: translateX(2px);
+    }
+
+    .zzz-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 26px;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--zzz-yellow);
+      background: transparent;
+      border: 2px solid var(--zzz-yellow);
+      clip-path: polygon(var(--cut-lg) 0, 100% 0, 100% calc(100% - var(--cut-lg)), calc(100% - var(--cut-lg)) 100%, 0 100%, 0 var(--cut-lg));
+      transition: background var(--transition-fast), color var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .zzz-btn-secondary:hover {
+      background: rgba(255, 217, 61, 0.15);
+    }
+
+    /* ========================================
+       TAGS
+    ======================================== */
+    .zzz-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+    }
+
+    .zzz-tag.yellow {
+      background: var(--zzz-yellow);
+      color: var(--zzz-black);
+    }
+
+    .zzz-tag.outline {
+      background: transparent;
+      color: var(--zzz-yellow);
+      border: 1px solid var(--zzz-yellow);
+    }
+
+    .zzz-tag.dark {
+      background: var(--zzz-gray-light);
+      color: var(--text-secondary);
+      border: 1px solid var(--zzz-gray-border);
+    }
+
+    /* ========================================
+       DIVIDER — Perforated tape
+    ======================================== */
+    .divider-tape {
+      position: relative;
+      height: 2px;
+      background: var(--zzz-gray-border);
+      margin: 0;
+    }
+
+    .divider-tape::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background-image: radial-gradient(circle, var(--zzz-black) 3px, transparent 3px);
+      background-size: 16px 8px;
+      background-repeat: repeat-x;
+      background-position: center;
+    }
+
+    .divider-yellow {
+      height: 3px;
+      background: var(--zzz-yellow);
+      clip-path: polygon(0 0, 100% 0, calc(100% - 12px) 100%, 12px 100%);
+      max-width: 120px;
+    }
+
+    /* ========================================
+       HERO
+    ======================================== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 100px 24px 60px;
+      overflow: hidden;
+      background: var(--zzz-black);
+    }
+
+    .hero-bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 217, 61, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 217, 61, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, transparent 75%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--zzz-yellow);
+      background: rgba(255, 217, 61, 0.08);
+      border: 1px solid rgba(255, 217, 61, 0.3);
+      clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+      margin-bottom: 32px;
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--zzz-yellow);
+      box-shadow: 0 0 6px var(--zzz-yellow-glow);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 8vw, 5rem);
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      line-height: 1;
+      margin-bottom: 20px;
+      color: var(--text-primary);
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-title-cn {
+      font-family: 'Noto Sans SC', var(--font-display);
+      font-weight: 900;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+      font-weight: 400;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+      min-height: 3.4em;
+    }
+
+    .hero-subtitle .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1.2em;
+      background: var(--zzz-yellow);
+      vertical-align: text-bottom;
+      animation: blink 0.8s steps(1) infinite;
+      margin-left: 2px;
+    }
+
+    .hero-subtitle .cursor.hidden { display: none; }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-tertiary);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .hero-scroll-arrow {
+      width: 16px;
+      height: 16px;
+      border-right: 2px solid var(--zzz-yellow);
+      border-bottom: 2px solid var(--zzz-yellow);
+      transform: rotate(45deg) skew(-10deg, -10deg);
+      animation: scroll-bounce 1.5s var(--ease-industrial) infinite;
+    }
+
+    @keyframes scroll-bounce {
+      0%, 100% { transform: rotate(45deg) skew(-10deg, -10deg) translateY(0); }
+      50% { transform: rotate(45deg) skew(-10deg, -10deg) translateY(6px); }
+    }
+
+    /* ========================================
+       MARQUEE
+    ======================================== */
+    .marquee-section {
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      padding: 24px 0;
+      background: var(--zzz-yellow);
+    }
+
+    .marquee-row {
+      display: flex;
+      gap: 48px;
+      white-space: nowrap;
+      will-change: transform;
+    }
+
+    .marquee-row.row-1 {
+      animation: marquee-left 30s linear infinite;
+    }
+
+    .marquee-row.row-2 {
+      animation: marquee-right 35s linear infinite;
+      transform: skewX(-3deg);
+      margin-top: 12px;
+    }
+
+    @keyframes marquee-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @keyframes marquee-right {
+      0% { transform: translateX(-50%) skewX(-3deg); }
+      100% { transform: translateX(0) skewX(-3deg); }
+    }
+
+    .marquee-item {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--zzz-black);
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      flex-shrink: 0;
+    }
+
+    .marquee-item::after {
+      content: '◆';
+      font-size: 0.6em;
+      color: rgba(10, 10, 10, 0.4);
+    }
+
+    /* ========================================
+       SECTIONS BASE
+    ======================================== */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 100px 0;
+    }
+
+    .section-header {
+      margin-bottom: 56px;
+    }
+
+    /* ========================================
+       ABOUT — Device Panel
+    ======================================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 32px;
+      align-items: stretch;
+    }
+
+    .about-text-panel {
+      background: var(--zzz-gray);
+      padding: 40px;
+      position: relative;
+    }
+
+    .about-text-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--highlight-top);
+      pointer-events: none;
+    }
+
+    .about-text {
+      font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+      line-height: 1.8;
+      color: var(--text-secondary);
+      position: relative;
+    }
+
+    .about-text strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    /* Device Panel */
+    .device-panel {
+      background: var(--zzz-gray);
+      padding: 32px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .device-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--highlight-top);
+      pointer-events: none;
+    }
+
+    .device-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--zzz-gray-border);
+    }
+
+    .device-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--zzz-yellow);
+    }
+
+    .device-led {
+      display: flex;
+      gap: 6px;
+    }
+
+    .device-led-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--zzz-yellow);
+      box-shadow: 0 0 4px var(--zzz-yellow-glow);
+    }
+
+    .device-led-dot:nth-child(2) { background: var(--neon-cyan); box-shadow: 0 0 4px var(--neon-cyan-glow); }
+    .device-led-dot:nth-child(3) { background: var(--text-tertiary); box-shadow: none; }
+
+    .device-stat {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(51, 51, 51, 0.5);
+    }
+
+    .device-stat:last-child { border-bottom: none; }
+
+    .device-stat-num {
+      font-family: var(--font-mono);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      color: var(--zzz-yellow);
+      min-width: 70px;
+    }
+
+    .device-stat-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .device-stat-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .device-stat-desc {
+      font-size: 11px;
+      color: var(--text-tertiary);
+    }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ========================================
+       EXPERIENCE + EDUCATION
+    ======================================== */
+    .exp-edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .exp-panel, .edu-panel {
+      background: var(--zzz-gray);
+      padding: 36px;
+      position: relative;
+      box-shadow: var(--shadow-layered);
+      transition: transform var(--transition-base), border-color var(--transition-base);
+      border: 1px solid var(--zzz-gray-border);
+    }
+
+    .exp-panel::before, .edu-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--highlight-top);
+      pointer-events: none;
+    }
+
+    .exp-panel:hover, .edu-panel:hover {
+      transform: translateY(-4px);
+      border-color: var(--zzz-yellow);
+    }
+
+    .exp-item, .edu-item {
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(51, 51, 51, 0.5);
+    }
+
+    .exp-item:last-child, .edu-item:last-child { border-bottom: none; }
+    .exp-item:first-of-type, .edu-item:first-of-type { padding-top: 0; }
+
+    .exp-item-link { display: block; padding: 20px 0; border-bottom: 1px solid rgba(51,51,51,0.5); position: relative; transition: padding-left var(--transition-fast); }
+    .exp-item-link:last-child { border-bottom: none; }
+    .exp-item-link:first-of-type { padding-top: 0; }
+    .exp-item-link:hover { padding-left: 12px; }
+    .exp-item-link::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 3px; height: 0; background: var(--zzz-yellow); transition: height var(--transition-base); }
+    .exp-item-link:hover::before { height: 70%; }
+    .exp-item-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+    .exp-item-content { flex: 1; }
+    .exp-item-arrow { font-size: 14px; color: var(--text-tertiary); transition: color var(--transition-fast), transform var(--transition-fast); flex-shrink: 0; margin-top: 2px; }
+    .exp-item-link:hover .exp-item-arrow { color: var(--zzz-yellow); transform: translateX(4px); }
+
+    .exp-role {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .exp-company {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--zzz-yellow);
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .exp-period {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-tertiary);
+      margin-bottom: 8px;
+    }
+
+    .exp-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .edu-school {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .edu-major {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--zzz-yellow);
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .edu-period {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-tertiary);
+    }
+
+    .edu-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .exp-edu-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ========================================
+       ABILITIES — Radar Chart
+    ======================================== */
+    .radar-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .radar-chart-wrap {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      max-width: 480px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .radar-chart-wrap svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .radar-chart-wrap .radar-polygon {
+      fill: rgba(255, 217, 61, 0.15);
+      stroke: var(--zzz-yellow);
+      stroke-width: 2;
+      filter: drop-shadow(0 0 8px rgba(255, 217, 61, 0.3));
+    }
+
+    .radar-chart-wrap .radar-grid {
+      stroke: rgba(255, 255, 255, 0.08);
+      fill: none;
+      stroke-width: 1;
+    }
+
+    .radar-chart-wrap .radar-axis {
+      stroke: rgba(255, 255, 255, 0.06);
+      stroke-width: 1;
+    }
+
+    .radar-chart-wrap .radar-dot {
+      fill: var(--zzz-yellow);
+      stroke: var(--zzz-black);
+      stroke-width: 2;
+      filter: drop-shadow(0 0 4px rgba(255, 217, 61, 0.5));
+    }
+
+    .radar-chart-wrap .radar-label {
+      fill: var(--text-tertiary);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .radar-chart-wrap .radar-label-name {
+      fill: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.8));
+    }
+
+    .radar-hud-top {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--zzz-yellow);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .radar-hud-top .hud-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--zzz-yellow);
+      border-radius: 50%;
+      animation: rec-blink 1.2s ease-in-out infinite;
+      align-self: center;
+    }
+
+    .radar-hud-bottom {
+      position: absolute;
+      bottom: 8px;
+      right: 0;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--text-tertiary);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .radar-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .radar-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 18px;
+      background: var(--zzz-gray);
+      border: 1px solid var(--zzz-gray-border);
+      clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+      transition: border-color var(--transition-fast), background var(--transition-fast);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .radar-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: transparent;
+      transition: background var(--transition-fast);
+    }
+
+    .radar-item:hover {
+      border-color: rgba(255, 217, 61, 0.3);
+      background: var(--zzz-gray-light);
+    }
+
+    .radar-item:hover::before {
+      background: var(--zzz-yellow);
+    }
+
+    .radar-item-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-tertiary);
+      letter-spacing: 0.1em;
+      min-width: 36px;
+    }
+
+    .radar-item-info {
+      flex: 1;
+    }
+
+    .radar-item-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .radar-item-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .radar-item-score {
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--zzz-yellow);
+      letter-spacing: 0.05em;
+    }
+
+    .radar-item-score span {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      font-weight: 400;
+    }
+
+    @media (max-width: 900px) {
+      .radar-chart-wrap {
+        max-width: 360px;
+      }
+    }
+
+    /* ========================================
+       PROJECTS — ZZZ Cards
+    ======================================== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .project-card-zzz {
+      background: var(--zzz-gray);
+      padding: 32px;
+      position: relative;
+      box-shadow: var(--shadow-layered);
+      border: 1px solid var(--zzz-gray-border);
+      transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-height: 240px;
+    }
+
+    .project-card-zzz::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--highlight-top);
+      pointer-events: none;
+    }
+
+    /* Scan line sweep */
+    .project-card-zzz .scan-sweep {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--zzz-yellow), transparent);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .project-card-zzz:hover {
+      transform: translateY(-6px);
+      border-color: var(--zzz-yellow);
+      box-shadow: var(--shadow-yellow-glow);
+    }
+
+    .project-card-zzz:hover .scan-sweep {
+      animation: scan-sweep-card 1s var(--ease-industrial);
+    }
+
+    @keyframes scan-sweep-card {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(300px); opacity: 0; }
+    }
+
+    .project-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .project-num {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--zzz-yellow);
+      letter-spacing: 0.1em;
+    }
+
+    .project-arrow {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--text-secondary);
+      background: var(--zzz-gray-light);
+      border: 1px solid var(--zzz-gray-border);
+      clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+      transition: all var(--transition-fast);
+    }
+
+    .project-card-zzz:hover .project-arrow {
+      background: var(--zzz-yellow);
+      color: var(--zzz-black);
+      border-color: var(--zzz-yellow);
+    }
+
+    .project-title {
+      font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+    }
+
+    .project-metrics {
+      display: flex;
+      gap: 20px;
+      margin-top: 8px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(51, 51, 51, 0.5);
+    }
+
+    .project-metric {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .project-metric-num {
+      font-family: var(--font-mono);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--zzz-yellow);
+    }
+
+    .project-metric-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+    }
+
+    /* Featured project spans full width */
+    .project-card-zzz.featured {
+      grid-column: span 2;
+      background: linear-gradient(135deg, var(--zzz-gray) 0%, #1f1a0a 100%);
+      border-color: rgba(255, 217, 61, 0.15);
+    }
+
+    .project-card-zzz.featured .project-title {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    @media (max-width: 768px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card-zzz.featured { grid-column: span 1; }
+    }
+
+    /* ========================================
+       LIFE — Ticket / Tape cards
+    ======================================== */
+    .life-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .ticket-card {
+      background: var(--zzz-gray);
+      padding: 24px;
+      position: relative;
+      box-shadow: var(--shadow-layered);
+      border: 1px solid var(--zzz-gray-border);
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform var(--transition-base), border-color var(--transition-base);
+    }
+
+    .ticket-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--highlight-top);
+      pointer-events: none;
+    }
+
+    .ticket-card:hover {
+      transform: translateY(-4px) rotate(-1deg);
+      border-color: var(--zzz-yellow);
+    }
+
+    .ticket-perforation {
+      position: absolute;
+      top: 50%;
+      left: -1px;
+      right: -1px;
+      height: 1px;
+      background-image: radial-gradient(circle, var(--zzz-black) 2px, transparent 2px);
+      background-size: 10px 4px;
+      background-repeat: repeat-x;
+      background-position: center;
+      transform: translateY(-50%);
+      opacity: 0.5;
+    }
+
+    .ticket-num {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      color: var(--text-tertiary);
+    }
+
+    .ticket-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: auto;
+    }
+
+    .ticket-desc {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      margin-top: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .life-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .life-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ========================================
+       LIFE — 3D Video Scroll Section
+    ======================================== */
+    .life-video-section {
+      position: relative;
+      height: 500vh;
+      z-index: 2;
+      margin-top: 60px;
+    }
+
+    .life-video-sticky {
+      position: sticky;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .life-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      will-change: contents;
+    }
+
+    .life-video-vignette {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.4) 100%);
+    }
+
+    .life-scan-line {
+      position: absolute;
+      left: 0; width: 100%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--zzz-yellow), transparent);
+      opacity: 0.12;
+      animation: life-scan-move 5s linear infinite;
+      pointer-events: none;
+      z-index: 3;
+    }
+    @keyframes life-scan-move {
+      0% { top: -2px; }
+      100% { top: 100%; }
+    }
+
+    /* Text overlay */
+    .life-text-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    .life-text-block {
+      position: absolute;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      max-width: 600px;
+    }
+    .life-text-block.active { opacity: 1; transform: translateY(0); }
+    .life-text-block.exit { opacity: 0; transform: translateY(-30px); }
+
+    .life-text-block.pos-left { top: 50%; left: 8%; transform: translateY(-50%) translateY(30px); text-align: left; }
+    .life-text-block.pos-left.active { transform: translateY(-50%) translateY(0); }
+    .life-text-block.pos-left.exit { transform: translateY(-50%) translateY(-30px); }
+
+    .life-text-block.pos-right { top: 50%; right: 8%; transform: translateY(-50%) translateY(30px); text-align: right; }
+    .life-text-block.pos-right.active { transform: translateY(-50%) translateY(0); }
+    .life-text-block.pos-right.exit { transform: translateY(-50%) translateY(-30px); }
+
+    .life-text-block.pos-top { top: 18%; left: 50%; transform: translateX(-50%) translateY(30px); text-align: center; }
+    .life-text-block.pos-top.active { transform: translateX(-50%) translateY(0); }
+    .life-text-block.pos-top.exit { transform: translateX(-50%) translateY(-30px); }
+
+    .life-text-block.pos-bottom { bottom: 22%; left: 50%; transform: translateX(-50%) translateY(30px); text-align: center; }
+    .life-text-block.pos-bottom.active { transform: translateX(-50%) translateY(0); }
+    .life-text-block.pos-bottom.exit { transform: translateX(-50%) translateY(-30px); }
+
+    .life-text-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      color: var(--zzz-yellow);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .life-text-label::before {
+      content: '';
+      width: 24px; height: 2px;
+      background: var(--zzz-yellow);
+    }
+
+    .life-text-headline {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 4.5vw, 3rem);
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.9), 0 0 60px rgba(0,0,0,0.6);
+    }
+    .life-text-headline .accent { color: var(--zzz-yellow); }
+    .life-text-headline .glitch-text { position: relative; display: inline-block; }
+    .life-text-headline .glitch-text::before,
+    .life-text-headline .glitch-text::after {
+      content: attr(data-text);
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; opacity: 0.6;
+    }
+    .life-text-headline .glitch-text::before {
+      color: var(--neon-cyan);
+      animation: glitch-cyan 2.5s infinite alternate-reverse;
+    }
+    .life-text-headline .glitch-text::after {
+      color: var(--neon-magenta);
+      animation: glitch-magenta 2.5s infinite alternate-reverse;
+    }
+
+    .life-text-sub {
+      font-family: var(--font-body);
+      font-size: clamp(0.8rem, 1.3vw, 0.95rem);
+      color: rgba(245, 245, 245, 0.7);
+      line-height: 1.8;
+      max-width: 450px;
+      text-shadow: 0 2px 15px rgba(0,0,0,0.8);
+    }
+
+    .life-text-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      margin-top: 14px;
+      padding: 3px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(4px);
+    }
+
+    /* HUD corner marks */
+    .life-corner {
+      position: absolute;
+      width: 28px; height: 28px;
+      border-color: rgba(255, 217, 61, 0.5);
+      z-index: 5;
+    }
+    .life-cm-tl { top: 24px; left: 24px; border-top: 2px solid; border-left: 2px solid; }
+    .life-cm-tr { top: 24px; right: 24px; border-top: 2px solid; border-right: 2px solid; }
+    .life-cm-bl { bottom: 24px; left: 24px; border-bottom: 2px solid; border-left: 2px solid; }
+    .life-cm-br { bottom: 24px; right: 24px; border-bottom: 2px solid; border-right: 2px solid; }
+
+    /* Timeline bar */
+    .life-timeline-bar {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%; height: 3px;
+      background: rgba(255, 255, 255, 0.08);
+      z-index: 7;
+    }
+    .life-timeline-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--neon-magenta), var(--zzz-yellow), var(--neon-cyan));
+      width: 0%;
+      transition: width 0.05s linear;
+    }
+
+    @media (max-width: 768px) {
+      .life-corner { width: 16px; height: 16px; }
+      .life-cm-tl { top: 16px; left: 16px; }
+      .life-cm-tr { top: 16px; right: 16px; }
+      .life-cm-bl { bottom: 16px; left: 16px; }
+      .life-cm-br { bottom: 16px; right: 16px; }
+      .life-text-block { max-width: 85vw; }
+      .life-text-headline .glitch-text::before,
+      .life-text-headline .glitch-text::after { animation: none; opacity: 0; }
+    }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+    .footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 80px 24px 40px;
+      border-top: 3px solid var(--zzz-yellow);
+    }
+
+    .footer-cta {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 4vw, 2.8rem);
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+
+    .footer-subtitle {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+
+    .footer-link-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 24px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--zzz-yellow);
+      border: 1px solid var(--zzz-yellow);
+      clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+      transition: background var(--transition-fast);
+    }
+
+    .footer-link-btn:hover {
+      background: rgba(255, 217, 61, 0.15);
+    }
+
+    .footer-sig {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-tertiary);
+      letter-spacing: 0.1em;
+    }
+
+    /* ========================================
+       REDUCED MOTION
+    ======================================== */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal, .reveal.is-visible { opacity: 1; transform: none; transition: none; }
+      .glitch::before, .glitch::after { animation: none; opacity: 0; }
+      .marquee-row { animation: none; }
+      .hero-scroll-arrow { animation: none; }
+      .hero-subtitle .cursor { animation: none; }
+      .crt-lines { display: none; }
+    }
+
+    /* ========================================
+       MOBILE GLITCH DISABLE
+    ======================================== */
+    @media (max-width: 768px) {
+      .glitch::before, .glitch::after { animation: none; opacity: 0; }
+      .hero-title { font-size: clamp(1.8rem, 10vw, 3rem); }
+      section { padding: 60px 0; }
+      .container { padding: 0 16px; }
+    }
+    /* ===== ENTRANCE ANIMATION (from index.html zoom-in) ===== */
+    #entrance-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: #fff;
+      pointer-events: none;
+      opacity: 1;
+      transition: opacity 0.4s ease 0.3s;
+    }
+    #entrance-overlay.gone {
+      opacity: 0;
+    }
+
+    #entrance-zoom {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      transform-origin: center center;
+      transform: scale(8);
+      filter: brightness(2);
+      opacity: 0;
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.1s,
+                  filter 0.4s ease 0.1s,
+                  opacity 0.3s ease 0.2s;
+    }
+    #entrance-zoom.gone {
+      transform: scale(1);
+      filter: brightness(1);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== ENTRANCE ANIMATION OVERLAY (from index.html) ===== -->
+  <div id="entrance-overlay" class="gone" style="display: none;"></div>
+  <script>
+    // Entrance animation: white flash → zoom out from center → reveal content
+    (function() {
+      var overlay = document.getElementById('entrance-overlay');
+      if (!overlay) return;
+      // Start with white screen, then fade to reveal
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          overlay.classList.add('gone');
+          setTimeout(function() {
+            overlay.style.display = 'none';
+          }, 800);
+        });
+      });
+    })();
+  </script>
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <span class="glitch-mark">▲</span>ELLEN
+      </div>
+      <div class="nav-links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#abilities" class="nav-link">Abilities</a>
+        <a href="#projects" class="nav-link active">Projects</a>
+        <a href="#life" class="nav-link">Life</a>
+      </div>
+      <a href="#footer" class="zzz-btn-secondary" style="padding: 8px 20px; font-size: 11px;">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero" style="padding-top: 80px;">
+      <div class="hero-bg-grid"></div>
+      <div class="crt-lines"></div>
+      <div class="hero-content">
+        <div class="hero-badge reveal is-visible">
+          <span class="hero-badge-dot"></span>
+          <span>PORTFOLIO // 2026</span>
+        </div>
+        <h1 class="hero-title reveal is-visible" data-delay="0.1">
+          <span class="glitch" data-text="ABOUT ME">ABOUT ME</span><br>
+          <span class="glitch hero-title-cn" data-text="我 × 游戏" style="font-size: 0.7em;">我 × 游戏</span>
+        </h1>
+        
+        <div class="hero-cta reveal is-visible" data-delay="0.4">
+          <a href="#projects" class="zzz-btn-primary">View Projects →</a>
+          <a href="#about" class="zzz-btn-secondary">About Me</a>
+        </div>
+      </div>
+      <div class="hero-scroll">
+        <span>SCROLL</span>
+        <div class="hero-scroll-arrow"></div>
+      </div>
+    </section>
+
+    <!-- ===== MARQUEE ===== -->
+    <div class="marquee-section">
+      <div class="marquee-row row-1">
+        <span class="marquee-item">游戏发行</span>
+        <span class="marquee-item">内容生态</span>
+        <span class="marquee-item">KOL</span>
+        <span class="marquee-item">达人成长</span>
+        <span class="marquee-item">社群运营</span>
+        <span class="marquee-item">AI赋能</span>
+        <span class="marquee-item">游戏发行</span>
+        <span class="marquee-item">内容生态</span>
+        <span class="marquee-item">KOL选人</span>
+        <span class="marquee-item">达人成长</span>
+        <span class="marquee-item">社群运营</span>
+        <span class="marquee-item">AI赋能</span>
+      </div>
+      <div class="marquee-row row-2">
+        <span class="marquee-item">原神</span>
+        <span class="marquee-item">CREAT</span>
+        <span class="marquee-item">SOCIAL MEDIA</span>
+        
+        <span class="marquee-item">GAME</span>
+        <span class="marquee-item">CREAT</span>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <span class="marquee-item">SOCIAL MEDIA</span>
+      </div>
+    </div>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header reveal is-visible">
+          <div class="section-label">// ABOUT</div>
+          <h2 class="section-title">关于我<div>叶瑜桀</div><div>Ellen Ye</div></h2>
+          <p class="section-subtitle">玩家 × 运营 × 内容创作者 — 三重视角下的游戏内容生态思考。</p>
+        </div>
+        <div class="about-grid">
+          <!-- Left: Text -->
+          <div class="about-text-panel cut-tl-br-md reveal is-visible">
+            <p class="about-text">
+              <strong>游戏玩家</strong>：从Steam到手游，体验过种田、模拟经营、开放世界、动作、乙女等多种品类。作为二次元同人女玩家，对玩家情绪、社区文化和创作者梗保持高度敏感，理解内容如何在玩家圈层中传播和共鸣。
+            </p>
+            <p class="about-text" style="margin-top: 16px;">
+              同时拥有互联网行业达人运营、内容营销的一线实战经验，擅长达人沟通、策划活动撬动内容供给、用数据驱动运营策略，希望把这些经验带到游戏内容生态的场景中。
+            </p>
+            <div class="about-tags">
+              <span class="zzz-tag yellow">内容生态</span>
+              <span class="zzz-tag outline">游戏发行</span>
+              <span class="zzz-tag outline">达人运营</span>
+              <span class="zzz-tag dark">二次元玩家</span>
+              <span class="zzz-tag dark">同人创作</span>
+            </div>
+          </div>
+
+          <!-- Right: Device Panel -->
+          <div class="device-panel cut-tl-br-md reveal is-visible" data-delay="0.15">
+            <div class="device-header">
+              <span class="device-title">// SYSTEM STATUS</span>
+              <div class="device-led">
+                <span class="device-led-dot"></span>
+                <span class="device-led-dot"></span>
+                <span class="device-led-dot"></span>
+              </div>
+            </div>
+            <div class="device-stat">
+              <div class="device-stat-num">02</div>
+              <div class="device-stat-info">
+                <div class="device-stat-label">实习经历</div>
+                <div class="device-stat-desc">美团 · 携程</div>
+              </div>
+            </div>
+            <div class="device-stat">
+              <div class="device-stat-num">+15%</div>
+              <div class="device-stat-info">
+                <div class="device-stat-label">活跃创作者增长</div>
+                <div class="device-stat-desc">美团达人运营</div>
+              </div>
+            </div>
+            <div class="device-stat">
+              <div class="device-stat-num">+80%</div>
+              <div class="device-stat-info">
+                <div class="device-stat-label">运营效率提升</div>
+                <div class="device-stat-desc">nocode工具搭建</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EXPERIENCE + EDUCATION ===== -->
+    <section id="experience" style="padding-top: 0;">
+      <div class="container">
+        <div class="section-header reveal is-visible">
+          <div class="section-label">// EXPERIENCE</div>
+          <h2 class="section-title">实习经历</h2>
+          <p class="section-subtitle">三段实习 ，覆盖创作者生态运营、内容产品运营、内容种草、活动运营。</p>
+        </div>
+        <div class="exp-edu-grid" style="grid-template-columns: 1fr;">
+          <div class="exp-panel cut-tl-br-md reveal is-visible">
+            <div class="section-label" style="margin-bottom: 20px;">// INTERNSHIP</div>
+
+            <a href="meituan-creator.html" class="exp-item-link">
+              <div class="exp-item-row">
+                <div class="exp-item-content">
+                  <div class="exp-role">创作者策略运营</div>
+                  <div class="exp-company">美团点评 · 策略中台</div>
+                  <div class="exp-period">2025.12 — 2026.02</div>
+                  <div class="exp-desc">搭建三层分层激励体系，站外达人引进全流程策略，中台资源调配（有奖话题/推粉位/流量扶持），策划"回小城过小年"活动，nocode工具搭建达人活跃度排行榜。活跃创作者+15%，社群活跃+32%，优质内容供给+20%。</div>
+                </div>
+                <span class="exp-item-arrow">→</span>
+              </div>
+            </a>
+
+            <a href="meituan-poi.html" class="exp-item-link">
+              <div class="exp-item-row">
+                <div class="exp-item-content">
+                  <div class="exp-role">内容产品运营（兴趣POI供给侧）</div>
+                  <div class="exp-company">美团 · 核心本地商业 · 点评POI发展部</div>
+                  <div class="exp-period">2026.02 — 2026.05</div>
+                  <div class="exp-desc">兴趣POI供给侧策略执行：点位分发与供应商管理，成本调控（精品80元/优质50元），迭代选品标准推动优质审出率+28%，策划赏花路线打卡活动消费环比+52%，新增有效点位1万+。</div>
+                </div>
+                <span class="exp-item-arrow">→</span>
+              </div>
+            </a>
+
+            <a href="trip.html" class="exp-item-link">
+              <div class="exp-item-row">
+                <div class="exp-item-content">
+                  <div class="exp-role">内容运营（定制游）</div>
+                  <div class="exp-company">携程 · 旅游事业群</div>
+                  <div class="exp-period">2025.08 — 2025.11</div>
+                  <div class="exp-desc">小红书内容种草100+篇累计曝光100万+，500+条评论需求分层分析定位核心卖点，20+账号矩阵差异化运营（官方号/KOS/素人号），爆款范式拆解模仿产出产品硬广，3篇爆款笔记带来100+咨询，成单转化率3.2%，业务GMV环比+15%。</div>
+                </div>
+                <span class="exp-item-arrow">→</span>
+              </div>
+            </a>
+
+            
+
+            
+
+            
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABILITIES ===== -->
+    <section id="abilities">
+      <div class="container">
+        <div class="section-header reveal is-visible">
+          <div class="section-label">// ABILITIES</div>
+          <h2 class="section-title">个人能力</h2>
+          <p class="section-subtitle">游戏内容生态场景下的核心能力评估。</p>
+        </div>
+
+        <div class="radar-wrapper">
+          <!-- Radar Chart -->
+          <div class="radar-chart-wrap reveal is-visible">
+            <div class="radar-hud-top">
+              <span class="hud-dot"></span>
+              <span>TRACK 01 / ACTIVE</span>
+            </div>
+            <svg viewBox="-155 -130 310 260" id="radarSvg" preserveAspectRatio="xMidYMid meet">
+              <!-- Grid rings (5 levels) -->
+              <polygon class="radar-grid" points="0,-100 86.6,-50 86.6,50 0,100 -86.6,50 -86.6,-50"></polygon>
+              <polygon class="radar-grid" points="0,-80 69.3,-40 69.3,40 0,80 -69.3,40 -69.3,-40"></polygon>
+              <polygon class="radar-grid" points="0,-60 52,-30 52,30 0,60 -52,30 -52,-30"></polygon>
+              <polygon class="radar-grid" points="0,-40 34.6,-20 34.6,20 0,40 -34.6,20 -34.6,-20"></polygon>
+              <polygon class="radar-grid" points="0,-20 17.3,-10 17.3,10 0,20 -17.3,10 -17.3,-10"></polygon>
+              <!-- Axes -->
+              <line class="radar-axis" x1="0" y1="0" x2="0" y2="-100"></line>
+              <line class="radar-axis" x1="0" y1="0" x2="86.6" y2="-50"></line>
+              <line class="radar-axis" x1="0" y1="0" x2="86.6" y2="50"></line>
+              <line class="radar-axis" x1="0" y1="0" x2="0" y2="100"></line>
+              <line class="radar-axis" x1="0" y1="0" x2="-86.6" y2="50"></line>
+              <line class="radar-axis" x1="0" y1="0" x2="-86.6" y2="-50"></line>
+              <!-- Data polygon (rendered by JS) -->
+              <polygon class="radar-polygon" id="radarPolygon" points="0.0,-85.0 62.4,-36.0 76.2,44.0 0.0,78.0 -69.3,40.0 -65.0,-37.5"></polygon>
+              <!-- Data dots (rendered by JS) -->
+              <g id="radarDots"><circle cx="0.0" cy="-85.0" r="4" class="radar-dot"></circle><circle cx="62.4" cy="-36.0" r="4" class="radar-dot"></circle><circle cx="76.2" cy="44.0" r="4" class="radar-dot"></circle><circle cx="0.0" cy="78.0" r="4" class="radar-dot"></circle><circle cx="-69.3" cy="40.0" r="4" class="radar-dot"></circle><circle cx="-65.0" cy="-37.5" r="4" class="radar-dot"></circle></g>
+              <!-- Ability labels -->
+              <text class="radar-label radar-label-name" x="0" y="-112" text-anchor="middle">社区玩家理解</text>
+              <text class="radar-label radar-label-name" x="102" y="-48" text-anchor="start">游戏理解</text>
+              <text class="radar-label radar-label-name" x="102" y="56" text-anchor="start">KOL&amp;UGC</text>
+              <text class="radar-label radar-label-name" x="0" y="118" text-anchor="middle">沟通协作</text>
+              <text class="radar-label radar-label-name" x="-102" y="56" text-anchor="end">数据复盘</text>
+              <text class="radar-label radar-label-name" x="-102" y="-48" text-anchor="end">内容表达</text>
+            </svg>
+            <div class="radar-hud-bottom">RADIAL LIMIT / 100</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-header reveal is-visible">
+          <div class="section-label">// PROJECTS</div>
+          <h2 class="section-title">项目经历</h2>
+          <p class="section-subtitle">品牌策划 · IP衍生 · 游戏发行拆解，覆盖市场调研、社群运营与AI内容工具赋能。</p>
+        </div>
+        <div class="projects-grid">
+          <!-- Project 01: 猴头菇品牌策划 — Featured -->
+          <a href="#" class="project-card-zzz featured cut-tl-br-md reveal is-visible">
+            <div class="scan-sweep"></div>
+            <div class="project-card-header">
+              <span class="project-num">#01 // BRAND</span>
+              
+            </div>
+            <div class="project-title">天泉猴头菇品牌策划</div>
+            <div class="project-desc">围绕健康食品赛道开展行业研究，通过竞品分析与用户画像精准定位目标消费群体。从品牌定位、核心卖点、传播语言三个维度设计差异化品牌方案，规划线上线下联动的整合营销传播策略，涵盖内容种草、渠道推广、口碑建设等关键触点。</div>
+            <div class="project-metrics">
+              <div class="project-metric">
+                <div class="project-metric-num">省一等奖</div>
+                <div class="project-metric-label">竞赛荣誉</div>
+              </div>
+              <div class="project-metric">
+                <div class="project-metric-num">+15%</div>
+                <div class="project-metric-label">市场覆盖率</div>
+              </div>
+              <div class="project-metric">
+                <div class="project-metric-num">+5%</div>
+                <div class="project-metric-label">市场份额</div>
+              </div>
+            </div>
+            <div class="project-tags">
+              <span class="zzz-tag yellow">市场调研</span>
+              <span class="zzz-tag outline">品牌策略</span>
+              <span class="zzz-tag outline">整合营销</span>
+              <span class="zzz-tag dark">竞品分析</span>
+            </div>
+          </a>
+
+          <!-- Project 02: ACGIP衍生活动策划 -->
+          <a href="#" class="project-card-zzz cut-tl-br-md reveal is-visible" data-delay="0.1">
+            <div class="scan-sweep"></div>
+            <div class="project-card-header">
+              <span class="project-num">#02 // ACGIP</span>
+              
+            </div>
+            <div class="project-title">ACGIP衍生活动策划</div>
+            <div class="project-desc">主导游戏IP衍生内容线下咖啡厅活动的社群运营与物料制作，负责南京分场从线上宣传到线下落地的全流程。通过微博、小红书、Lofter等平台宣传预热，设计话题互动引导社群活跃。建联10+位圈内画师博主，独立协调画师、印刷厂、物流三方完成全流程生产管理。</div>
+            <div class="project-metrics">
+              <div class="project-metric">
+                <div class="project-metric-num">50+</div>
+                <div class="project-metric-label">日增社群</div>
+              </div>
+              <div class="project-metric">
+                <div class="project-metric-num">54%</div>
+                <div class="project-metric-label">日均活跃</div>
+              </div>
+              <div class="project-metric">
+                <div class="project-metric-num">83%</div>
+                <div class="project-metric-label">活动参与率</div>
+              </div>
+              <div class="project-metric">
+                <div class="project-metric-num">5000+</div>
+                <div class="project-metric-label">物料流水</div>
+              </div>
+            </div>
+            <div class="project-tags">
+              <span class="zzz-tag yellow">社群运营</span>
+              <span class="zzz-tag outline">活动策划</span>
+              <span class="zzz-tag outline">供应链协调</span>
+              <span class="zzz-tag dark">KOL建联</span>
+            </div>
+          </a>
+
+          <!-- Project 03: 游戏发行拆解（占位符） -->
+          <a href="绝区零3.1活动清单与目的深度拆解.html" class="project-card-zzz cut-tl-br-md reveal is-visible" data-delay="0.2">
+            <div class="scan-sweep"></div>
+            <div class="project-card-header">
+              <span class="project-num">#03 // GAME&nbsp;</span>
+              <span class="project-arrow">→</span>
+            </div>
+            <div class="project-title">游戏版本活动拆解</div>
+            <div class="project-desc">以玩家视角拆解热门游戏的版本节奏、活动核心卖点、排期策略，学习商业化游戏的版本节奏，加深对于活动的理解。</div>
+            <div class="project-tags">
+              <span class="zzz-tag yellow">活动拆解</span>
+              <span class="zzz-tag outline">版本节奏</span>
+              <span class="zzz-tag outline">商业化观察</span>
+              <span class="zzz-tag dark">玩家视角</span>
+            </div>
+          </a>
+
+          <!-- Project 04: AI 游戏创作者合作助手 -->
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LIFE ===== -->
+    <section id="life">
+      <div class="container">
+        <div class="section-header reveal is-visible">
+          <div class="section-label">// LIFE</div>
+          <h2 class="section-title">热爱生活 · 探索世界</h2>
+          <p class="section-subtitle">游戏之外，我在运动、音乐、陪伴和创作中找到另一种热爱的方式。</p>
+        </div>
+        <div class="life-grid">
+          <div class="ticket-card cut-tl-br-sm reveal is-visible">
+            <span class="ticket-num">// 01</span>
+            <div>
+              <div class="ticket-title">运动户外</div>
+              <div class="ticket-desc">羽毛球 &amp; 山野徒步</div>
+            </div>
+          </div>
+          <div class="ticket-card cut-tl-br-sm reveal is-visible" data-delay="0.1">
+            <span class="ticket-num">// 02</span>
+            <div>
+              <div class="ticket-title">演奏音乐</div>
+              <div class="ticket-desc">钢琴独奏 &amp; 音乐创作</div>
+            </div>
+          </div>
+          <div class="ticket-card cut-tl-br-sm reveal is-visible" data-delay="0.2">
+            <span class="ticket-num">// 03</span>
+            <div>
+              <div class="ticket-title">热爱小动物</div>
+              <div class="ticket-desc">猫猫狗狗毛绒绒</div>
+            </div>
+          </div>
+          <div class="ticket-card cut-tl-br-sm reveal is-visible" data-delay="0.3">
+            <span class="ticket-num">// 04</span>
+            <div>
+              <div class="ticket-title">二次元同人</div>
+              <div class="ticket-desc">创作 &amp; 追逐热爱</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== LIFE VIDEO SCROLL ===== -->
+      <div class="life-video-section" id="lifeVideoSection">
+        <div class="life-video-sticky">
+          <video class="life-video" id="lifeVideo" muted="" playsinline="" preload="auto" webkit-playsinline="true" crossorigin="anonymous">
+            <source src="life-recording.mp4" type="video/mp4">
+          </video>
+
+          <div class="life-video-vignette"></div>
+          <div class="life-scan-line"></div>
+
+          <!-- Corner marks -->
+          <div class="life-corner life-cm-tl"></div>
+          <div class="life-corner life-cm-tr"></div>
+          <div class="life-corner life-cm-bl"></div>
+          <div class="life-corner life-cm-br"></div>
+
+          <!-- Text overlays -->
+          <div class="life-text-overlay">
+            <div class="life-text-block pos-left active" id="lifeText0">
+              <div class="life-text-label">// CHAPTER 01</div>
+              <h3 class="life-text-headline">不止<span class="accent">活着</span><br>要<span class="glitch-text" data-text="热烈地活">热烈地活</span></h3>
+              <p class="life-text-sub">生活不是按部就班的剧本，是每一次心跳加速的瞬间。去感受，去燃烧，去把平淡的日子过成一场冒险。</p>
+              <span class="life-text-tag">#LIFE_IS_FLAME</span>
+            </div>
+            <div class="life-text-block pos-right" id="lifeText1">
+              <div class="life-text-label">// CHAPTER 02</div>
+              <h3 class="life-text-headline">在<span class="accent">游戏</span>里<br>找到另一个<span class="glitch-text" data-text="自己">自己</span></h3>
+              <p class="life-text-sub">虚拟世界不是逃避现实的避风港，是探索可能性的试验场。每一个角色，都是灵魂的另一面。</p>
+              <span class="life-text-tag">#GAMER_SOUL</span>
+            </div>
+            <div class="life-text-block pos-top" id="lifeText2">
+              <div class="life-text-label">// CHAPTER 03</div>
+              <h3 class="life-text-headline">热爱 <span class="accent">不需要</span><br>理由</h3>
+              <p class="life-text-sub">喜欢一件事，不需要向任何人解释。那份纯粹的快乐，本身就是最好的答案。</p>
+              <span class="life-text-tag">#PURE_PASSION</span>
+            </div>
+            <div class="life-text-block pos-bottom" id="lifeText3">
+              <div class="life-text-label">// CHAPTER 04</div>
+              <h3 class="life-text-headline">把每一天<br>当成<span class="accent">最后一关</span>来打</h3>
+              <p class="life-text-sub">人生没有存档点，也没有读档重来。但正因为如此，每一个选择都值得全力以赴。</p>
+              <span class="life-text-tag">#NO_SAVE_POINT</span>
+            </div>
+          </div>
+
+          <!-- Timeline bar -->
+          <div class="life-timeline-bar">
+            <div class="life-timeline-fill" id="lifeTimelineFill" style="width: 0%;"></div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="footer">
+    <div class="footer-cta reveal is-visible">LET'S BUILD SOMETHING.</div>
+    
+    <div class="footer-links reveal is-visible" data-delay="0.2">
+      
+      
+      
+      
+    </div>
+    <p class="footer-sig">© 2026 ELLEN · 叶瑜桀 // yeyujie513@126.com 18018192116</p>
+  </footer>
+
+  <script>
+    // ===== Nav scroll =====
+    const nav = document.getElementById('nav');
+    function onNavScroll() {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }
+    window.addEventListener('scroll', onNavScroll, { passive: true });
+    onNavScroll();
+
+    // ===== Reveal on scroll =====
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const delay = parseFloat(entry.target.dataset.delay || 0) * 1000;
+          setTimeout(() => entry.target.classList.add('is-visible'), delay);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ===== Typewriter effect for hero subtitle =====
+    const subtitleEl = document.getElementById('heroSubtitle');
+    const subtitleText = '游戏内容生态合作岗位。从玩家视角出发，用内容运营、达人成长与社群运营的经验，连接游戏与热爱它的人。';
+    const cursor = subtitleEl ? subtitleEl.querySelector('.cursor') : null;
+
+    function startTypewriter() {
+      if (!subtitleEl) return;
+      let i = 0;
+      const speed = 45;
+      function type() {
+        if (i < subtitleText.length) {
+          if (cursor) {
+            subtitleEl.insertBefore(document.createTextNode(subtitleText[i]), cursor);
+          } else {
+            subtitleEl.textContent += subtitleText[i];
+          }
+          i++;
+          setTimeout(type, speed);
+        } else {
+          if (cursor) {
+            setTimeout(() => cursor.classList.add('hidden'), 2000);
+          }
+        }
+      }
+      type();
+    }
+
+    // Start typewriter after a delay (after hero reveal)
+    setTimeout(startTypewriter, 800);
+
+    // ===== Active nav link on scroll =====
+    const navSections = document.querySelectorAll('section[id], footer[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function updateActiveNav() {
+      let current = '';
+      const triggerPoint = window.innerHeight * 0.3;
+      navSections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= triggerPoint) {
+          current = section.getAttribute('id');
+        }
+      });
+      // The life-video-section is a tall div inside #life — keep Life highlighted while scrolling through it
+      const lifeVideoSection = document.getElementById('lifeVideoSection');
+      if (lifeVideoSection) {
+        const r = lifeVideoSection.getBoundingClientRect();
+        if (r.top <= triggerPoint && r.bottom > triggerPoint) {
+          current = 'life';
+        }
+      }
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    }
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    updateActiveNav();
+
+    // ===== Radar Chart =====
+    const radarData = [
+      { name: '社区玩家理解', score: 85, desc: '深入游戏社区文化与玩家情绪，对创作者动机和社区梗保持敏感' },
+      { name: '游戏理解', score: 72, desc: '深度玩家视角，拆解版本节奏、核心卖点与社媒传播势能' },
+      { name: 'KOL&UGC', score: 88, desc: '搭建达人分层成长体系，从冷启动到头部孵化的全链路运营' },
+      { name: '沟通协作能力', score: 78, desc: '跨部门协调、达人建联、供应链管理，推动策略到落地' },
+      { name: '数据复盘', score: 80, desc: 'SQL追踪数据表现，按垂类拆解供给，动态调整运营策略' },
+      { name: '内容表达', score: 75, desc: '把观察和策略整理成清楚的叙事，落地为可执行的内容方案' },
+    ];
+
+    function renderRadar() {
+      const svgNS = 'http://www.w3.org/2000/svg';
+      const center = { x: 0, y: 0 };
+      const maxR = 100;
+      const n = radarData.length;
+
+      // Calculate points
+      let points = [];
+      radarData.forEach((item, i) => {
+        const angle = (Math.PI * 2 * i) / n - Math.PI / 2;
+        const r = (item.score / 100) * maxR;
+        const x = center.x + r * Math.cos(angle);
+        const y = center.y + r * Math.sin(angle);
+        points.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+      });
+
+      // Set polygon
+      document.getElementById('radarPolygon').setAttribute('points', points.join(' '));
+
+      // Add dots
+      const dotsGroup = document.getElementById('radarDots');
+      dotsGroup.innerHTML = '';
+      radarData.forEach((item, i) => {
+        const angle = (Math.PI * 2 * i) / n - Math.PI / 2;
+        const r = (item.score / 100) * maxR;
+        const x = center.x + r * Math.cos(angle);
+        const y = center.y + r * Math.sin(angle);
+        const circle = document.createElementNS(svgNS, 'circle');
+        circle.setAttribute('cx', x.toFixed(1));
+        circle.setAttribute('cy', y.toFixed(1));
+        circle.setAttribute('r', '4');
+        circle.setAttribute('class', 'radar-dot');
+        dotsGroup.appendChild(circle);
+      });
+    }
+
+    try { renderRadar(); } catch(e) { console.warn('Radar render skipped:', e.message); }
+  </script>
+
+  <!-- ===== LIFE VIDEO SCROLL — independent script block ===== -->
+  <script>
+    (function() {
+      const lifeVideo = document.getElementById('lifeVideo');
+      const lifeVideoSection = document.getElementById('lifeVideoSection');
+      const lifeTimelineFill = document.getElementById('lifeTimelineFill');
+      const lifeTextEls = [0,1,2,3].map(i => document.getElementById('lifeText' + i));
+      if (!lifeVideo || !lifeVideoSection) return;
+
+      let lifeVideoDuration = 0;
+      let lifeLastShot = -1;
+      let lifeTargetTime = 0;
+      let lifeRafPending = false;
+      let lifeVideoReady = false;
+      let lifeSafariUnlocked = false;
+
+      const lifeShots = [
+        { startT: 0.00, endT: 0.25 },
+        { startT: 0.25, endT: 0.50 },
+        { startT: 0.50, endT: 0.75 },
+        { startT: 0.75, endT: 1.00 },
+      ];
+
+      function lifeGetCurrentShot(p) {
+        for (let i = 0; i < lifeShots.length; i++) {
+          if (p >= lifeShots[i].startT && p < lifeShots[i].endT) return i;
+        }
+        return lifeShots.length - 1;
+      }
+
+      // Safari requires a play() call to unlock seek on muted videos
+      function unlockSafariSeek() {
+        if (lifeSafariUnlocked) return;
+        if (lifeVideo.readyState >= 2) {
+          lifeSafariUnlocked = true;
+          lifeVideo.muted = true;
+          lifeVideo.play().then(function() {
+            lifeVideo.pause();
+          }).catch(function() {});
+        }
+      }
+
+      function updateLifeVideoScroll() {
+        const rect = lifeVideoSection.getBoundingClientRect();
+        const sectionHeight = lifeVideoSection.offsetHeight - window.innerHeight;
+        const scrolled = Math.max(0, -rect.top);
+        const progress = Math.min(1, Math.max(0, scrolled / sectionHeight));
+
+        // Only update if video section is near viewport (performance)
+        const isNearViewport = rect.top < window.innerHeight * 2 && rect.bottom > -window.innerHeight * 2;
+        if (!isNearViewport) return;
+
+        if (lifeVideoDuration > 0) {
+          lifeTargetTime = progress * (lifeVideoDuration - 0.05);
+        }
+
+        lifeTimelineFill.style.width = (progress * 100) + '%';
+
+        const currentShot = lifeGetCurrentShot(progress);
+        if (currentShot !== lifeLastShot) {
+          lifeLastShot = currentShot;
+          lifeTextEls.forEach((el, i) => {
+            if (!el) return;
+            el.classList.remove('active', 'exit');
+            if (i === currentShot) el.classList.add('active');
+            else if (i < currentShot) el.classList.add('exit');
+          });
+        }
+
+        if (!lifeRafPending) {
+          lifeRafPending = true;
+          requestAnimationFrame(function() {
+            lifeRafPending = false;
+            if (lifeVideoReady && lifeVideoDuration > 0) {
+              var seekable = lifeVideo.seekable;
+              var canSeek = seekable.length > 0 && lifeTargetTime >= seekable.start(0) && lifeTargetTime <= seekable.end(0);
+              if (canSeek && Math.abs(lifeVideo.currentTime - lifeTargetTime) > 0.01) {
+                try {
+                  lifeVideo.currentTime = lifeTargetTime;
+                } catch(e) {}
+              } else if (!canSeek && lifeVideo.readyState >= 2) {
+                // Safari fallback: try play-pause to unlock seek
+                unlockSafariSeek();
+              }
+            }
+          });
+        }
+      }
+
+      function onLifeVideoReady() {
+        if (lifeVideo.duration) {
+          lifeVideoDuration = lifeVideo.duration;
+          lifeVideoReady = true;
+          unlockSafariSeek();
+          updateLifeVideoScroll();
+        }
+      }
+
+      lifeVideo.addEventListener('loadedmetadata', onLifeVideoReady);
+      lifeVideo.addEventListener('canplay', onLifeVideoReady);
+      lifeVideo.addEventListener('canplaythrough', onLifeVideoReady);
+      lifeVideo.addEventListener('seeked', function() {
+        // Safari sometimes needs a nudge after seek
+      });
+
+      // Force load when section approaches viewport
+      var lifeObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            lifeVideo.load();
+            unlockSafariSeek();
+          }
+        });
+      }, { rootMargin: '200px 0px' });
+      lifeObserver.observe(lifeVideoSection);
+
+      window.addEventListener('scroll', updateLifeVideoScroll, { passive: true });
+      window.addEventListener('resize', updateLifeVideoScroll);
+      updateLifeVideoScroll();
+    })();
+  </script>
+
+
+<div class="light"></div>
+
+
+
+
+
+</main></body></html>
