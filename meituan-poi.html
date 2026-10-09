@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     PAGE ID: MEITUAN-POI-DETAIL
+     这是【美团兴趣POI内容产品运营】详细案例页。
+     请勿将其他页面的内容覆盖到此文件。
+     主页：ecosystem.html
+     其他详细页：
+       - meituan-creator.html (美团达人内容成长)
+       - trip.html (携程定制游内容运营)
+     ============================================================ -->
+<html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>美团POI内容产品运营 · Ellen 作品集</title>
+  <meta name="description" content="美团点评兴趣POI内容产品运营：供给侧策略、供应商管理、流量公式拆解、赏花活动策划。">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Noto+Sans+SC:wght@300;400;500;700;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --zzz-yellow: #FFD93D;
+      --zzz-yellow-dim: #C9A800;
+      --zzz-yellow-glow: rgba(255, 217, 61, 0.25);
+      --zzz-black: #0A0A0A;
+      --zzz-gray: #1A1A1A;
+      --zzz-gray-light: #2A2A2A;
+      --zzz-gray-border: #333333;
+      --neon-cyan: #00F0FF;
+      --neon-cyan-glow: rgba(0, 240, 255, 0.2);
+      --neon-magenta: #FF2D95;
+      --neon-magenta-glow: rgba(255, 45, 149, 0.2);
+      --text-primary: #F5F5F5;
+      --text-secondary: #888888;
+      --text-tertiary: #555555;
+      --text-accent: var(--zzz-yellow);
+      --cut-sm: 8px;
+      --cut-md: 12px;
+      --cut-lg: 16px;
+      --skew-angle: -6deg;
+      --shadow-layered: 0 2px 0 rgba(255,255,255,0.06) inset, 0 -2px 0 rgba(0,0,0,0.4) inset, 0 8px 24px rgba(0,0,0,0.6);
+      --shadow-yellow-glow: 0 0 20px var(--zzz-yellow-glow), 0 4px 12px rgba(0,0,0,0.5);
+      --highlight-top: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 30%);
+      --ease-industrial: cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-fast: 0.2s var(--ease-industrial);
+      --transition-base: 0.4s var(--ease-industrial);
+      --font-display: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+      --font-body: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { font-family: var(--font-body); color: var(--text-primary); background: var(--zzz-black); line-height: 1.6; overflow-x: hidden; letter-spacing: -0.01em; position: relative; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    ::selection { background: var(--zzz-yellow); color: var(--zzz-black); }
+    body::before { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.04; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s var(--ease-industrial), transform 0.6s var(--ease-industrial); will-change: opacity, transform; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    .section-label { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--zzz-yellow); margin-bottom: 16px; }
+    .section-label::before { content: ''; width: 3px; height: 16px; background: var(--zzz-yellow); transform: skewX(var(--skew-angle)); }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4.5vw, 3rem); font-weight: 800; letter-spacing: 0.04em; line-height: 1.1; margin-bottom: 12px; }
+    .section-subtitle { font-size: clamp(0.85rem, 1.4vw, 1rem); color: var(--text-secondary); max-width: 640px; line-height: 1.7; }
+
+    .glitch { position: relative; display: inline-block; }
+    .glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.8; }
+    .glitch::before { color: var(--neon-cyan); animation: glitch-cyan 3s infinite alternate-reverse; }
+    .glitch::after { color: var(--neon-magenta); animation: glitch-magenta 3s infinite alternate-reverse; }
+    @keyframes glitch-cyan { 0% { clip-path: inset(0 0 85% 0); transform: translateX(-2px); } 20% { clip-path: inset(20% 0 60% 0); transform: translateX(1px); } 40% { clip-path: inset(50% 0 30% 0); transform: translateX(-1px); } 60% { clip-path: inset(70% 0 10% 0); transform: translateX(2px); } 80% { clip-path: inset(30% 0 50% 0); transform: translateX(-2px); } 100% { clip-path: inset(10% 0 75% 0); transform: translateX(1px); } }
+    @keyframes glitch-magenta { 0% { clip-path: inset(80% 0 5% 0); transform: translateX(2px); } 20% { clip-path: inset(40% 0 40% 0); transform: translateX(-1px); } 40% { clip-path: inset(10% 0 70% 0); transform: translateX(1px); } 60% { clip-path: inset(60% 0 20% 0); transform: translateX(-2px); } 80% { clip-path: inset(25% 0 55% 0); transform: translateX(2px); } 100% { clip-path: inset(75% 0 15% 0); transform: translateX(-1px); } }
+    .crt-lines { position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px); opacity: 0.4; }
+
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,10,0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--zzz-gray-border); transition: background var(--transition-base); }
+    .nav.scrolled { background: rgba(10,10,10,0.92); }
+    .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--font-display); font-size: 18px; font-weight: 900; letter-spacing: 0.08em; }
+    .nav-logo .glitch-mark { color: var(--zzz-yellow); margin-right: 2px; }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-link { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-secondary); transition: color var(--transition-fast); position: relative; padding-bottom: 4px; }
+    .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--zzz-yellow); transform: skewX(var(--skew-angle)); transition: width var(--transition-fast); }
+    .nav-link:hover { color: var(--text-primary); }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link.active { color: var(--zzz-yellow); }
+    .nav-link.active::after { width: 100%; }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+
+    .zzz-btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; font-family: var(--font-display); font-size: 13px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; color: var(--zzz-black); background: var(--zzz-yellow); clip-path: polygon(var(--cut-lg) 0, 100% 0, 100% calc(100% - var(--cut-lg)), calc(100% - var(--cut-lg)) 100%, 0 100%, 0 var(--cut-lg)); transition: filter var(--transition-fast), transform var(--transition-fast); position: relative; cursor: pointer; }
+    .zzz-btn-primary::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .zzz-btn-primary:hover { filter: brightness(1.1); transform: translateX(2px); }
+    .zzz-btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 12px 26px; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--zzz-yellow); background: transparent; border: 2px solid var(--zzz-yellow); clip-path: polygon(var(--cut-lg) 0, 100% 0, 100% calc(100% - var(--cut-lg)), calc(100% - var(--cut-lg)) 100%, 0 100%, 0 var(--cut-lg)); transition: background var(--transition-fast); cursor: pointer; }
+    .zzz-btn-secondary:hover { background: rgba(255,217,61,0.15); }
+
+    .zzz-tag { display: inline-flex; align-items: center; padding: 4px 12px; font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%); }
+    .zzz-tag.yellow { background: var(--zzz-yellow); color: var(--zzz-black); }
+    .zzz-tag.outline { background: transparent; color: var(--zzz-yellow); border: 1px solid var(--zzz-yellow); }
+    .zzz-tag.dark { background: var(--zzz-gray-light); color: var(--text-secondary); border: 1px solid var(--zzz-gray-border); }
+
+    /* Hero */
+    .hero { position: relative; min-height: 80vh; min-height: 80dvh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 120px 24px 60px; overflow: hidden; background: var(--zzz-black); }
+    .hero-bg-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,217,61,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,217,61,0.03) 1px, transparent 1px); background-size: 50px 50px; mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, transparent 75%); }
+    .hero-content { position: relative; z-index: 2; max-width: 900px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--zzz-yellow); background: rgba(255,217,61,0.08); border: 1px solid rgba(255,217,61,0.3); clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%); margin-bottom: 24px; }
+    .hero-badge-dot { width: 6px; height: 6px; background: var(--zzz-yellow); box-shadow: 0 0 6px var(--zzz-yellow-glow); }
+    .hero-title { font-family: var(--font-display); font-size: clamp(2rem, 6vw, 4rem); font-weight: 900; letter-spacing: 0.08em; line-height: 1.05; margin-bottom: 20px; color: var(--text-primary); }
+    .hero-title-cn { font-family: 'Noto Sans SC', var(--font-display); font-weight: 900; }
+    .hero-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 24px; }
+    .hero-meta-item { display: flex; flex-direction: column; gap: 2px; }
+    .hero-meta-label { font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-tertiary); }
+    .hero-meta-value { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+    .hero-desc { font-size: clamp(0.95rem, 1.5vw, 1.1rem); color: var(--text-secondary); max-width: 640px; line-height: 1.8; margin-bottom: 32px; }
+    .hero-cta { display: flex; gap: 16px; justify-content: flex-start; flex-wrap: wrap; }
+
+    section { position: relative; z-index: 1; padding: 100px 0; }
+    .section-header { margin-bottom: 56px; }
+
+    /* Metrics bar */
+    .metrics-bar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--zzz-gray-border); border: 1px solid var(--zzz-gray-border); }
+    .metric-cell { background: var(--zzz-gray); padding: 28px 20px; text-align: center; position: relative; }
+    .metric-cell::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .metric-num { font-family: var(--font-mono); font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 900; color: var(--zzz-yellow); line-height: 1; margin-bottom: 6px; }
+    .metric-label { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); }
+    @media (max-width: 768px) { .metrics-bar { grid-template-columns: repeat(2, 1fr); } }
+
+    /* Pain points */
+    .pain-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .pain-card { background: var(--zzz-gray); padding: 28px; position: relative; box-shadow: var(--shadow-layered); border: 1px solid var(--zzz-gray-border); transition: transform var(--transition-base), border-color var(--transition-base); overflow: hidden; }
+    .pain-card::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .pain-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--neon-magenta), transparent); opacity: 0; transition: opacity 0.2s; }
+    .pain-card:hover { transform: translateY(-4px); border-color: var(--neon-magenta); }
+    .pain-card:hover::after { opacity: 1; }
+    .pain-icon { font-family: var(--font-mono); font-size: 20px; font-weight: 700; color: var(--neon-magenta); margin-bottom: 12px; }
+    .pain-title { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+    .pain-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+    @media (max-width: 768px) { .pain-grid { grid-template-columns: 1fr; } }
+
+    /* Detail panel */
+    .detail-panel { background: var(--zzz-gray); padding: 40px; position: relative; box-shadow: var(--shadow-layered); border: 1px solid var(--zzz-gray-border); margin-bottom: 32px; overflow: hidden; }
+    .detail-panel::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .detail-panel::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--zzz-yellow), transparent); opacity: 0; transform: translateY(0); transition: opacity 0.2s; }
+    .detail-panel:hover::after { opacity: 1; animation: scan-sweep 1.2s var(--ease-industrial); }
+    @keyframes scan-sweep { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(400px); opacity: 0; } }
+    .detail-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .detail-num { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--zzz-yellow); letter-spacing: 0.1em; }
+    .detail-title { font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 800; letter-spacing: 0.02em; color: var(--text-primary); }
+    .detail-body { font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
+    .detail-body strong { color: var(--text-primary); font-weight: 600; }
+    .detail-body ul { list-style: none; padding: 0; margin: 12px 0; }
+    .detail-body li { padding-left: 20px; position: relative; margin-bottom: 8px; }
+    .detail-body li::before { content: '▸'; position: absolute; left: 0; color: var(--zzz-yellow); font-weight: 700; }
+
+    /* Table */
+    .data-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+    .data-table th { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--zzz-yellow); text-align: left; padding: 12px 16px; border-bottom: 2px solid var(--zzz-yellow); background: rgba(255,217,61,0.05); }
+    .data-table td { padding: 16px; font-size: 13px; color: var(--text-secondary); border-bottom: 1px solid rgba(51,51,51,0.5); vertical-align: top; line-height: 1.6; }
+    .data-table td:first-child { font-weight: 700; color: var(--text-primary); white-space: nowrap; }
+    .data-table td:nth-child(2) { font-family: var(--font-mono); font-size: 12px; color: var(--zzz-yellow); }
+    .data-table tr:hover td { background: rgba(255,217,61,0.03); }
+    .data-table-wrap { overflow-x: auto; }
+
+    /* Formula card */
+    .formula-card { background: linear-gradient(135deg, var(--zzz-gray) 0%, #0f0f15 100%); border: 1px solid rgba(0,240,255,0.15); padding: 32px; position: relative; box-shadow: var(--shadow-layered); overflow: hidden; }
+    .formula-card::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .formula-label { font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--neon-cyan); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 12px; }
+    .formula-expr { font-family: var(--font-mono); font-size: clamp(0.85rem, 1.8vw, 1.15rem); font-weight: 700; color: var(--text-primary); line-height: 1.6; margin-bottom: 12px; }
+    .formula-expr .var { color: var(--neon-cyan); }
+    .formula-expr .op { color: var(--text-tertiary); }
+    .formula-note { font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
+
+    /* Two col */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* Process flow */
+    .flow-row { display: flex; align-items: stretch; gap: 0; }
+    .flow-node { flex: 1; background: var(--zzz-gray); padding: 28px 24px; position: relative; box-shadow: var(--shadow-layered); border: 1px solid var(--zzz-gray-border); border-left: 3px solid var(--zzz-yellow); transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base); overflow: visible; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 var(--cut-sm)); }
+    .flow-node::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .flow-node:hover { transform: translateY(-6px); border-color: var(--zzz-yellow); box-shadow: var(--shadow-yellow-glow); z-index: 2; }
+    .flow-node-num { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--zzz-yellow); letter-spacing: 0.15em; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .flow-node-num::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--zzz-yellow), transparent); }
+    .flow-node-title { font-size: 15px; font-weight: 800; color: var(--text-primary); margin-bottom: 10px; }
+    .flow-node-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+    .flow-node-items { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+    .flow-node-item { font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary); padding-left: 14px; position: relative; line-height: 1.5; }
+    .flow-node-item::before { content: '▸'; position: absolute; left: 0; color: var(--zzz-yellow); font-weight: 700; }
+    .flow-connector { width: 32px; min-width: 32px; display: flex; align-items: center; justify-content: center; position: relative; }
+    .flow-connector::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: var(--zzz-gray-border); }
+    .flow-connector::after { content: ''; position: absolute; right: 2px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-left: 8px solid var(--zzz-yellow); border-top: 5px solid transparent; border-bottom: 5px solid transparent; filter: drop-shadow(0 0 4px var(--zzz-yellow-glow)); }
+    @media (max-width: 900px) {
+      .flow-row { flex-direction: column; }
+      .flow-connector { width: 100%; min-width: 0; height: 32px; }
+      .flow-connector::before { top: 0; bottom: 0; left: 50%; width: 2px; height: auto; }
+      .flow-connector::after { right: auto; left: 50%; top: auto; bottom: 2px; transform: translateX(-50%); border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 8px solid var(--zzz-yellow); }
+    }
+
+    /* Activity card */
+    .activity-card { background: linear-gradient(135deg, var(--zzz-gray) 0%, #1f1a0a 100%); border: 1px solid rgba(255,217,61,0.15); padding: 40px; position: relative; box-shadow: var(--shadow-layered); overflow: hidden; }
+    .activity-card::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .activity-card .scan-sweep { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--zzz-yellow), transparent); opacity: 0; pointer-events: none; }
+    .activity-card:hover .scan-sweep { animation: scan-sweep-card 1s var(--ease-industrial); }
+    @keyframes scan-sweep-card { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(400px); opacity: 0; } }
+    .activity-quote { font-size: clamp(1.1rem, 2.5vw, 1.6rem); font-weight: 700; color: var(--text-primary); line-height: 1.4; margin-bottom: 20px; }
+    .activity-quote::before { content: '"'; font-family: var(--font-mono); font-size: 2em; color: var(--zzz-yellow); line-height: 0; vertical-align: -0.3em; margin-right: 4px; }
+    .activity-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+
+    /* Takeaway */
+    .takeaway-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .takeaway-card { background: var(--zzz-gray); padding: 28px; position: relative; box-shadow: var(--shadow-layered); border: 1px solid var(--zzz-gray-border); transition: transform var(--transition-base), border-color var(--transition-base); }
+    .takeaway-card::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .takeaway-card:hover { transform: translateY(-4px); border-color: var(--zzz-yellow); }
+    .takeaway-num { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--zzz-yellow); letter-spacing: 0.15em; margin-bottom: 8px; }
+    .takeaway-title { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+    .takeaway-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+    @media (max-width: 768px) { .takeaway-grid { grid-template-columns: 1fr; } }
+
+    /* Improvement */
+    .improve-list { display: flex; flex-direction: column; gap: 16px; }
+    .improve-item { background: var(--zzz-gray); padding: 24px 28px; position: relative; box-shadow: var(--shadow-layered); border: 1px solid var(--zzz-gray-border); border-left: 3px solid var(--neon-cyan); transition: transform var(--transition-base), border-left-color var(--transition-base); }
+    .improve-item::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .improve-item:hover { transform: translateX(4px); border-left-color: var(--zzz-yellow); }
+    .improve-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+    .improve-num { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--neon-cyan); }
+    .improve-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+    .improve-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+
+    /* Footer */
+    .footer { position: relative; z-index: 1; text-align: center; padding: 80px 24px 40px; border-top: 3px solid var(--zzz-yellow); }
+    .footer-cta { font-family: var(--font-display); font-size: clamp(1.5rem, 4vw, 2.8rem); font-weight: 900; letter-spacing: 0.06em; margin-bottom: 12px; }
+    .footer-subtitle { font-size: 14px; color: var(--text-secondary); margin-bottom: 32px; }
+    .footer-links { display: flex; justify-content: center; gap: 16px; margin-bottom: 48px; flex-wrap: wrap; }
+    .footer-link-btn { display: inline-flex; align-items: center; padding: 10px 24px; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--zzz-yellow); border: 1px solid var(--zzz-yellow); clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%); transition: background var(--transition-fast); }
+    .footer-link-btn:hover { background: rgba(255,217,61,0.15); }
+    .footer-sig { font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary); letter-spacing: 0.1em; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal, .reveal.is-visible { opacity: 1; transform: none; transition: none; }
+      .glitch::before, .glitch::after { animation: none; opacity: 0; }
+      .crt-lines { display: none; }
+    }
+    @media (max-width: 768px) {
+      .glitch::before, .glitch::after { animation: none; opacity: 0; }
+      .hero-title { font-size: clamp(1.8rem, 10vw, 3rem); }
+      section { padding: 60px 0; }
+      .container { padding: 0 16px; }
+      .detail-panel { padding: 28px; }
+      .activity-card { padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="ecosystem.html" class="nav-logo">
+        <span class="glitch-mark">◆</span>ELLEN
+      </a>
+      <div class="nav-links">
+        <a href="ecosystem.html" class="nav-link">← Back</a>
+        <a href="#background" class="nav-link">Background</a>
+        <a href="#supply" class="nav-link">Supply</a>
+        <a href="#formula" class="nav-link">Formula</a>
+        <a href="#takeaway" class="nav-link active">Takeaway</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="crt-lines"></div>
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        PROJECT 02 / POI CONTENT OPERATIONS
+      </div>
+      <h1 class="hero-title">
+        <span class="glitch" data-text="POI SUPPLY">POI SUPPLY</span><br>
+        <span class="hero-title-cn">兴趣POI产品运营</span>
+      </h1>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">COMPANY</span>
+          <span class="hero-meta-value">美团 · 点评POI发展部</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">PERIOD</span>
+          <span class="hero-meta-value">2026.02 — 2026.05</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">ROLE</span>
+          <span class="hero-meta-value">内容产品运营</span>
+        </div>
+      </div>
+      <p class="hero-desc">
+        负责兴趣POI底层供给，背"量"的指标。管理2家供应商、月费30-50万、全年10万点位供给目标。从选点逻辑、供应商管理、成本调控到消费侧活动策划，用<strong style="color:var(--text-primary)">流量公式倒推运营动作</strong>。
+      </p>
+      <div class="hero-cta">
+        <a href="#background" class="zzz-btn-primary">EXPLORE CASE →</a>
+        <a href="ecosystem.html" class="zzz-btn-secondary">← BACK TO HOME</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- METRICS BAR -->
+  <div class="container" style="padding-top: 60px;">
+    <div class="metrics-bar reveal is-visible">
+      <div class="metric-cell">
+        <div class="metric-num">+28%</div>
+        <div class="metric-label">优质审出率</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">1万+</div>
+        <div class="metric-label">新增有效点位</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">+5%</div>
+        <div class="metric-label">核心城市覆盖率</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">47.3%</div>
+        <div class="metric-label">万爆点位优质覆盖</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">+52%</div>
+        <div class="metric-label">活动消费环比</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BACKGROUND -->
+  <section id="background">
+    <div class="container">
+      <div class="section-header reveal is-visible">
+        <div class="section-label">01 / BACKGROUND</div>
+        <h2 class="section-title">项目背景与核心痛点</h2>
+        <p class="section-subtitle">
+          兴趣POI是美团点评内容生态的基础设施——用户搜索"杭州樱花""上海周末去哪玩"时，能不能看到足够多、足够好的出片点位，直接决定搜索体验和内容消费转化率。供给侧和消费侧分离但协作。
+        </p>
+      </div>
+
+      <div class="detail-panel reveal is-visible" style="margin-bottom: 32px;">
+        <div class="detail-header">
+          <span class="detail-num">1.1</span>
+          <span class="detail-title">业务架构与规模</span>
+        </div>
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>维度</th>
+                <th>数值</th>
+                <th>说明</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>全年供给目标</td>
+                <td>~10万点位</td>
+                <td>去年11月至今年11月</td>
+              </tr>
+              <tr>
+                <td>月度执行节奏</td>
+                <td>3000-7000/月</td>
+                <td>按城市等级和季节性分配</td>
+              </tr>
+              <tr>
+                <td>截至4月底累计</td>
+                <td>~48000点位</td>
+                <td>进度约48%</td>
+              </tr>
+              <tr>
+                <td>月度费用</td>
+                <td>30-50万元</td>
+                <td>精品80元/优质50元，均控75元</td>
+              </tr>
+              <tr>
+                <td>供应商数量</td>
+                <td>2家</td>
+                <td>按优质率、响应速度、配合度考核</td>
+              </tr>
+              <tr>
+                <td>消费侧月度目标</td>
+                <td>300点位/月</td>
+                <td>POI产品部门负责消费转化指标</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="pain-grid">
+        <div class="pain-card reveal is-visible">
+          <div class="pain-icon">[01]</div>
+          <div class="pain-title">供给侧损耗高</div>
+          <div class="pain-desc">点位分发存在35%-40%损耗（展撤、拆迁），回传优质率仅60%-70%，可分发笔记占比不足20%。</div>
+        </div>
+        <div class="pain-card reveal is-visible">
+          <div class="pain-icon">[02]</div>
+          <div class="pain-title">消费侧流量低</div>
+          <div class="pain-desc">出片点频道流量仅占3%，但搜索渠道转化率高于大盘——用户主动搜索意愿强，被动浏览触达弱。</div>
+        </div>
+        <div class="pain-card reveal is-visible">
+          <div class="pain-icon">[03]</div>
+          <div class="pain-title">数据基建不完善</div>
+          <div class="pain-desc">取数困难是业务推进的主要瓶颈，运营很多判断只能靠经验，这是效率天花板。</div>
+        </div>
+        <div class="pain-card reveal is-visible">
+          <div class="pain-icon">[04]</div>
+          <div class="pain-title">成本质量平衡难</div>
+          <div class="pain-desc">精品80元、优质50元，需将平均成本控制在75元，存在成本与质量的三角平衡压力。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPLY STRATEGY -->
+  <section id="supply" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-header reveal is-visible">
+        <div class="section-label">02 / SUPPLY STRATEGY</div>
+        <h2 class="section-title">供给侧策略执行</h2>
+        <p class="section-subtitle">
+          从城市覆盖、选点逻辑、供应商管理到审核流程，构建一套可复制的供给执行框架。
+        </p>
+      </div>
+
+      <div class="flow-row reveal is-visible" style="margin-bottom: 32px;">
+        <div class="flow-node">
+          <div class="flow-node-num">STEP 01</div>
+          <div class="flow-node-title">城市筛选</div>
+          <div class="flow-node-desc">优先覆盖S级和A级城市，点评APP日均DAU前30。</div>
+          <ul class="flow-node-items">
+            <li class="flow-node-item">北上广深：PV &gt; 1万</li>
+            <li class="flow-node-item">其他城市：倒序累加</li>
+            <li class="flow-node-item">覆盖80%流量点位</li>
+          </ul>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-node">
+          <div class="flow-node-num">STEP 02</div>
+          <div class="flow-node-title">点位来源</div>
+          <div class="flow-node-desc">点评数据库存量点位，利用LBS优势铺开覆盖。</div>
+          <ul class="flow-node-items">
+            <li class="flow-node-item">非精品/优质存量</li>
+            <li class="flow-node-item">地理定位铺开</li>
+            <li class="flow-node-item">本地生活优势</li>
+          </ul>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-node">
+          <div class="flow-node-num">STEP 03</div>
+          <div class="flow-node-title">供应商分发</div>
+          <div class="flow-node-desc">预算向低价供应商倾斜，均控75元，预留35-40%损耗余量。</div>
+          <ul class="flow-node-items">
+            <li class="flow-node-item">精品80元 · 优质50元</li>
+            <li class="flow-node-item">2家供应商竞争</li>
+            <li class="flow-node-item">损耗余量预留</li>
+          </ul>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-node">
+          <div class="flow-node-num">STEP 04</div>
+          <div class="flow-node-title">审核回传</div>
+          <div class="flow-node-desc">批量导入送审，2-3天出结果，高频问题SOP化。</div>
+          <ul class="flow-node-items">
+            <li class="flow-node-item">图片技巧硬性要求</li>
+            <li class="flow-node-item">笔记生态规范</li>
+            <li class="flow-node-item">质量反馈机制</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="detail-panel reveal is-visible">
+          <div class="detail-header">
+            <span class="detail-num">2.1</span>
+            <span class="detail-title">成本调控策略</span>
+          </div>
+          <div class="detail-body">
+            <ul>
+              <li><strong>精品点位</strong>：80元/个，质量最高但成本大</li>
+              <li><strong>优质点位</strong>：50元/个，性价比最优</li>
+              <li><strong>均控目标</strong>：75元，通过预算分配向低价供应商倾斜</li>
+              <li><strong>损耗管理</strong>：35%-40%损耗率，分发时预留余量</li>
+              <li><strong>结果</strong>：供应商优质审出率 +28%</li>
+            </ul>
+          </div>
+        </div>
+        <div class="detail-panel reveal is-visible">
+          <div class="detail-header">
+            <span class="detail-num">2.2</span>
+            <span class="detail-title">供给成果</span>
+          </div>
+          <div class="detail-body">
+            <ul>
+              <li><strong>新增有效点位</strong>：1万+</li>
+              <li><strong>核心城市覆盖</strong>：杭州、南京、上海优质点位覆盖率 +5%</li>
+              <li><strong>万爆点位</strong>：优质覆盖率达 47.3%</li>
+              <li><strong>审核效率</strong>：梳理高频问题SOP，降低沟通成本</li>
+              <li><strong>权限收回</strong>：点位批量导入功能由研发实现，团队收回送审权限提升效率</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOW FORMULA -->
+  <section id="formula">
+    <div class="container">
+      <div class="section-header reveal is-visible">
+        <div class="section-label">03 / FLOW LOGIC</div>
+        <h2 class="section-title">流量公式拆解</h2>
+        <p class="section-subtitle">
+          运营不是拍脑袋做活动，而是找到流量公式里的每个变量，针对性地优化。
+        </p>
+      </div>
+      <div class="two-col">
+        <div class="formula-card reveal is-visible">
+          <div class="formula-label">▼ 信息流流量公式</div>
+          <div class="formula-expr">
+            <span class="var">信息流流量</span> <span class="op">=</span> <span class="var">可分发笔记数</span> <span class="op">×</span> <span class="var">平均曝光</span> <span class="op">×</span> <span class="var">CTR</span>
+          </div>
+          <div class="formula-note">
+            可分发笔记占比不足20%（账号违规或重复发布），是最基础的乘数。从这个变量入手，审核标准和账号合规是核心抓手。
+          </div>
+        </div>
+        <div class="formula-card reveal is-visible">
+          <div class="formula-label">▼ 搜索流量公式</div>
+          <div class="formula-expr">
+            <span class="var">搜索流量</span> <span class="op">=</span> <span class="var">搜索QV</span> <span class="op">×</span> <span class="var">可展示状态</span> <span class="op">×</span> <span class="var">CTR</span>
+          </div>
+          <div class="formula-note">
+            搜索渠道转化率高于点评大盘——用户主动搜索意愿强。内容策略应更多围绕"用户搜什么"来做，而非"我们想推什么"。
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-panel reveal is-visible" style="margin-top: 24px;">
+        <div class="detail-header">
+          <span class="detail-num">3.1</span>
+          <span class="detail-title">曝光门槛与用户行为差异</span>
+        </div>
+        <div class="detail-body">
+          <ul>
+            <li><strong>曝光门槛</strong>：点位若无星级评价或打卡记录，无法在首页信息流或"出片点"频道页展示，仅能通过搜索触达</li>
+            <li><strong>频道流量</strong>：出片点相关推荐和频道页流量合计仅占3%，整体效果未达预期</li>
+            <li><strong>搜索优势</strong>：搜索渠道转化率高于点评大盘，用户更倾向于主动搜索获取点位信息</li>
+            <li><strong>策略启示</strong>：兴趣POI的用户需求更多是主动搜索型而非被动浏览型，内容策略应围绕搜索需求倒推供给</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSUMER ACTIVITY -->
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div class="section-header reveal is-visible">
+        <div class="section-label">04 / CAMPAIGN</div>
+        <h2 class="section-title">消费侧活动运营</h2>
+        <p class="section-subtitle">
+          供给侧铺好后，需要消费侧活动激活点位的内容消费转化。
+        </p>
+      </div>
+
+      <div class="activity-card reveal is-visible">
+        <div class="scan-sweep"></div>
+        <div class="activity-quote">
+          供给和消费是闭环——光有供给没有消费引导，点位就是死库存；光有消费引导没有供给，活动就是空架子。
+        </div>
+        <div class="detail-body" style="margin-top: 24px;">
+          <ul>
+            <li><strong>赏花路线打卡话题</strong>：结合春季热点设计话题活动，精选点位设计组合消费套餐降低用户决策门槛</li>
+            <li><strong>激励机制</strong>：美团卡、实物周边、社群头衔等激励，形成正向内容循环</li>
+            <li><strong>赏花点位定义</strong>：在POI详情页任意部分提及"某季+某花"关键词（如春季樱花）</li>
+            <li><strong>踏青点位定义</strong>：2级类目为公园、动物园或室外景点的点位，且不含赏花属性</li>
+            <li><strong>活动结果</strong>：消费数据较活动前两周环比 +52%，活动页面PV占全站76%</li>
+          </ul>
+        </div>
+        <div class="activity-tags">
+          <span class="zzz-tag yellow">SPRING CAMPAIGN</span>
+          <span class="zzz-tag outline">FLOWER ROUTE</span>
+          <span class="zzz-tag dark">+52% MOU</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAKEAWAY -->
+  
+
+  <!-- IMPROVEMENT -->
+  
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-cta">LET‘S DO SOMETHING.</div>
+      <div class="footer-subtitle">兴趣POI内容产品运营 · 供给策略与流量闭环</div>
+      <div class="footer-links">
+        <a href="ecosystem.html" class="footer-link-btn">← BACK TO HOME</a>
+        
+        <a href="trip.html" class="footer-link-btn">NEXT PROJECT →</a>
+        
+      </div>
+      <div class="footer-sig">© 2026 ELLEN · yeyujie513@126.com · 180-1819-2116</div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 120;
+        if (window.scrollY >= top) current = section.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    });
+  </script>
+
+
+
+</body></html>

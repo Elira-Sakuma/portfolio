@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     PAGE ID: TRIP-DETAIL
+     这是【携程定制游内容运营】详细案例页。
+     请勿将其他页面的内容覆盖到此文件。
+     主页：ecosystem.html
+     其他详细页：
+       - meituan-creator.html (美团达人内容成长)
+       - meituan-poi.html (美团兴趣POI内容运营)
+     ============================================================ -->
+<html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>携程内容运营 · Ellen 作品集</title>
+  <meta name="description" content="携程定制游内容运营：小红书种草、用户洞察、20+账号矩阵运营、爆款范式拆解。">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Noto+Sans+SC:wght@300;400;500;700;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --zzz-yellow: #FFD93D;
+      --zzz-yellow-dim: #C9A800;
+      --zzz-yellow-glow: rgba(255, 217, 61, 0.25);
+      --zzz-black: #0A0A0A;
+      --zzz-gray: #1A1A1A;
+      --zzz-gray-light: #2A2A2A;
+      --zzz-gray-border: #333333;
+      --neon-cyan: #00F0FF;
+      --neon-cyan-glow: rgba(0, 240, 255, 0.2);
+      --neon-magenta: #FF2D95;
+      --neon-magenta-glow: rgba(255, 45, 149, 0.2);
+      --text-primary: #F5F5F5;
+      --text-secondary: #888888;
+      --text-tertiary: #555555;
+      --text-accent: var(--zzz-yellow);
+      --cut-sm: 8px;
+      --cut-md: 12px;
+      --cut-lg: 16px;
+      --skew-angle: -6deg;
+      --shadow-layered: 0 2px 0 rgba(255,255,255,0.06) inset, 0 -2px 0 rgba(0,0,0,0.4) inset, 0 8px 24px rgba(0,0,0,0.6);
+      --shadow-yellow-glow: 0 0 20px var(--zzz-yellow-glow), 0 4px 12px rgba(0,0,0,0.5);
+      --highlight-top: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 30%);
+      --ease-industrial: cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-fast: 0.2s var(--ease-industrial);
+      --transition-base: 0.4s var(--ease-industrial);
+      --font-display: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+      --font-body: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { font-family: var(--font-body); color: var(--text-primary); background: var(--zzz-black); line-height: 1.6; overflow-x: hidden; letter-spacing: -0.01em; position: relative; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    ::selection { background: var(--zzz-yellow); color: var(--zzz-black); }
+    body::before { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.04; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s var(--ease-industrial), transform 0.6s var(--ease-industrial); will-change: opacity, transform; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    .section-label { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--zzz-yellow); margin-bottom: 16px; }
+    .section-label::before { content: ''; width: 3px; height: 16px; background: var(--zzz-yellow); transform: skewX(var(--skew-angle)); }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4.5vw, 3rem); font-weight: 800; letter-spacing: 0.04em; line-height: 1.1; margin-bottom: 12px; }
+    .section-subtitle { font-size: clamp(0.85rem, 1.4vw, 1rem); color: var(--text-secondary); max-width: 640px; line-height: 1.7; }
+
+    .glitch { position: relative; display: inline-block; }
+    .glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.8; }
+    .glitch::before { color: var(--neon-cyan); animation: glitch-cyan 3s infinite alternate-reverse; }
+    .glitch::after { color: var(--neon-magenta); animation: glitch-magenta 3s infinite alternate-reverse; }
+    @keyframes glitch-cyan { 0% { clip-path: inset(0 0 85% 0); transform: translateX(-2px); } 20% { clip-path: inset(20% 0 60% 0); transform: translateX(1px); } 40% { clip-path: inset(50% 0 30% 0); transform: translateX(-1px); } 60% { clip-path: inset(70% 0 10% 0); transform: translateX(2px); } 80% { clip-path: inset(30% 0 50% 0); transform: translateX(-2px); } 100% { clip-path: inset(10% 0 75% 0); transform: translateX(1px); } }
+    @keyframes glitch-magenta { 0% { clip-path: inset(80% 0 5% 0); transform: translateX(2px); } 20% { clip-path: inset(40% 0 40% 0); transform: translateX(-1px); } 40% { clip-path: inset(10% 0 70% 0); transform: translateX(1px); } 60% { clip-path: inset(60% 0 20% 0); transform: translateX(-2px); } 80% { clip-path: inset(25% 0 55% 0); transform: translateX(2px); } 100% { clip-path: inset(75% 0 15% 0); transform: translateX(-1px); } }
+    .crt-lines { position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px); opacity: 0.4; }
+
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,10,0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--zzz-gray-border); transition: background var(--transition-base); }
+    .nav.scrolled { background: rgba(10,10,10,0.92); }
+    .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--font-display); font-size: 18px; font-weight: 900; letter-spacing: 0.08em; }
+    .nav-logo .glitch-mark { color: var(--zzz-yellow); margin-right: 2px; }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-link { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-secondary); transition: color var(--transition-fast); position: relative; padding-bottom: 4px; }
+    .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--zzz-yellow); transform: skewX(var(--skew-angle)); transition: width var(--transition-fast); }
+    .nav-link:hover { color: var(--text-primary); }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link.active { color: var(--zzz-yellow); }
+    .nav-link.active::after { width: 100%; }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+
+    .zzz-btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; font-family: var(--font-display); font-size: 13px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; color: var(--zzz-black); background: var(--zzz-yellow); clip-path: polygon(var(--cut-lg) 0, 100% 0, 100% calc(100% - var(--cut-lg)), calc(100% - var(--cut-lg)) 100%, 0 100%, 0 var(--cut-lg)); transition: filter var(--transition-fast), transform var(--transition-fast); position: relative; cursor: pointer; }
+    .zzz-btn-primary::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .zzz-btn-primary:hover { filter: brightness(1.1); transform: translateX(2px); }
+    .zzz-btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 12px 26px; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--zzz-yellow); background: transparent; border: 2px solid var(--zzz-yellow); clip-path: polygon(var(--cut-lg) 0, 100% 0, 100% calc(100% - var(--cut-lg)), calc(100% - var(--cut-lg)) 100%, 0 100%, 0 var(--cut-lg)); transition: background var(--transition-fast); cursor: pointer; }
+    .zzz-btn-secondary:hover { background: rgba(255,217,61,0.15); }
+
+    .zzz-tag { display: inline-flex; align-items: center; padding: 4px 12px; font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%); }
+    .zzz-tag.yellow { background: var(--zzz-yellow); color: var(--zzz-black); }
+    .zzz-tag.outline { background: transparent; color: var(--zzz-yellow); border: 1px solid var(--zzz-yellow); }
+    .zzz-tag.dark { background: var(--zzz-gray-light); color: var(--text-secondary); border: 1px solid var(--zzz-gray-border); }
+
+    /* Hero */
+    .hero { position: relative; min-height: 80vh; min-height: 80dvh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 120px 24px 60px; overflow: hidden; background: var(--zzz-black); }
+    .hero-bg-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,217,61,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,217,61,0.03) 1px, transparent 1px); background-size: 50px 50px; mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, transparent 75%); }
+    .hero-content { position: relative; z-index: 2; max-width: 900px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--zzz-yellow); background: rgba(255,217,61,0.08); border: 1px solid rgba(255,217,61,0.3); clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%); margin-bottom: 24px; }
+    .hero-badge-dot { width: 6px; height: 6px; background: var(--zzz-yellow); box-shadow: 0 0 6px var(--zzz-yellow-glow); }
+    .hero-title { font-family: var(--font-display); font-size: clamp(2rem, 6vw, 4rem); font-weight: 900; letter-spacing: 0.08em; line-height: 1.05; margin-bottom: 20px; color: var(--text-primary); }
+    .hero-title-cn { font-family: 'Noto Sans SC', var(--font-display); font-weight: 900; }
+    .hero-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 24px; }
+    .hero-meta-item { display: flex; flex-direction: column; gap: 2px; }
+    .hero-meta-label { font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-tertiary); }
+    .hero-meta-value { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+    .hero-desc { font-size: clamp(0.95rem, 1.5vw, 1.1rem); color: var(--text-secondary); max-width: 640px; line-height: 1.8; margin-bottom: 32px; }
+    .hero-cta { display: flex; gap: 16px; justify-content: flex-start; flex-wrap: wrap; }
+
+    section { position: relative; z-index: 1; padding: 100px 0; }
+    .section-header { margin-bottom: 56px; }
+
+    /* Metrics bar */
+    .metrics-bar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--zzz-gray-border); border: 1px solid var(--zzz-gray-border); }
+    .metric-cell { background: var(--zzz-gray); padding: 28px 20px; text-align: center; position: relative; }
+    .metric-cell::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .metric-num { font-family: var(--font-mono); font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 900; color: var(--zzz-yellow); line-height: 1; margin-bottom: 6px; }
+    .metric-label { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); }
+    @media (max-width: 768px) { .metrics-bar { grid-template-columns: repeat(2, 1fr); } }
+
+    /* Pain points */
+    .pain-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .pain-card { background: var(--zzz-gray); padding: 28px; position: relative; box-shadow: var(--shadow-layered); border: 1px solid var(--zzz-gray-border); transition: transform var(--transition-base), border-color var(--transition-base); overflow: hidden; }
+    .pain-card::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .pain-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--neon-magenta), transparent); opacity: 0; transition: opacity 0.2s; }
+    .pain-card:hover { transform: translateY(-4px); border-color: var(--neon-magenta); }
+    .pain-card:hover::after { opacity: 1; }
+    .pain-icon { font-family: var(--font-mono); font-size: 20px; font-weight: 700; color: var(--neon-magenta); margin-bottom: 12px; }
+    .pain-title { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+    .pain-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+    @media (max-width: 768px) { .pain-grid { grid-template-columns: 1fr; } }
+
+    /* Detail panel */
+    .detail-panel { background: var(--zzz-gray); padding: 40px; position: relative; box-shadow: var(--shadow-layered); border: 1px solid var(--zzz-gray-border); margin-bottom: 32px; overflow: hidden; }
+    .detail-panel::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .detail-panel::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--zzz-yellow), transparent); opacity: 0; transform: translateY(0); transition: opacity 0.2s; }
+    .detail-panel:hover::after { opacity: 1; animation: scan-sweep 1.2s var(--ease-industrial); }
+    @keyframes scan-sweep { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(400px); opacity: 0; } }
+    .detail-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .detail-num { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--zzz-yellow); letter-spacing: 0.1em; }
+    .detail-title { font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 800; letter-spacing: 0.02em; color: var(--text-primary); }
+    .detail-body { font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
+    .detail-body strong { color: var(--text-primary); font-weight: 600; }
+    .detail-body ul { list-style: none; padding: 0; margin: 12px 0; }
+    .detail-body li { padding-left: 20px; position: relative; margin-bottom: 8px; }
+    .detail-body li::before { content: '▸'; position: absolute; left: 0; color: var(--zzz-yellow); font-weight: 700; }
+
+    /* Two col */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* Matrix card - expandable */
+    .matrix-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+    .matrix-card { background: var(--zzz-gray); padding: 24px; position: relative; box-shadow: var(--shadow-layered); border: 1px solid var(--zzz-gray-border); border-top: 3px solid var(--neon-cyan); transition: transform 0.5s var(--ease-industrial), border-top-color var(--transition-base), box-shadow var(--transition-base), z-index 0s; overflow: hidden; cursor: pointer; }
+    .matrix-card::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; z-index: 1; }
+    .matrix-card:hover { transform: scale(1.05); border-top-color: var(--zzz-yellow); box-shadow: var(--shadow-yellow-glow), 0 12px 40px rgba(0,0,0,0.5); z-index: 10; }
+    .matrix-role { font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--neon-cyan); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; position: relative; z-index: 2; }
+    .matrix-card:hover .matrix-role { color: var(--zzz-yellow); }
+    .matrix-name { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; position: relative; z-index: 2; }
+    .matrix-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.6; position: relative; z-index: 2; }
+    .matrix-expand { max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.5s var(--ease-industrial), opacity 0.3s var(--ease-industrial), margin-top 0.3s var(--ease-industrial); position: relative; z-index: 2; }
+    .matrix-card:hover .matrix-expand { max-height: 1200px; opacity: 1; margin-top: 16px; }
+    .matrix-expand-inner { border-top: 1px solid var(--zzz-gray-border); padding-top: 14px; }
+    .matrix-post-tag { display: inline-block; font-family: var(--font-mono); font-size: 9px; font-weight: 700; color: var(--zzz-yellow); background: rgba(255,217,61,0.08); padding: 3px 8px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+    .matrix-post-title { font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; line-height: 1.5; }
+    .matrix-post-meta { display: flex; gap: 12px; margin-bottom: 8px; }
+    .matrix-meta-item { font-size: 10px; color: var(--text-tertiary); font-family: var(--font-mono); }
+    .matrix-meta-item span { color: var(--neon-cyan); font-weight: 700; }
+    .matrix-post-desc { font-size: 11px; color: var(--text-secondary); line-height: 1.6; }
+    .matrix-post-img-wrap { margin-top: 10px; position: relative; overflow: hidden; border: 1px solid var(--zzz-gray-border); }
+    .matrix-post-img-wrap img { width: 100%; display: block; transition: transform 0.4s var(--ease-industrial); }
+    .matrix-card:hover .matrix-post-img-wrap img { transform: scale(1.05); }
+    .matrix-post-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, rgba(10,10,10,0.6) 100%); pointer-events: none; }
+    .matrix-row-official { grid-column: span 3; }
+    .matrix-row-kos { grid-column: span 3; }
+    .matrix-row-suiren { grid-column: 2 / span 2; }
+    @media (max-width: 768px) { .matrix-grid { grid-template-columns: 1fr; } .matrix-card:hover { transform: scale(1.03); } .matrix-row-official, .matrix-row-kos, .matrix-row-suiren { grid-column: span 1; } }
+
+    /* Insight card */
+    .insight-card { background: linear-gradient(135deg, var(--zzz-gray) 0%, #0f1518 100%); border: 1px solid rgba(0,240,255,0.15); padding: 32px; position: relative; box-shadow: var(--shadow-layered); overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .insight-label { font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--neon-cyan); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .insight-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(0,240,255,0.3), transparent); }
+    .insight-title { font-size: clamp(1.1rem, 2.2vw, 1.4rem); font-weight: 800; color: var(--text-primary); margin-bottom: 12px; }
+    .insight-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+    .insight-desc strong { color: var(--neon-cyan); font-weight: 600; }
+
+    /* Formula card */
+    .formula-card { background: linear-gradient(135deg, var(--zzz-gray) 0%, #1f1a0a 100%); border: 1px solid rgba(255,217,61,0.15); padding: 32px; position: relative; box-shadow: var(--shadow-layered); overflow: hidden; }
+    .formula-card::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .formula-label { font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--zzz-yellow); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 12px; }
+    .formula-expr { font-family: var(--font-mono); font-size: clamp(0.85rem, 1.8vw, 1.15rem); font-weight: 700; color: var(--text-primary); line-height: 1.6; margin-bottom: 12px; }
+    .formula-expr .var { color: var(--zzz-yellow); }
+    .formula-expr .op { color: var(--text-tertiary); }
+    .formula-note { font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
+
+    /* Takeaway */
+    .takeaway-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .takeaway-card { background: var(--zzz-gray); padding: 28px; position: relative; box-shadow: var(--shadow-layered); border: 1px solid var(--zzz-gray-border); transition: transform var(--transition-base), border-color var(--transition-base); }
+    .takeaway-card::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .takeaway-card:hover { transform: translateY(-4px); border-color: var(--zzz-yellow); }
+    .takeaway-num { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--zzz-yellow); letter-spacing: 0.15em; margin-bottom: 8px; }
+    .takeaway-title { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+    .takeaway-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+    @media (max-width: 768px) { .takeaway-grid { grid-template-columns: 1fr; } }
+
+    /* Improvement */
+    .improve-list { display: flex; flex-direction: column; gap: 16px; }
+    .improve-item { background: var(--zzz-gray); padding: 24px 28px; position: relative; box-shadow: var(--shadow-layered); border: 1px solid var(--zzz-gray-border); border-left: 3px solid var(--neon-cyan); transition: transform var(--transition-base), border-left-color var(--transition-base); }
+    .improve-item::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .improve-item:hover { transform: translateX(4px); border-left-color: var(--zzz-yellow); }
+    .improve-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+    .improve-num { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--neon-cyan); }
+    .improve-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+    .improve-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+
+    /* Footer */
+    .footer { position: relative; z-index: 1; text-align: center; padding: 80px 24px 40px; border-top: 3px solid var(--zzz-yellow); }
+    .footer-cta { font-family: var(--font-display); font-size: clamp(1.5rem, 4vw, 2.8rem); font-weight: 900; letter-spacing: 0.06em; margin-bottom: 12px; }
+    .footer-subtitle { font-size: 14px; color: var(--text-secondary); margin-bottom: 32px; }
+    .footer-links { display: flex; justify-content: center; gap: 16px; margin-bottom: 48px; flex-wrap: wrap; }
+    .footer-link-btn { display: inline-flex; align-items: center; padding: 10px 24px; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--zzz-yellow); border: 1px solid var(--zzz-yellow); clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%); transition: background var(--transition-fast); }
+    .footer-link-btn:hover { background: rgba(255,217,61,0.15); }
+    .footer-sig { font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary); letter-spacing: 0.1em; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal, .reveal.is-visible { opacity: 1; transform: none; transition: none; }
+      .glitch::before, .glitch::after { animation: none; opacity: 0; }
+      .crt-lines { display: none; }
+    }
+    @media (max-width: 768px) {
+      .glitch::before, .glitch::after { animation: none; opacity: 0; }
+      .hero-title { font-size: clamp(1.8rem, 10vw, 3rem); }
+      section { padding: 60px 0; }
+      .container { padding: 0 16px; }
+      .detail-panel { padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-inner">
+      <a href="ecosystem.html" class="nav-logo">
+        <span class="glitch-mark">◆</span>ELLEN
+      </a>
+      <div class="nav-links">
+        <a href="ecosystem.html" class="nav-link">← Back</a>
+        <a href="#background" class="nav-link">Background</a>
+        <a href="#content" class="nav-link">Content</a>
+        <a href="#matrix" class="nav-link">Matrix</a>
+        <a href="#takeaway" class="nav-link active">Takeaway</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="crt-lines"></div>
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        PROJECT 03 / TRIP CONTENT OPERATIONS
+      </div>
+      <h1 class="hero-title">
+        <span class="glitch" data-text="TRIP SEEDING">TRIP SEEDING</span><br>
+        <span class="hero-title-cn">携程内容运营&nbsp;</span>
+      </h1>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">COMPANY</span>
+          <span class="hero-meta-value">携程 · 旅游事业群</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">PERIOD</span>
+          <span class="hero-meta-value">2025.08 — 2025.11</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">ROLE</span>
+          <span class="hero-meta-value">内容运营</span>
+        </div>
+      </div>
+      <p class="hero-desc">
+        在携程定制游业务负责小红书内容种草、用户洞察与达人矩阵运营。策划撰写<strong style="color:var(--text-primary)">100+篇内容</strong>，累计曝光100万+，管理20+账号矩阵，通过<strong style="color:var(--text-primary)">500+条评论需求分层分析</strong>驱动产品优化，推动GMV环比+15%。
+      </p>
+      <div class="hero-cta">
+        <a href="#background" class="zzz-btn-primary">EXPLORE CASE →</a>
+        <a href="ecosystem.html" class="zzz-btn-secondary">← BACK TO HOME</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- METRICS BAR -->
+  <div class="container" style="padding-top: 60px;">
+    <div class="metrics-bar reveal is-visible">
+      <div class="metric-cell">
+        <div class="metric-num">100万+</div>
+        <div class="metric-label">累计曝光</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">100+</div>
+        <div class="metric-label">篇内容</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">3.2%</div>
+        <div class="metric-label">成单转化率</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">20+</div>
+        <div class="metric-label">账号矩阵</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">+15%</div>
+        <div class="metric-label">GMV环比</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BACKGROUND -->
+  <section id="background">
+    <div class="container">
+      <div class="section-header reveal is-visible">
+        <div class="section-label">01 / BACKGROUND</div>
+        <h2 class="section-title">项目背景与核心痛点</h2>
+        <p class="section-subtitle">
+          携程定制游业务需要通过小红书内容种草获取精准流量并促成咨询转化。团队负责小红书内容种草、市场洞察与达人矩阵运营，推动品牌声量及平台GMV增长。
+        </p>
+      </div>
+      <div class="pain-grid">
+        <div class="pain-card reveal is-visible">
+          <div class="pain-icon">[01]</div>
+          <div class="pain-title">种草缺策略</div>
+          <div class="pain-desc">内容种草缺乏系统策略，内容产出依赖个人经验，没有方法论支撑。</div>
+        </div>
+        <div class="pain-card reveal is-visible">
+          <div class="pain-icon">[02]</div>
+          <div class="pain-title">洞察不深入</div>
+          <div class="pain-desc">缺乏对目标用户真实需求的深度洞察，内容方向与用户需求存在偏差。</div>
+        </div>
+        <div class="pain-card reveal is-visible">
+          <div class="pain-icon">[03]</div>
+          <div class="pain-title">矩阵同质化</div>
+          <div class="pain-desc">20+账号矩阵缺乏差异化定位，内容同质化严重，无法覆盖用户决策链路不同环节。</div>
+        </div>
+        <div class="pain-card reveal is-visible">
+          <div class="pain-icon">[04]</div>
+          <div class="pain-title">爆款靠运气</div>
+          <div class="pain-desc">缺乏爆款内容范式拆解，内容生产效率低，爆款产出依赖运气而非方法。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT SEEDING -->
+  <section id="content" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-header reveal is-visible">
+        <div class="section-label">02 / CONTENT SEEDING</div>
+        <h2 class="section-title">内容种草与市场洞察</h2>
+        <p class="section-subtitle">
+          从选题策略到内容产出，从评论分析到产品优化，构建"洞察→内容→转化"的闭环。
+        </p>
+      </div>
+
+      <div class="two-col" style="margin-bottom: 24px;">
+        <div class="detail-panel reveal is-visible">
+          <div class="detail-header">
+            <span class="detail-num">2.1</span>
+            <span class="detail-title">内容种草</span>
+          </div>
+          <div class="detail-body">
+            <ul>
+              <li><strong>选题策略</strong>：监测小红书平台热度与搜索趋势，判断有爆发潜力的目的地</li>
+              <li><strong>时令规划</strong>：结合万圣节、秋冬季等节点规划内容选题</li>
+              <li><strong>内容产出</strong>：策划撰写100+篇内容（硬广+软文攻略）</li>
+              <li><strong>转化结果</strong>：3篇爆款笔记带来100+咨询，成单转化率3.2%</li>
+            </ul>
+          </div>
+        </div>
+        <div class="insight-card reveal is-visible">
+          <div class="insight-label">▼ USER INSIGHT · 500+条评论分析</div>
+          <div class="insight-title">用户真实需求分层</div>
+          <div class="insight-desc">
+            整合携程、小红书平台<strong>500+条评论</strong>，进行需求分层分析。核心发现：用户对<strong>日韩万圣节游乐园</strong>、<strong>亲子游乐园</strong>、<strong>福建秋冬季</strong>的"真实体验"和"避坑指南"需求强烈——这些需求不是拍脑袋想的，而是从评论里挖出来的信息差。
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-panel reveal is-visible">
+        <div class="detail-header">
+          <span class="detail-num">2.2</span>
+          <span class="detail-title">产品影响与爆款范式拆解</span>
+        </div>
+        <div class="detail-body">
+          <ul>
+            <li><strong>产品优化</strong>：据此优化了日韩、福建目的地产品的软文内容呈现与攻略结构</li>
+            <li><strong>季节性产品</strong>：推动秋冬季节日韩、福建等目的地产品优化</li>
+            <li><strong>海报拆解</strong>：分析已有产品宣传海报的结构、内容形式</li>
+            <li><strong>范式复用</strong>：拆解爆款内容的通用范式，模仿产出产品硬广，打造品牌影响力</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="formula-card reveal is-visible" style="margin-top: 24px;">
+        <div class="formula-label">▼ 内容种草转化逻辑</div>
+        <div class="formula-expr">
+          <span class="var">转化率</span> <span class="op">=</span> <span class="var">降低决策成本</span> <span class="op">×</span> <span class="var">信息差覆盖</span> <span class="op">×</span> <span class="var">内容结构</span>
+        </div>
+        <div class="formula-note">
+          3.2%的转化率背后不是文案技巧，而是真正站在用户视角组织信息——真实体验和避坑指南之所以有效，是因为它们直接降低了用户的决策不确定性。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MATRIX -->
+  <section id="matrix">
+    <div class="container">
+      <div class="section-header reveal is-visible">
+        <div class="section-label">03 / ACCOUNT MATRIX</div>
+        <h2 class="section-title">20+账号矩阵运营</h2>
+        <p class="section-subtitle">
+          20+账号不是20个一模一样的号，而是一个有角色分工的传播网络。不同角色覆盖用户决策链路的不同环节。
+        </p>
+      </div>
+
+      <div class="matrix-grid">
+        <!-- Row 1: 官方号 - 两个硬广案例并列 -->
+        <div class="matrix-card matrix-row-official reveal is-visible">
+          <div class="matrix-role">OFFICIAL · 官方号</div>
+          <div class="matrix-name">携程定制游 · 霞浦线</div>
+          <div class="matrix-desc">品牌背书，权威信息。拆解宣传海报结构与内容形式，模仿爆款范式产出产品硬广。</div>
+          <div class="matrix-expand">
+            <div class="matrix-expand-inner">
+              <div class="matrix-post-tag">PRODUCT AD · 硬广</div>
+              <div class="matrix-post-title">「霞浦4天3晚深度游」产品推广海报</div>
+              <div class="matrix-post-meta">
+                <div class="matrix-meta-item">卖点 <span>4维</span></div>
+                <div class="matrix-meta-item">结构 <span>爆款范式</span></div>
+              </div>
+              <div class="matrix-post-desc">标题+标签词+卖点文案三层结构，"光影捕捉+海岛秘境+轻松自由"覆盖摄影/户外/休闲三类人群。</div>
+              <div class="matrix-post-img-wrap">
+                <img src="ctrip-xiapu-poster.jpg" alt="霞浦4天3晚深度游 产品推广海报">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="matrix-card matrix-row-official reveal is-visible">
+          <div class="matrix-role">OFFICIAL · 官方号</div>
+          <div class="matrix-name">携程定制游 · 济州岛线</div>
+          <div class="matrix-desc">品牌背书，权威信息。拆解宣传海报结构与内容形式，模仿爆款范式产出产品硬广。</div>
+          <div class="matrix-expand">
+            <div class="matrix-expand-inner">
+              <div class="matrix-post-tag">PRODUCT AD · 硬广</div>
+              <div class="matrix-post-title">「济州岛4天3晚私人定制」产品推广海报</div>
+              <div class="matrix-post-meta">
+                <div class="matrix-meta-item">卖点 <span>4维</span></div>
+                <div class="matrix-meta-item">定位 <span>高端定制</span></div>
+              </div>
+              <div class="matrix-post-desc">"专属商务车+随行跟拍+购物管家+季节限定"四维服务结构，涯月邑玻璃船出片+Olive Young代购差异化切中25-35岁女性客群。</div>
+              <div class="matrix-post-img-wrap">
+                <img src="ctrip-jeju-poster.jpg" alt="济州岛4天3晚私人定制 产品推广海报">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: 两个KOS系列 两列 -->
+        <div class="matrix-card matrix-row-kos reveal is-visible">
+          <div class="matrix-role">KOS · 关键意见销售</div>
+          <div class="matrix-name">小程系列</div>
+          <div class="matrix-desc">专业种草，深度攻略。按目的地拆分为日韩线与国内线，覆盖用户"研究比较"环节。</div>
+          <div class="matrix-expand">
+            <div class="matrix-expand-inner">
+              <div class="matrix-post-tag">ACCOUNT · 日韩线</div>
+              <div class="matrix-post-title">专注日韩游的小程</div>
+              <div class="matrix-post-meta">
+                <div class="matrix-meta-item">定位 <span>日韩旅行专家</span></div>
+                <div class="matrix-meta-item">内容 <span>万圣节攻略</span></div>
+              </div>
+              <div class="matrix-post-desc">日韩目的地攻略、季节性活动（如万圣节），基于评论分析策划万圣节东京迪士尼避坑指南，覆盖排队避坑、快速通行证、限定商品盘点。</div>
+              <div class="matrix-post-img-wrap">
+                <img src="ctrip-xiaocheng-halloween.jpg" alt="专注日韩游的小程 首尔万圣节全攻略笔记">
+              </div>
+              <div style="border-top: 1px dashed var(--zzz-gray-border); margin: 14px 0;"></div>
+              <div class="matrix-post-tag">ACCOUNT · 国内线</div>
+              <div class="matrix-post-title">专注国内游的小程</div>
+              <div class="matrix-post-meta">
+                <div class="matrix-meta-item">定位 <span>国内旅行专家</span></div>
+                <div class="matrix-meta-item">内容 <span>避坑攻略</span></div>
+              </div>
+              <div class="matrix-post-desc">国内目的地攻略，根据500+条评论分析发现福建秋冬季"避坑指南"需求强烈，优化目的地产品软文内容呈现与攻略结构。</div>
+              <div class="matrix-post-img-wrap">
+                <img src="ctrip-xiaocheng-account.jpg" alt="专注国内游的小程 小红书账号主页">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="matrix-card matrix-row-kos reveal is-visible">
+          <div class="matrix-role">KOS · 关键意见销售</div>
+          <div class="matrix-name">小游系列</div>
+          <div class="matrix-desc">日韩旅行分享。真实体验记录，资深携程旅行日本定制师，覆盖用户"信任建立"环节。</div>
+          <div class="matrix-expand">
+            <div class="matrix-expand-inner">
+              <div class="matrix-post-tag">ACCOUNT · 体验记录</div>
+              <div class="matrix-post-title">小游在日韩</div>
+              <div class="matrix-post-meta">
+                <div class="matrix-meta-item">粉丝 <span>783</span></div>
+                <div class="matrix-meta-item">获赞 <span>1.5万</span></div>
+              </div>
+              <div class="matrix-post-desc">资深携程旅行日本定制师，专注日本旅行定制，吃住行一站式解决。以第一人称真实体验视角记录京都红叶季等行程，降低用户决策不确定性。</div>
+              <div class="matrix-post-img-wrap">
+                <img src="ctrip-xiaoyou-account.jpg" alt="小游在日韩 小红书账号主页">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3: 素人号 -->
+        <div class="matrix-card matrix-row-suiren reveal is-visible">
+          <div class="matrix-role">素人 · 真实口碑</div>
+          <div class="matrix-name">vivi爱记录</div>
+          <div class="matrix-desc">真实口碑，生活化分享。澳新宝藏玩法、旅行记录，覆盖用户"信任决策"环节。</div>
+          <div class="matrix-expand">
+            <div class="matrix-expand-inner">
+              <div class="matrix-post-tag">LIFESTYLE · 生活分享</div>
+              <div class="matrix-post-title">「澳新10天自驾真实记录」</div>
+              <div class="matrix-post-meta">
+                <div class="matrix-meta-item">曝光 <span>3.2万</span></div>
+                <div class="matrix-meta-item">互动 <span>450+</span></div>
+              </div>
+              <div class="matrix-post-desc">以00后旅行搭子的人设，用生活化口吻记录澳新自驾路线，从大洋路到黄金海岸，强调"真实感受"而非攻略推荐，建立素人号的口碑信任。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-panel reveal is-visible" style="margin-top: 32px;">
+        <div class="detail-header">
+          <span class="detail-num">3.1</span>
+          <span class="detail-title">矩阵协同逻辑</span>
+        </div>
+        <div class="detail-body">
+          <ul>
+            <li><strong>官方号</strong>：做信任，品牌背书和权威信息</li>
+            <li><strong>KOS</strong>：做专业，深度攻略和种草</li>
+            <li><strong>素人号</strong>：做真实，生活化口碑分享</li>
+            <li><strong>协同闭环</strong>：不同角色覆盖用户决策链路的不同环节，组合起来才形成完整的种草闭环</li>
+            <li><strong>独立运营</strong>：独立进行选题分发与数据复盘，确保每个账号的内容质量和数据表现</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAKEAWAY -->
+  
+
+  <!-- IMPROVEMENT -->
+  
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-cta"><span style="letter-spacing: 1.548px;">LET'S DO SOMETHING.</span></div>
+      <div class="footer-subtitle">携程社媒内容运营 · 种草策略与账号矩阵</div>
+      <div class="footer-links">
+        <a href="ecosystem.html" class="footer-link-btn">← BACK TO HOME</a>
+        <a href="meituan-poi.html" class="footer-link-btn">PREV PROJECT</a>
+        
+      </div>
+      <div class="footer-sig">© 2026 ELLEN · yeyujie513@126.com · 180-1819-2116</div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 120;
+        if (window.scrollY >= top) current = section.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    });
+  </script>
+
+
+
+
+</body></html>

@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     PAGE ID: MEITUAN-CREATOR-DETAIL
+     这是【美团达人内容成长】详细案例页。
+     请勿将其他页面的内容覆盖到此文件。
+     主页：ecosystem.html
+     其他详细页：
+       - meituan-poi.html (美团兴趣POI内容运营)
+       - trip.html (携程定制游内容运营)
+     ============================================================ -->
+<html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>美团创作者运营 · Ellen 作品集</title>
+  <meta name="description" content="美团点评创作者策略运营：三层激励体系、站外达人引进、回小城过小年活动、AI工具赋能。">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Noto+Sans+SC:wght@300;400;500;700;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --zzz-yellow: #FFD93D;
+      --zzz-yellow-dim: #C9A800;
+      --zzz-yellow-glow: rgba(255, 217, 61, 0.25);
+      --zzz-black: #0A0A0A;
+      --zzz-gray: #1A1A1A;
+      --zzz-gray-light: #2A2A2A;
+      --zzz-gray-border: #333333;
+      --neon-cyan: #00F0FF;
+      --neon-cyan-glow: rgba(0, 240, 255, 0.2);
+      --neon-magenta: #FF2D95;
+      --neon-magenta-glow: rgba(255, 45, 149, 0.2);
+      --text-primary: #F5F5F5;
+      --text-secondary: #888888;
+      --text-tertiary: #555555;
+      --text-accent: var(--zzz-yellow);
+      --cut-sm: 8px;
+      --cut-md: 12px;
+      --cut-lg: 16px;
+      --skew-angle: -6deg;
+      --shadow-layered: 0 2px 0 rgba(255,255,255,0.06) inset, 0 -2px 0 rgba(0,0,0,0.4) inset, 0 8px 24px rgba(0,0,0,0.6);
+      --shadow-yellow-glow: 0 0 20px var(--zzz-yellow-glow), 0 4px 12px rgba(0,0,0,0.5);
+      --highlight-top: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 30%);
+      --ease-industrial: cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-fast: 0.2s var(--ease-industrial);
+      --transition-base: 0.4s var(--ease-industrial);
+      --font-display: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+      --font-body: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { font-family: var(--font-body); color: var(--text-primary); background: var(--zzz-black); line-height: 1.6; overflow-x: hidden; letter-spacing: -0.01em; position: relative; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    ::selection { background: var(--zzz-yellow); color: var(--zzz-black); }
+    body::before { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.04; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+    .cut-tl-br-md { clip-path: polygon(var(--cut-md) 0, 100% 0, 100% calc(100% - var(--cut-md)), calc(100% - var(--cut-md)) 100%, 0 100%, 0 var(--cut-md)); }
+    .cut-tl-br-lg { clip-path: polygon(var(--cut-lg) 0, 100% 0, 100% calc(100% - var(--cut-lg)), calc(100% - var(--cut-lg)) 100%, 0 100%, 0 var(--cut-lg)); }
+    .cut-tl-br-sm { clip-path: polygon(var(--cut-sm) 0, 100% 0, 100% calc(100% - var(--cut-sm)), calc(100% - var(--cut-sm)) 100%, 0 100%, 0 var(--cut-sm)); }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s var(--ease-industrial), transform 0.6s var(--ease-industrial); will-change: opacity, transform; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    .section-label { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--zzz-yellow); margin-bottom: 16px; }
+    .section-label::before { content: ''; width: 3px; height: 16px; background: var(--zzz-yellow); transform: skewX(var(--skew-angle)); }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4.5vw, 3rem); font-weight: 800; letter-spacing: 0.04em; line-height: 1.1; margin-bottom: 12px; }
+    .section-subtitle { font-size: clamp(0.85rem, 1.4vw, 1rem); color: var(--text-secondary); max-width: 640px; line-height: 1.7; }
+
+    .glitch { position: relative; display: inline-block; }
+    .glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.8; }
+    .glitch::before { color: var(--neon-cyan); animation: glitch-cyan 3s infinite alternate-reverse; }
+    .glitch::after { color: var(--neon-magenta); animation: glitch-magenta 3s infinite alternate-reverse; }
+    @keyframes glitch-cyan { 0% { clip-path: inset(0 0 85% 0); transform: translateX(-2px); } 20% { clip-path: inset(20% 0 60% 0); transform: translateX(1px); } 40% { clip-path: inset(50% 0 30% 0); transform: translateX(-1px); } 60% { clip-path: inset(70% 0 10% 0); transform: translateX(2px); } 80% { clip-path: inset(30% 0 50% 0); transform: translateX(-2px); } 100% { clip-path: inset(10% 0 75% 0); transform: translateX(1px); } }
+    @keyframes glitch-magenta { 0% { clip-path: inset(80% 0 5% 0); transform: translateX(2px); } 20% { clip-path: inset(40% 0 40% 0); transform: translateX(-1px); } 40% { clip-path: inset(10% 0 70% 0); transform: translateX(1px); } 60% { clip-path: inset(60% 0 20% 0); transform: translateX(-2px); } 80% { clip-path: inset(25% 0 55% 0); transform: translateX(2px); } 100% { clip-path: inset(75% 0 15% 0); transform: translateX(-1px); } }
+    .crt-lines { position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px); opacity: 0.4; }
+
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,10,0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--zzz-gray-border); transition: background var(--transition-base); }
+    .nav.scrolled { background: rgba(10,10,10,0.92); }
+    .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--font-display); font-size: 18px; font-weight: 900; letter-spacing: 0.08em; }
+    .nav-logo .glitch-mark { color: var(--zzz-yellow); margin-right: 2px; }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-link { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-secondary); transition: color var(--transition-fast); position: relative; padding-bottom: 4px; }
+    .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--zzz-yellow); transform: skewX(var(--skew-angle)); transition: width var(--transition-fast); }
+    .nav-link:hover { color: var(--text-primary); }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link.active { color: var(--zzz-yellow); }
+    .nav-link.active::after { width: 100%; }
+    .nav-back { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--zzz-yellow); padding: 8px 16px; border: 1px solid var(--zzz-yellow); clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%); transition: background var(--transition-fast); }
+    .nav-back:hover { background: rgba(255,217,61,0.15); }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+
+    .zzz-btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; font-family: var(--font-display); font-size: 13px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; color: var(--zzz-black); background: var(--zzz-yellow); clip-path: polygon(var(--cut-lg) 0, 100% 0, 100% calc(100% - var(--cut-lg)), calc(100% - var(--cut-lg)) 100%, 0 100%, 0 var(--cut-lg)); transition: filter var(--transition-fast), transform var(--transition-fast); position: relative; cursor: pointer; }
+    .zzz-btn-primary::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .zzz-btn-primary:hover { filter: brightness(1.1); transform: translateX(2px); }
+    .zzz-btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 12px 26px; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--zzz-yellow); background: transparent; border: 2px solid var(--zzz-yellow); clip-path: polygon(var(--cut-lg) 0, 100% 0, 100% calc(100% - var(--cut-lg)), calc(100% - var(--cut-lg)) 100%, 0 100%, 0 var(--cut-lg)); transition: background var(--transition-fast); cursor: pointer; }
+    .zzz-btn-secondary:hover { background: rgba(255,217,61,0.15); }
+
+    .zzz-tag { display: inline-flex; align-items: center; padding: 4px 12px; font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%); }
+    .zzz-tag.yellow { background: var(--zzz-yellow); color: var(--zzz-black); }
+    .zzz-tag.outline { background: transparent; color: var(--zzz-yellow); border: 1px solid var(--zzz-yellow); }
+    .zzz-tag.dark { background: var(--zzz-gray-light); color: var(--text-secondary); border: 1px solid var(--zzz-gray-border); }
+
+    /* Hero */
+    .hero { position: relative; min-height: 80vh; min-height: 80dvh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 120px 24px 60px; overflow: hidden; background: var(--zzz-black); }
+    .hero-bg-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,217,61,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,217,61,0.03) 1px, transparent 1px); background-size: 50px 50px; mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, transparent 75%); }
+    .hero-content { position: relative; z-index: 2; max-width: 900px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--zzz-yellow); background: rgba(255,217,61,0.08); border: 1px solid rgba(255,217,61,0.3); clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%); margin-bottom: 24px; }
+    .hero-badge-dot { width: 6px; height: 6px; background: var(--zzz-yellow); box-shadow: 0 0 6px var(--zzz-yellow-glow); }
+    .hero-title { font-family: var(--font-display); font-size: clamp(2rem, 6vw, 4rem); font-weight: 900; letter-spacing: 0.08em; line-height: 1.05; margin-bottom: 20px; color: var(--text-primary); }
+    .hero-title-cn { font-family: 'Noto Sans SC', var(--font-display); font-weight: 900; }
+    .hero-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 24px; }
+    .hero-meta-item { display: flex; flex-direction: column; gap: 2px; }
+    .hero-meta-label { font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-tertiary); }
+    .hero-meta-value { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+    .hero-desc { font-size: clamp(0.95rem, 1.5vw, 1.1rem); color: var(--text-secondary); max-width: 640px; line-height: 1.8; margin-bottom: 32px; }
+    .hero-cta { display: flex; gap: 16px; justify-content: flex-start; flex-wrap: wrap; }
+
+    section { position: relative; z-index: 1; padding: 100px 0; }
+    .section-header { margin-bottom: 56px; }
+
+    /* Metrics bar */
+    .metrics-bar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--zzz-gray-border); border: 1px solid var(--zzz-gray-border); margin-bottom: 0; }
+    .metric-cell { background: var(--zzz-gray); padding: 28px 20px; text-align: center; position: relative; }
+    .metric-cell::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .metric-num { font-family: var(--font-mono); font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 900; color: var(--zzz-yellow); line-height: 1; margin-bottom: 6px; }
+    .metric-label { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); }
+    @media (max-width: 768px) { .metrics-bar { grid-template-columns: repeat(2, 1fr); } }
+
+    /* Pain points */
+    .pain-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .pain-card { background: var(--zzz-gray); padding: 28px; position: relative; box-shadow: var(--shadow-layered); border: 1px solid var(--zzz-gray-border); transition: transform var(--transition-base), border-color var(--transition-base); overflow: hidden; }
+    .pain-card::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .pain-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--neon-magenta), transparent); opacity: 0; transition: opacity 0.2s; }
+    .pain-card:hover { transform: translateY(-4px); border-color: var(--neon-magenta); }
+    .pain-card:hover::after { opacity: 1; }
+    .pain-icon { font-family: var(--font-mono); font-size: 20px; font-weight: 700; color: var(--neon-magenta); margin-bottom: 12px; }
+    .pain-title { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+    .pain-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+    @media (max-width: 768px) { .pain-grid { grid-template-columns: 1fr; } }
+
+    /* Detail panel */
+    .detail-panel { background: var(--zzz-gray); padding: 40px; position: relative; box-shadow: var(--shadow-layered); border: 1px solid var(--zzz-gray-border); margin-bottom: 32px; overflow: hidden; }
+    .detail-panel::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .detail-panel::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--zzz-yellow), transparent); opacity: 0; transform: translateY(0); transition: opacity 0.2s; }
+    .detail-panel:hover::after { opacity: 1; animation: scan-sweep 1.2s var(--ease-industrial); }
+    @keyframes scan-sweep { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(400px); opacity: 0; } }
+    .detail-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .detail-num { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--zzz-yellow); letter-spacing: 0.1em; }
+    .detail-title { font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 800; letter-spacing: 0.02em; color: var(--text-primary); }
+    .detail-body { font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
+    .detail-body strong { color: var(--text-primary); font-weight: 600; }
+    .detail-body ul { list-style: none; padding: 0; margin: 12px 0; }
+    .detail-body li { padding-left: 20px; position: relative; margin-bottom: 8px; }
+    .detail-body li::before { content: '▸'; position: absolute; left: 0; color: var(--zzz-yellow); font-weight: 700; }
+
+    /* Tier table */
+    .tier-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+    .tier-table th { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--zzz-yellow); text-align: left; padding: 12px 16px; border-bottom: 2px solid var(--zzz-yellow); background: rgba(255,217,61,0.05); }
+    .tier-table td { padding: 16px; font-size: 13px; color: var(--text-secondary); border-bottom: 1px solid rgba(51,51,51,0.5); vertical-align: top; line-height: 1.6; }
+    .tier-table td:first-child { font-weight: 700; color: var(--text-primary); white-space: nowrap; }
+    .tier-table td:nth-child(2) { font-family: var(--font-mono); font-size: 12px; color: var(--zzz-yellow); }
+    .tier-table tr:hover td { background: rgba(255,217,61,0.03); }
+    .tier-table-wrap { overflow-x: auto; }
+
+    /* Two col layout */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* Process flowchart */
+    .flowchart { display: flex; flex-direction: column; gap: 0; position: relative; }
+    .flow-row { display: flex; align-items: stretch; gap: 0; position: relative; }
+    .flow-node { flex: 1; background: var(--zzz-gray); padding: 28px 24px; position: relative; box-shadow: var(--shadow-layered); border: 1px solid var(--zzz-gray-border); border-left: 3px solid var(--zzz-yellow); transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base); overflow: visible; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 var(--cut-sm)); }
+    .flow-node::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .flow-node:hover { transform: translateY(-6px); border-color: var(--zzz-yellow); box-shadow: var(--shadow-yellow-glow); z-index: 2; }
+    .flow-node-num { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--zzz-yellow); letter-spacing: 0.15em; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .flow-node-num::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--zzz-yellow), transparent); }
+    .flow-node-title { font-size: 15px; font-weight: 800; color: var(--text-primary); margin-bottom: 10px; letter-spacing: 0.02em; }
+    .flow-node-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+    .flow-node-items { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+    .flow-node-item { font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary); padding-left: 14px; position: relative; line-height: 1.5; }
+    .flow-node-item::before { content: '▸'; position: absolute; left: 0; color: var(--zzz-yellow); font-weight: 700; }
+    .flow-connector { width: 32px; min-width: 32px; display: flex; align-items: center; justify-content: center; position: relative; }
+    .flow-connector::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: var(--zzz-gray-border); }
+    .flow-connector::after { content: ''; position: absolute; right: 2px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-left: 8px solid var(--zzz-yellow); border-top: 5px solid transparent; border-bottom: 5px solid transparent; filter: drop-shadow(0 0 4px var(--zzz-yellow-glow)); }
+    .flow-connector-vertical { height: 32px; min-height: 32px; display: flex; align-items: center; justify-content: center; position: relative; width: 100%; }
+    .flow-connector-vertical::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: var(--zzz-gray-border); }
+    .flow-connector-vertical::after { content: ''; position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-top: 8px solid var(--zzz-yellow); border-left: 5px solid transparent; border-right: 5px solid transparent; filter: drop-shadow(0 0 4px var(--zzz-yellow-glow)); }
+    .flow-output { background: linear-gradient(135deg, rgba(255,217,61,0.08) 0%, var(--zzz-gray) 100%); border: 1px solid rgba(255,217,61,0.2); border-left: 3px solid var(--zzz-yellow); padding: 24px; position: relative; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 var(--cut-sm)); box-shadow: var(--shadow-layered); }
+    .flow-output::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .flow-output-label { font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--zzz-yellow); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 6px; }
+    .flow-output-text { font-size: 13px; font-weight: 600; color: var(--text-primary); line-height: 1.6; }
+    @media (max-width: 900px) {
+      .flow-row { flex-direction: column; }
+      .flow-connector { width: 100%; min-width: 0; height: 32px; }
+      .flow-connector::before { top: 0; bottom: 0; left: 50%; width: 2px; height: auto; }
+      .flow-connector::after { right: auto; left: 50%; top: auto; bottom: 2px; transform: translateX(-50%); border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 8px solid var(--zzz-yellow); }
+    }
+
+    /* Activity showcase */
+    .activity-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; align-items: stretch; }
+    .activity-card { background: linear-gradient(135deg, var(--zzz-gray) 0%, #1f1a0a 100%); border: 1px solid rgba(255,217,61,0.15); padding: 40px; position: relative; box-shadow: var(--shadow-layered); overflow: hidden; display: flex; flex-direction: column; }
+    .activity-card::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .activity-card .scan-sweep { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--zzz-yellow), transparent); opacity: 0; pointer-events: none; }
+    .activity-card:hover .scan-sweep { animation: scan-sweep-card 1s var(--ease-industrial); }
+    @keyframes scan-sweep-card { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(400px); opacity: 0; } }
+    .activity-quote { font-size: clamp(1.1rem, 2.5vw, 1.6rem); font-weight: 700; color: var(--text-primary); line-height: 1.4; margin-bottom: 20px; }
+    .activity-quote::before { content: '"'; font-family: var(--font-mono); font-size: 2em; color: var(--zzz-yellow); line-height: 0; vertical-align: -0.3em; margin-right: 4px; }
+    .activity-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 20px; }
+    .activity-screenshot-wrap { position: relative; box-shadow: var(--shadow-layered); border: 1px solid var(--zzz-gray-border); overflow: hidden; clip-path: polygon(var(--cut-md) 0, 100% 0, 100% calc(100% - var(--cut-md)), calc(100% - var(--cut-md)) 100%, 0 100%, 0 var(--cut-md)); background: var(--zzz-gray); transition: border-color var(--transition-base), box-shadow var(--transition-base); }
+    .activity-screenshot-wrap::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; z-index: 2; }
+    .activity-screenshot-wrap:hover { border-color: var(--zzz-yellow); box-shadow: var(--shadow-yellow-glow); }
+    .activity-screenshot-wrap::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--zzz-yellow), transparent); opacity: 0; pointer-events: none; z-index: 3; }
+    .activity-screenshot-wrap:hover::after { animation: scan-sweep-card 1s var(--ease-industrial); }
+    .activity-screenshot { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .activity-screenshot-badge { position: absolute; top: 12px; left: 12px; z-index: 3; display: flex; gap: 8px; flex-wrap: wrap; }
+    .activity-stat-row { display: flex; gap: 0; margin-bottom: 20px; background: var(--zzz-black); border: 1px solid var(--zzz-gray-border); clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%); }
+    .activity-stat-cell { flex: 1; padding: 12px 16px; text-align: center; border-right: 1px solid var(--zzz-gray-border); }
+    .activity-stat-cell:last-child { border-right: none; }
+    .activity-stat-num { font-family: var(--font-mono); font-size: clamp(1rem, 2vw, 1.4rem); font-weight: 900; color: var(--zzz-yellow); line-height: 1; }
+    .activity-stat-label { font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); margin-top: 4px; }
+    @media (max-width: 768px) { .activity-layout { grid-template-columns: 1fr; } .activity-card { padding: 28px; } }
+
+    /* AI tools */
+    .tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .tool-card { background: var(--zzz-gray); padding: 32px; position: relative; box-shadow: var(--shadow-layered); border: 1px solid var(--zzz-gray-border); transition: transform var(--transition-base), border-color var(--transition-base); overflow: hidden; display: flex; flex-direction: column; }
+    .tool-card::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .tool-card:hover { transform: translateY(-4px); border-color: var(--neon-cyan); }
+    .tool-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .tool-icon { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; font-size: 16px; background: rgba(0,240,255,0.1); border: 1px solid rgba(0,240,255,0.2); clip-path: polygon(4px 0, 100% 0, calc(100% - 4px) 100%, 0 100%); }
+    .tool-name { font-size: 15px; font-weight: 700; color: var(--text-primary); }
+    .tool-body { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+    .tool-body strong { color: var(--neon-cyan); font-weight: 600; }
+    .tool-body ul { list-style: none; padding: 0; margin: 8px 0; }
+    .tool-body li { padding-left: 16px; position: relative; margin-bottom: 6px; }
+    .tool-body li::before { content: '▸'; position: absolute; left: 0; color: var(--neon-cyan); font-weight: 700; }
+    .tool-demo { margin-top: 20px; position: relative; }
+    .tool-demo-label { font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--neon-cyan); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .tool-demo-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(0,240,255,0.3), transparent); }
+    .tool-demo-screenshot { position: relative; border: 1px solid var(--zzz-gray-border); overflow: hidden; clip-path: polygon(var(--cut-sm) 0, 100% 0, 100% calc(100% - var(--cut-sm)), calc(100% - var(--cut-sm)) 100%, 0 100%, 0 var(--cut-sm)); box-shadow: var(--shadow-layered); transition: border-color var(--transition-base), box-shadow var(--transition-base); }
+    .tool-demo-screenshot::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; z-index: 2; }
+    .tool-demo-screenshot::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent); opacity: 0; pointer-events: none; z-index: 3; }
+    .tool-demo-screenshot:hover { border-color: var(--neon-cyan); box-shadow: 0 0 20px var(--neon-cyan-glow), 0 4px 12px rgba(0,0,0,0.5); }
+    .tool-demo-screenshot:hover::after { animation: scan-sweep-card 1s var(--ease-industrial); }
+    .tool-demo-screenshot img { width: 100%; height: auto; display: block; }
+    .tool-demo-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; color: var(--neon-cyan); letter-spacing: 0.1em; text-transform: uppercase; transition: color var(--transition-fast); }
+    .tool-demo-link:hover { color: var(--zzz-yellow); }
+
+    .tool-demo-iframe-wrap { position: relative; border: 1px solid var(--zzz-gray-border); overflow: hidden; clip-path: polygon(var(--cut-sm) 0, 100% 0, 100% calc(100% - var(--cut-sm)), calc(100% - var(--cut-sm)) 100%, 0 100%, 0 var(--cut-sm)); box-shadow: var(--shadow-layered); background: var(--zzz-gray); transition: border-color var(--transition-base), box-shadow var(--transition-base); }
+    .tool-demo-iframe-wrap::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; z-index: 2; }
+    .tool-demo-iframe-wrap::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent); opacity: 0; pointer-events: none; z-index: 3; }
+    .tool-demo-iframe-wrap:hover { border-color: var(--neon-cyan); box-shadow: 0 0 20px var(--neon-cyan-glow), 0 4px 12px rgba(0,0,0,0.5); }
+    .tool-demo-iframe-wrap:hover::after { animation: scan-sweep-card 1s var(--ease-industrial); }
+    .tool-demo-iframe-wrap iframe { width: 100%; height: 400px; border: none; display: block; }
+    .tool-demo-iframe-overlay { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 16px; opacity: 0; transition: opacity var(--transition-base); z-index: 4; background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.7)); }
+    .tool-demo-iframe-overlay span { font-family: var(--font-mono); font-size: 11px; font-weight: 500; color: var(--neon-cyan); letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 16px; background: rgba(0,0,0,0.8); border: 1px solid var(--neon-cyan); clip-path: polygon(var(--cut-sm) 0, 100% 0, 100% calc(100% - var(--cut-sm)), calc(100% - var(--cut-sm)) 100%, 0 100%, 0 var(--cut-sm)); }
+    .tool-demo-iframe-wrap:hover .tool-demo-iframe-overlay { opacity: 1; }
+    @media (max-width: 768px) { .tool-grid { grid-template-columns: 1fr; } }
+
+    /* Takeaway */
+    .takeaway-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .takeaway-card { background: var(--zzz-gray); padding: 28px; position: relative; box-shadow: var(--shadow-layered); border: 1px solid var(--zzz-gray-border); transition: transform var(--transition-base), border-color var(--transition-base); }
+    .takeaway-card::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .takeaway-card:hover { transform: translateY(-4px); border-color: var(--zzz-yellow); }
+    .takeaway-num { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--zzz-yellow); letter-spacing: 0.15em; margin-bottom: 8px; }
+    .takeaway-title { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+    .takeaway-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+    @media (max-width: 768px) { .takeaway-grid { grid-template-columns: 1fr; } }
+
+    /* Improvement */
+    .improve-list { display: flex; flex-direction: column; gap: 16px; }
+    .improve-item { background: var(--zzz-gray); padding: 24px 28px; position: relative; box-shadow: var(--shadow-layered); border: 1px solid var(--zzz-gray-border); border-left: 3px solid var(--neon-cyan); transition: transform var(--transition-base), border-left-color var(--transition-base); }
+    .improve-item::before { content: ''; position: absolute; inset: 0; background: var(--highlight-top); pointer-events: none; }
+    .improve-item:hover { transform: translateX(4px); border-left-color: var(--zzz-yellow); }
+    .improve-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+    .improve-num { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--neon-cyan); }
+    .improve-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+    .improve-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+
+    /* Footer */
+    .footer { position: relative; z-index: 1; text-align: center; padding: 80px 24px 40px; border-top: 3px solid var(--zzz-yellow); }
+    .footer-cta { font-family: var(--font-display); font-size: clamp(1.5rem, 4vw, 2.8rem); font-weight: 900; letter-spacing: 0.06em; margin-bottom: 12px; }
+    .footer-subtitle { font-size: 14px; color: var(--text-secondary); margin-bottom: 32px; }
+    .footer-links { display: flex; justify-content: center; gap: 16px; margin-bottom: 48px; flex-wrap: wrap; }
+    .footer-link-btn { display: inline-flex; align-items: center; padding: 10px 24px; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--zzz-yellow); border: 1px solid var(--zzz-yellow); clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%); transition: background var(--transition-fast); }
+    .footer-link-btn:hover { background: rgba(255,217,61,0.15); }
+    .footer-sig { font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary); letter-spacing: 0.1em; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal, .reveal.is-visible { opacity: 1; transform: none; transition: none; }
+      .glitch::before, .glitch::after { animation: none; opacity: 0; }
+      .hero-scroll-arrow { animation: none; }
+      .crt-lines { display: none; }
+    }
+    @media (max-width: 768px) {
+      .glitch::before, .glitch::after { animation: none; opacity: 0; }
+      .hero-title { font-size: clamp(1.8rem, 10vw, 3rem); }
+      section { padding: 60px 0; }
+      .container { padding: 0 16px; }
+      .detail-panel { padding: 28px; }
+      .activity-card { padding: 28px; }
+      .tool-card { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="ecosystem.html" class="nav-logo">
+        <span class="glitch-mark">◆</span>ELLEN
+      </a>
+      <div class="nav-links">
+        <a href="ecosystem.html" class="nav-link">← Back</a>
+        <a href="#background" class="nav-link">Background</a>
+        <a href="#system" class="nav-link">System</a>
+        <a href="#activity" class="nav-link">Activity</a>
+        <a href="#takeaway" class="nav-link">Takeaway</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="crt-lines"></div>
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        PROJECT 01 / CREATOR ECOSYSTEM
+      </div>
+      <h1 class="hero-title">
+        <span class="glitch" data-text="CREATOR">CREATOR</span><br>
+        <span class="hero-title-cn">创作者运营</span>
+      </h1>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">COMPANY</span>
+          <span class="hero-meta-value">美团 · 点评策略中台</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">PERIOD</span>
+          <span class="hero-meta-value">2025.12 — 2026.02</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">ROLE</span>
+          <span class="hero-meta-value">创作者策略运营</span>
+        </div>
+      </div>
+      <p class="hero-desc">
+        在美团点评策略中台负责创作者运营，核心目标是<strong style="color:var(--text-primary)">提升平台优质内容供给增长、扩大活跃创作者规模</strong>。设计三层激励体系、搭建站外达人引进全流程、策划"回小城过个好玩年"活动、用nocode工具赋能运营效率。
+      </p>
+      <div class="hero-cta">
+        <a href="#background" class="zzz-btn-primary">EXPLORE CASE →</a>
+        <a href="ecosystem.html" class="zzz-btn-secondary">← BACK TO HOME</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- METRICS BAR -->
+  <div class="container" style="padding-top: 60px;">
+    <div class="metrics-bar reveal is-visible">
+      <div class="metric-cell">
+        <div class="metric-num">+15%</div>
+        <div class="metric-label">Active Creators</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">+20%</div>
+        <div class="metric-label">Quality Content</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">+32%</div>
+        <div class="metric-label">Community Active</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">+80%</div>
+        <div class="metric-label">Ops Efficiency</div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- BACKGROUND & PAIN POINTS -->
+  <section id="background">
+    <div class="container">
+      <div class="section-header reveal is-visible">
+        <div class="section-label">01 / BACKGROUND</div>
+        <h2 class="section-title">项目背景与核心痛点</h2>
+        <p class="section-subtitle">
+          美团点评的内容生态依赖创作者持续产出优质内容来驱动用户消费决策。策略中台团队当时面临四个核心痛点。
+        </p>
+      </div>
+      <div class="pain-grid">
+        <div class="pain-card reveal is-visible">
+          <div class="pain-icon">[01]</div>
+          <div class="pain-title">分层不清晰</div>
+          <div class="pain-desc">创作者分层不清晰，运营资源"一刀切"——头部觉得没价值、尾部觉得没机会。</div>
+        </div>
+        <div class="pain-card reveal is-visible">
+          <div class="pain-icon">[02]</div>
+          <div class="pain-title">引进缺标准</div>
+          <div class="pain-desc">站外达人引进缺乏标准化流程，依赖人工经验判断，效率低且不可复制。</div>
+        </div>
+        <div class="pain-card reveal is-visible">
+          <div class="pain-icon">[03]</div>
+          <div class="pain-title">运营重复高</div>
+          <pain-desc class="pain-desc">手动筛选达人、手动配置权益、手动追踪数据，运营动作重复性高，策略设计时间被挤压。</pain-desc>
+        </div>
+        <div class="pain-card reveal is-visible">
+          <div class="pain-icon">[04]</div>
+          <div class="pain-title">复盘无数据</div>
+          <div class="pain-desc">缺乏数据驱动的复盘机制，策略迭代靠感觉不靠数据，无法归因效果。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIER SYSTEM -->
+  <section id="system">
+    <div class="container">
+      <div class="section-header reveal is-visible">
+        <div class="section-label">02 / TIER SYSTEM</div>
+        <h2 class="section-title">三层激励体系</h2>
+        <p class="section-subtitle">
+          对创作者进行月度分层定义，核心维度为过往笔记累计曝光、活跃度、粉丝数。每个层级对准创作者不同阶段的核心诉求，设计差异化激励机制。
+        </p>
+      </div>
+
+      <div class="detail-panel reveal is-visible">
+        <div class="detail-header">
+          <span class="detail-num">3.1</span>
+          <span class="detail-title">月度分层定义与差异化激励</span>
+        </div>
+        <div class="tier-table-wrap">
+          <table class="tier-table">
+            <thead>
+              <tr>
+                <th>Tier</th>
+                <th>Definition</th>
+                <th>Core Need</th>
+                <th>Incentive</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>头部 · 成熟期</td>
+                <td>累计曝光前30% + 7天内有活跃</td>
+                <td>影响力扩大、多元变现</td>
+                <td>站内"点小评"等官方号翻牌曝光；争取平台线下活动名额（如点评必住榜酒店试睡官、平台大型活动约稿）</td>
+              </tr>
+              <tr>
+                <td>腰部 · 成长期</td>
+                <td>曝光30%-50% + 30天内有活跃</td>
+                <td>稳定流量、突破瓶颈</td>
+                <td>"可能认识的人"推粉位（好友弹窗快速增长粉丝）；每日流量包1000；细分垂类爆款榜单展示</td>
+              </tr>
+              <tr>
+                <td>尾部 · 新作者</td>
+                <td>新入驻创作者</td>
+                <td>低门槛参与感、冷启动</td>
+                <td>7天内发布3篇笔记即触发冷启动奖励（美团卡）；提供创作内容参考playbook、近期站内站外热点清单</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="detail-panel reveal is-visible">
+        <div class="detail-header">
+          <span class="detail-num">3.2</span>
+          <span class="detail-title">新作者冷启动任务具体要求</span>
+        </div>
+        <div class="detail-body">
+          新作者的冷启动是整个体系最关键的环节——降低首次发布门槛，让新创作者快速体验到"被看见"的正反馈。
+          <ul>
+            <li><strong>内容方向</strong>：平台主要推广的探店、美食、旅游、城玩</li>
+            <li><strong>内容结构</strong>：包含时间、地点、感受、特色等</li>
+            <li><strong>质量标准</strong>：带有强去处关联，不少于6张照片或30s视频，200字以上正文</li>
+            <li><strong>配套支持</strong>：创作内容参考playbook + 近期站内站外热点清单</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFBOARDING FLOW -->
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div class="section-header reveal is-visible">
+        <div class="section-label">03 / CREATOR PIPELINE</div>
+        <h2 class="section-title">站外达人引进全流程</h2>
+        <p class="section-subtitle">
+          制定标准化筛选标准、分层扶持权益、招募渠道，将达人引进从"依赖人工经验"变成"可复制的流程"。
+        </p>
+      </div>
+      <div class="flowchart reveal is-visible">
+        <!-- Step 1 → 2 -->
+        <div class="flow-row">
+          <div class="flow-node">
+            <div class="flow-node-num">STEP 01</div>
+            <div class="flow-node-title">筛选标准</div>
+            <div class="flow-node-desc">拆解创作者核心要素，在数据平台定向筛选优质达人。</div>
+            <ul class="flow-node-items">
+              <li class="flow-node-item">粉丝数 · 创作类型</li>
+              <li class="flow-node-item">更新频率 · 画风</li>
+              <li class="flow-node-item">商业合作信誉</li>
+            </ul>
+          </div>
+          <div class="flow-connector"></div>
+          <div class="flow-node">
+            <div class="flow-node-num">STEP 02</div>
+            <div class="flow-node-title">垂类适配</div>
+            <div class="flow-node-desc">优先定向挖掘匹配平台内容生态需求的创作者。</div>
+            <ul class="flow-node-items">
+              <li class="flow-node-item">旅行创作者</li>
+              <li class="flow-node-item">美食创作者</li>
+              <li class="flow-node-item">城市玩乐创作者</li>
+            </ul>
+          </div>
+          <div class="flow-connector"></div>
+          <div class="flow-node">
+            <div class="flow-node-num">STEP 03</div>
+            <div class="flow-node-title">分层扶持</div>
+            <div class="flow-node-desc">按站外粉丝量分层，提供差异化流量资源。</div>
+            <ul class="flow-node-items">
+              <li class="flow-node-item">10万+ → 每日投流、专属运营帮选题</li>
+              
+              <li class="flow-node-item">统一开放扶持入口</li>
+            </ul>
+          </div>
+          <div class="flow-connector"></div>
+          <div class="flow-node">
+            <div class="flow-node-num">STEP 04</div>
+            <div class="flow-node-title">配套服务</div>
+            <div class="flow-node-desc">全链路服务保障达人入驻后的持续运营。</div>
+            <ul class="flow-node-items">
+              <li class="flow-node-item">原创版权保护</li>
+              <li class="flow-node-item">优先提报曝光</li>
+              <li class="flow-node-item">官方榜单展示</li>
+              <li class="flow-node-item">1对1专属运营</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Output -->
+        <div class="flow-connector-vertical"></div>
+        <div class="flow-output">
+          <div class="flow-output-label">▼ OUTPUT · 达人入驻全链路闭环</div>
+          <div class="flow-output-text">从"依赖人工经验" → 标准化可复制流程 · 活跃达人 +15% · 优质内容供给 +20%</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVITY -->
+  <section id="activity">
+    <div class="container">
+      <div class="section-header reveal is-visible">
+        <div class="section-label">04 / CAMPAIGN</div>
+        <h2 class="section-title">"回小城过个好玩年"活动</h2>
+        <p class="section-subtitle">
+          作为核心策划者，从创意发想到达人落地的全链路推动。
+        </p>
+      </div>
+      <div class="activity-layout">
+        <div class="activity-card reveal is-visible">
+          <div class="scan-sweep"></div>
+          <div class="activity-quote">
+            通过站内活跃用户调研，发现大量北上广深打工人春节返乡，对家乡小城有天然表达欲。这个活动不是让达人"完成任务"，而是找到他们本来就愿意记录的情绪和场景。
+          </div>
+          <div class="activity-stat-row">
+            <div class="activity-stat-cell">
+              <div class="activity-stat-num">6676</div>
+              <div class="activity-stat-label">篇内容</div>
+            </div>
+            <div class="activity-stat-cell">
+              <div class="activity-stat-num">2637万</div>
+              <div class="activity-stat-label">浏览量</div>
+            </div>
+            <div class="activity-stat-cell">
+              <div class="activity-stat-num">2183</div>
+              <div class="activity-stat-label">提及地点</div>
+            </div>
+          </div>
+          <div class="detail-body" style="margin-top: 0;">
+            <ul>
+              <li><strong>活动洞察</strong>：返乡情感是真实的表达欲，不是被制造出来的需求</li>
+              <li><strong>活动设计</strong>：以"回小城过个好玩年"为话题，引导达人记录返乡生活、小城年味</li>
+              <li><strong>资源协调</strong>：协调平台banner、有奖话题位、推粉位、站内信等中台资源</li>
+              <li><strong>活动落地</strong>：推动活动从创意策划到落地的全链路运转</li>
+            </ul>
+          </div>
+          <div class="activity-tags">
+            <span class="zzz-tag yellow">CORE PLANNER</span>
+            <span class="zzz-tag outline">EMOTION-DRIVEN</span>
+            <span class="zzz-tag dark">CNY CAMPAIGN</span>
+          </div>
+        </div>
+        <div class="activity-screenshot-wrap reveal is-visible">
+          <div class="activity-screenshot-badge">
+            <span class="zzz-tag yellow">LIVE PAGE</span>
+          </div>
+          <img src="campaign-huixiaochneg.jpg" alt="回小城过个好玩年 活动页截图" class="activity-screenshot">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI TOOLS -->
+  <section>
+    <div class="container">
+      <div class="section-header reveal is-visible">
+        <div class="section-label">05 / AI EMPOWERMENT</div>
+        <h2 class="section-title">AI工具赋能运营效率</h2>
+        <p class="section-subtitle">
+          用nocode工具将重复性运营动作工具化，让运营从执行者变成策略设计者。工具被团队复用，提升运营效率。
+        </p>
+      </div>
+      <div class="tool-grid">
+        <div class="tool-card reveal is-visible">
+          <div class="tool-header">
+            <div class="tool-icon">01</div>
+            <div class="tool-name">达人活跃度排行榜</div>
+          </div>
+          <div class="tool-body">
+            <ul>
+              <li><strong>数据来源</strong>：后台SQL查询（每周自动更新 在社群发布文案）</li>
+              <li><strong>展示指标</strong>：活跃度、发文量、质量（曝光、互动）</li>
+              <li><strong>使用场景</strong>：团队用于筛选高潜达人进行定向运营</li>
+              <li><strong>附加价值</strong>：作为激励达人的数据依据</li>
+            </ul>
+          </div>
+          <div class="tool-demo">
+            <div class="tool-demo-label">▼ LIVE DEMO · 社群活跃度榜单</div>
+            <div class="tool-demo-iframe-wrap">
+              <iframe src="https://djm2jc.mynocode.host/" loading="lazy" sandbox="allow-scripts allow-same-origin" title="社群活跃度排行榜 Demo"></iframe>
+              <a href="https://djm2jc.mynocode.host/" target="_blank" class="tool-demo-iframe-overlay">
+                <span>VISIT LIVE DEMO ↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card reveal is-visible">
+          <div class="tool-header">
+            <div class="tool-icon">02</div>
+            <div class="tool-name">基于RAG的AI达人笔记自查工具</div>
+          </div>
+          <div class="tool-body">
+            <ul>
+              <li><strong>技术架构</strong>：将平台审核规则与历史案例构建知识库，结合规则引擎与大模型实现笔记多维度质量检测</li>
+              <li><strong>核心功能</strong>：笔记合规性检测 + 内容质量评分 + 智能修改建议输出</li>
+              <li><strong>知识库</strong>：审核规则文档 + 历史违规案例 + 优质笔记范式</li>
+              <li><strong>价值</strong>：运营效率提升80%，从人工逐条审核变为AI辅助批量检测</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAKEAWAY -->
+  <section id="takeaway">
+    <div class="container">
+      <div class="section-header reveal is-visible">
+        <div class="section-label">06 / TAKEAWAY</div>
+        <h2 class="section-title">我的收获</h2>
+        
+      </div>
+      <div class="takeaway-grid">
+        <div class="takeaway-card reveal is-visible">
+          <div class="takeaway-num">[01]</div>
+          <div class="takeaway-title">创作者分层的本质是"对准诉求"</div>
+          <div class="takeaway-desc">不是简单按粉丝数分，而是按创作者所处阶段的核心诉求分——头部要影响力、腰部要流量、新作者要参与感。激励设计必须对准诉求，否则资源投入再多也无效。</div>
+        </div>
+        <div class="takeaway-card reveal is-visible">
+          <div class="takeaway-num">[02]</div>
+          <div class="takeaway-title">数据驱动是运营的思维方式</div>
+          <div class="takeaway-desc">SQL不只是取数工具，更是一种思维方式——从数据异动定位根因，用数据验证策略效果，让迭代有依据而非靠感觉。</div>
+        </div>
+        <div class="takeaway-card reveal is-visible">
+          <div class="takeaway-num">[03]</div>
+          <div class="takeaway-title">工具化思维让运营变成策略设计</div>
+          <div class="takeaway-desc">运营工作中大量动作是重复的（筛选、配置、追踪），把这些动作工具化不仅提升效率，更重要的是让运营从执行者变成策略设计者。</div>
+        </div>
+        <div class="takeaway-card reveal is-visible">
+          <div class="takeaway-num">[04]</div>
+          <div class="takeaway-title">好的活动是找到"真实表达欲"</div>
+          <div class="takeaway-desc">好的内容活动不是让达人"完成任务"，而是找到他们本来就愿意记录的情绪和场景。"回小城过小年"之所以有效，是因为返乡情感是真实的表达欲。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPROVEMENT -->
+  
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-cta">LET'S DO SOMETHING.</div>
+      <div class="footer-subtitle">创作者生态运营 · 内容增长与数据驱动</div>
+      <div class="footer-links">
+        <a href="ecosystem.html" class="footer-link-btn">← BACK TO HOME</a>
+        <a href="meituan-poi.html" class="footer-link-btn">NEXT PROJECT →</a>
+        
+      </div>
+      <div class="footer-sig">© 2026 ELLEN · yeyujie513@126.com · 180-1819-2116</div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 120;
+        if (window.scrollY >= top) current = section.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+</body></html>
