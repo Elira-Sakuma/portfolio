@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>绝区零 3.1 周年庆版本 · 活动清单分类与目的深度拆解</title>
+<style>
+  :root {
+    --bg: #0A0A0F;
+    --bg-card: #14141C;
+    --bg-card-hover: #1A1A25;
+    --bg-sub: #1E1E2A;
+    --text-primary: #E8E8F0;
+    --text-secondary: #9CA3AF;
+    --text-muted: #6B7280;
+    --accent-yellow: #FFD93D;
+    --accent-cyan: #67E8F9;
+    --accent-purple: #A855F7;
+    --accent-red: #F87171;
+    --accent-green: #4ADE80;
+    --accent-orange: #FB923C;
+    --accent-pink: #F472B6;
+    --border: #2D2D38;
+    --clip: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    line-height: 1.75;
+    font-size: 14px;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+
+  /* Header */
+  header {
+    padding: 56px 0 40px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, #0F0F1A 0%, #0A0A0F 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 500px 250px at 15% 40%, rgba(168,85,247,0.1), transparent),
+      radial-gradient(ellipse 400px 200px at 85% 60%, rgba(255,217,61,0.08), transparent);
+    pointer-events: none;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent-yellow);
+    background: rgba(255,217,61,0.08);
+    border: 1px solid rgba(255,217,61,0.2);
+    padding: 4px 12px;
+    clip-path: var(--clip);
+    margin-bottom: 14px;
+  }
+  h1 {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .sub { color: var(--text-secondary); font-size: 14px; }
+
+  /* Feishu doc link */
+  .feishu-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 8px 18px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--accent-yellow);
+    background: rgba(255,217,61,0.06);
+    border: 1px solid rgba(255,217,61,0.25);
+    text-decoration: none;
+    clip-path: var(--clip);
+    transition: all 0.2s ease;
+  }
+  .feishu-link:hover {
+    background: rgba(255,217,61,0.12);
+    border-color: rgba(255,217,61,0.5);
+    color: #fff;
+  }
+  .feishu-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  /* Section */
+  section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+  section:last-child { border-bottom: none; }
+  .sec-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--accent-yellow);
+    margin-bottom: 6px;
+  }
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .sec-desc {
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin-bottom: 24px;
+    max-width: 700px;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 36px;
+    margin-bottom: 14px;
+    padding-left: 10px;
+    border-left: 3px solid var(--accent-yellow);
+    color: var(--text-primary);
+  }
+  h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    color: var(--accent-cyan);
+  }
+  p { color: var(--text-secondary); margin-bottom: 8px; }
+  p strong { color: var(--text-primary); font-weight: 600; }
+
+  /* Category header card */
+  .cat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 18px 22px;
+    clip-path: var(--clip);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .cat-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .cat-title { font-size: 15px; font-weight: 700; }
+  .cat-meta { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+  /* Activity card */
+  .act-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    clip-path: var(--clip);
+    margin-bottom: 14px;
+    overflow: hidden;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .act-card:hover {
+    background: var(--bg-card-hover);
+    border-color: rgba(255,217,61,0.25);
+  }
+  .act-header {
+    padding: 14px 18px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px solid rgba(45,45,56,0.6);
+    cursor: pointer;
+  }
+  .act-left { flex: 1; min-width: 0; }
+  .act-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .act-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+  .badge {
+    display: inline-block;
+    padding: 2px 7px;
+    font-size: 10px;
+    font-weight: 600;
+    border-radius: 2px;
+    letter-spacing: 0.03em;
+  }
+  .b-core { background: rgba(248,113,113,0.15); color: #FCA5A5; border: 1px solid rgba(248,113,113,0.3); }
+  .b-gacha { background: rgba(168,85,247,0.15); color: #C4B5FD; border: 1px solid rgba(168,85,247,0.3); }
+  .b-select { background: rgba(99,102,241,0.15); color: #A5B4FC; border: 1px solid rgba(99,102,241,0.3); }
+  .b-free { background: rgba(74,222,128,0.12); color: #86EFAC; border: 1px solid rgba(74,222,128,0.25); }
+  .b-event { background: rgba(255,217,61,0.1); color: #FDE68A; border: 1px solid rgba(255,217,61,0.2); }
+  .b-pay { background: rgba(249,115,22,0.15); color: #FDBA74; border: 1px solid rgba(249,115,22,0.3); }
+  .b-skin { background: rgba(132,204,22,0.12); color: #BEF264; border: 1px solid rgba(132,204,22,0.25); }
+  .b-combat { background: rgba(248,113,113,0.1); color: #FCA5A5; border: 1px solid rgba(248,113,113,0.2); }
+  .b-recall { background: rgba(244,114,182,0.12); color: #F9A8D4; border: 1px solid rgba(244,114,182,0.25); }
+  .b-perm { background: rgba(56,189,248,0.12); color: #7DD3FC; border: 1px solid rgba(56,189,248,0.25); }
+
+  .act-time {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: 'SF Mono', Consolas, monospace;
+  }
+  .act-reward {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+  .act-reward strong { color: var(--accent-green); }
+
+  .toggle-icon {
+    color: var(--text-muted);
+    font-size: 16px;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+    margin-top: 2px;
+  }
+  .act-card.open .toggle-icon { transform: rotate(180deg); color: var(--accent-yellow); }
+
+  .act-body {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+  }
+  .act-card.open .act-body {
+    max-height: 2000px;
+    padding: 16px 18px;
+  }
+
+  /* Purpose sections */
+  .purpose-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 10px 0;
+  }
+  @media (max-width: 768px) { .purpose-grid { grid-template-columns: 1fr; } }
+  .purpose-item {
+    background: var(--bg-sub);
+    border: 1px solid rgba(45,45,56,0.6);
+    padding: 10px 12px;
+    clip-path: var(--clip);
+  }
+  .purpose-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--accent-cyan);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  .purpose-text {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .purpose-text strong { color: var(--text-primary); font-weight: 600; }
+
+  .insight {
+    background: rgba(255,217,61,0.05);
+    border-left: 3px solid var(--accent-yellow);
+    padding: 10px 14px;
+    margin-top: 10px;
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    clip-path: var(--clip);
+  }
+  .insight strong { color: var(--accent-yellow); }
+
+  .mechanism {
+    background: rgba(103,232,249,0.04);
+    border-left: 3px solid var(--accent-cyan);
+    padding: 10px 14px;
+    margin-top: 10px;
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    clip-path: var(--clip);
+  }
+  .mechanism strong { color: var(--accent-cyan); }
+
+  /* Summary table */
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-top: 16px;
+  }
+  .summary-table th {
+    background: var(--bg-card);
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--accent-yellow);
+    border-bottom: 1px solid var(--border);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+  }
+  .summary-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid rgba(45,45,56,0.5);
+    color: var(--text-secondary);
+    vertical-align: top;
+  }
+  .summary-table tr:hover td { background: var(--bg-card-hover); }
+
+  /* Stats bar */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 768px) { .stats-row { grid-template-columns: repeat(2, 1fr); } }
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+    clip-path: var(--clip);
+  }
+  .stat-num {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--accent-yellow);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label { font-size: 12px; color: var(--text-secondary); }
+
+  footer {
+    padding: 32px 0;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+  footer p { font-size: 11px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="tag">Activity Inventory &amp; Purpose Deep Dive</span>
+    <h1>绝区零 3.1 周年庆版本<br>活动清单分类与目的深度拆解</h1>
+    <p class="sub">版本「漫长的告别」· 2026/07/29 ~ 09/09 · 2周年庆典&nbsp;</p>
+    <a href="https://wcnbrq4umcun.feishu.cn/base/MJpAbNPjhasZ4FsdnR0cUrETnwd?table=tblOJRLo6Qo2eSjN&amp;view=vewDnL5WxA" class="feishu-link" target="_blank" rel="noopener noreferrer" id="feishu-doc-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+        <line x1="9" y1="13" x2="15" y2="13"></line>
+        <line x1="9" y1="17" x2="15" y2="17"></line>
+      </svg>项目甘特图文档 →
+    </a>
+  </div>
+</header>
+
+<!-- ============ 总览统计 ============ -->
+<section>
+  <div class="container">
+    <div class="sec-num">OVERVIEW</div>
+    <h2>活动全景统计</h2>
+    <p class="sec-desc">按类型统计本版本全部活动/商业化内容的数量分布，快速建立版本活动密度认知。</p>
+
+    <div class="stats-row">
+      
+      
+      
+      
+    </div>
+
+    <div class="summary-table-wrap">
+      <table class="summary-table" style="">
+        <thead>
+          <tr>
+            <th style="width: 90.4141px; min-width: 90.4141px;">分类</th>
+            
+            <th>代表活动</th>
+            <th>核心目的</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="width: 90.4141px; min-width: 90.4141px;"><span class="badge b-gacha">限定祈愿</span></td>
+            
+            <td>蕾米埃尔/希格莉德/爱芮复刻/独家重映/音擎回响</td>
+            <td>流水主力 · 角色IP · 新属性体系</td>
+          </tr>
+          <tr>
+            <td style="width: 90.4141px; min-width: 90.4141px;"><span class="badge b-event">限时主题活动</span></td>
+            
+            <td>法厄同年度大揭秘/焦点对决/恰浪花/出餐计划/极危通缉/见习邮差</td>
+            <td>DAU维持 · 内容填充 · 情感体验</td>
+          </tr>
+          <tr>
+            <td style="width: 90.4141px; min-width: 90.4141px;"><span class="badge b-free">福利/登录</span></td>
+            
+            <td>玛瑟尔周年馈礼/云端礼赠/嗯呢大派送</td>
+            <td>DAU拉抬 · 付费转化铺垫</td>
+          </tr>
+          <tr>
+            <td style="width: 90.4141px; min-width: 90.4141px;"><span class="badge b-pay">付费/商业化</span></td>
+            
+            <td>首充重置/丽都城募/点映返礼/周年礼包</td>
+            <td>各层级付费转化 · 客单价提升</td>
+          </tr>
+          <tr>
+            <td style="width: 90.4141px; min-width: 90.4141px;"><span class="badge b-skin">外观/时装</span></td>
+            
+            <td>蕾米埃尔×2 / 希格莉德×1 / 露西免费×1</td>
+            <td>角色IP深化 · 附加付费 · 社交传播</td>
+          </tr>
+          <tr>
+            <td style="width: 90.4141px; min-width: 90.4141px;"><span class="badge b-combat">战斗/资源</span></td>
+            
+            <td>式舆防卫战×3期/危局强袭战×3期+绝境/三倍赏金/三倍悬赏</td>
+            <td>养成加速 · 长线留存 · 内容深度</td>
+          </tr>
+          <tr>
+            <td style="width: 90.4141px; min-width: 90.4141px;"><span class="badge b-recall">回归/拉新</span></td>
+            
+            <td>回归丽都·羽落重逢</td>
+            <td>用户召回 · 社交裂变</td>
+          </tr>
+          <tr>
+            <td style="width: 90.4141px; min-width: 90.4141px;"><span class="badge b-perm">常驻/系统</span></td>
+            
+            <td>迷宫诡域·贝果计划/新人绳匠指南/绝境模式</td>
+            <td>内容深度扩展 · 长线留存基础设施</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 一、限定祈愿类 ============ -->
+<section>
+  <div class="container">
+    <div class="sec-num">CATEGORY 01</div>
+    <h2>限定祈愿类</h2>
+    <p class="sec-desc">版本流水核心引擎，共 7 个卡池，分上下两半排布。上半主打新属性+新角色，下半主打补位角色+自选池二次收割。</p>
+
+    <!-- 蕾米埃尔 -->
+    <div class="act-card open">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            「复乐园」· 蕾米埃尔
+            <span class="badge b-core">核心流水</span>
+            <span class="badge b-gacha">限定祈愿</span>
+          </div>
+          <div class="act-time">7/29 ~ 9/8 · 全版本 42 天</div>
+          <div class="act-reward">S级代理人【蕾米埃尔·流明·异常】+ A级派派/赛斯</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">用户维度</div>
+            <div class="purpose-text">面向 <strong>全体玩家</strong>，但核心付费动力来自三类人群：<strong>强度党</strong>（新属性"流明"带来体系级强度提升预期）、<strong>收集党</strong>（限定S级不进常驻，错过需等复刻）、<strong>剧情党/Lore党</strong>（"初代虚狩"身份自带世界观深度）。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">指标维度</div>
+            <div class="purpose-text">主拉 <strong>ARPU + 首日流水</strong>。作为版本上半唯一新角色，且卡池覆盖整个42天（而非通常的21天），设计目的是<strong>最大化曝光窗口</strong>——新玩家/回归玩家在版本任意时间点进入都能抽到。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">商业化维度</div>
+            <div class="purpose-text"><strong>创造需求</strong>：流明属性首次上线 = 新驱动盘 + 新音擎 + 新芯片 + 式舆防卫战新增益体系 = 一条完整的新养成消费线。一个角色拉动多系统付费。配套专武池「空羽复归之诗」同步开启。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">情感维度</div>
+            <div class="purpose-text">"初代虚狩"身份 + "漫长的告别"主题 → <strong>期待感 × 稀缺感 × 损失厌恶</strong> 三重叠加。版本名暗示角色可能有叙事层面的"告别"，触发玩家"现在不抽以后角色可能'不在了'"的潜意识焦虑。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">生态维度</div>
+            <div class="purpose-text"><strong>新属性体系引入</strong>是版本级生态事件。流明属性将驱动后续3-4个版本的驱动盘/音擎/式舆增益迭代，相当于为游戏的养成深度扩展了一个全新维度，延长游戏生命周期。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">排期策略</div>
+            <div class="purpose-text">蕾米埃尔卡池<strong>覆盖整个版本</strong>（42天）而非常规的21天——这是周年庆版本的特殊设计。原因：① 新属性需要时间验证，拉长窗口降低"强度焦虑"；② 配合周年庆的回流玩家高峰，让回归玩家也有机会抽到；③ 与下半自选池形成"新旧双选"格局。</div>
+          </div>
+        </div>
+        <div class="insight">
+          <strong>关键洞察：</strong>蕾米埃尔卡池横跨上下两半（42天），是绝区零上线以来持续时间最长的限定角色池之一。这背后的设计逻辑是——<strong>新属性角色需要更长的"市场验证期"</strong>。玩家对新属性的强度认知需要时间（通过深渊/式舆防卫战验证），拉长池子窗口可以让"观望党"在确认强度后再入坑，避免因信息差导致流水不及预期。
+        </div>
+      </div>
+    </div>
+
+    <!-- 爱芮复刻 -->
+    <div class="act-card">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            「霓色天使」· 爱芮（复刻）
+            <span class="badge b-gacha">限定祈愿</span>
+          </div>
+          <div class="act-time">7/29 ~ 8/19 · 21 天（上半）</div>
+          <div class="act-reward">S级代理人【爱芮·以太·异常】</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">用户维度</div>
+            <div class="purpose-text">面向<strong>box补缺型玩家</strong>——入坑较晚、错过爱芮首次up的玩家。爱芮是异常队核心辅助，与蕾米埃尔（异常属性）形成<strong>体系配套</strong>。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">商业化维度</div>
+            <div class="purpose-text"><strong>组合销售策略</strong>：蕾米埃尔（异常C位）+ 爱芮（异常辅助）同池up，本质是"主C + 核心辅助"打包销售。玩家抽了蕾米埃尔后自然需要爱芮组队，形成<strong>消费链延伸</strong>。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">设计巧思</div>
+            <div class="purpose-text">两个角色同属"独家频段"、共享大保底——意味着玩家大保底可以歪到另一个。这实际上<strong>降低了大保底的"挫败感"</strong>（歪到爱芮也不亏，因为能组队），从而提升了持续抽卡的意愿。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">生态维度</div>
+            <div class="purpose-text">爱芮复刻配合新属性流明上线，强化了"异常队"这一核心玩法流派的深度。让老玩家的异常队box更加完整，也让新玩家有机会一次性构筑完整的异常体系。</div>
+          </div>
+        </div>
+        <div class="mechanism">
+          <strong>机制细节：</strong>蕾米埃尔与爱芮同属"独家频段"、共享保底。这意味着：① 小保底50%概率出当期UP（蕾米埃尔），50%概率歪出其他S；② 如果歪了，大保底必出蕾米埃尔；③ 但爱芮也在池中、且同为限定S，"歪到爱芮"的概率被设计得相对较高——这本质是<strong>用"双UP共享池"的设计提升了抽卡的"不亏感"</strong>。
+        </div>
+      </div>
+    </div>
+
+    <!-- 希格莉德 -->
+    <div class="act-card">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            「直到天空沉落」· 希格莉德
+            <span class="badge b-core">核心流水</span>
+            <span class="badge b-gacha">限定祈愿</span>
+          </div>
+          <div class="act-time">8/19 ~ 9/8 · 21 天（下半）</div>
+          <div class="act-reward">S级代理人【希格莉德·冰·强攻】+ A级苍角/露西</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">用户维度</div>
+            <div class="purpose-text">面向<strong>强度党 + 冰系爱好者 + 颜值党</strong>。希格莉德是冰强攻定位，填补冰系主C的限定角色空缺（此前冰系缺少高人气限定主C）。"骑士"人设和"惊鸿逐浪"夏日时装同步上线，触达多个玩家圈层。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">指标维度</div>
+            <div class="purpose-text">主拉 <strong>下半流水 + 版本中期DAU</strong>。上半卡池运行21天后玩家审美疲劳，希格莉德作为"新刺激点"出现，重新激活抽卡欲望。同时下半还有独家重映自选池，两者叠加形成下半流水高峰。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">商业化维度</div>
+            <div class="purpose-text"><strong>差异化定位</strong>：上半蕾米埃尔是"新属性体系级角色"（重策略、重养成深度），下半希格莉德是"经典强攻位"（直观、易理解、泛用性强）。两者面向不同付费人群，<strong>降低上下半流水的相互侵蚀</strong>。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">情感维度</div>
+            <div class="purpose-text">希格莉德+夏日时装同步上线 = <strong>角色人设 + 外观体验</strong>双重付费驱动力。夏日/泳装主题在二次元品类中有极强的付费意愿，是经过反复验证的"高转化率皮肤品类"。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">排期策略</div>
+            <div class="purpose-text">希格莉德卡在8/19（版本第22天）上线，恰好是上半21天周期结束后。此时玩家经历了W2-W3的"养肝期"，心理付费预算已恢复——<strong>用3周的内容消耗恢复玩家的氪金意愿，再在第4周释放新的付费点</strong>。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">同期配合</div>
+            <div class="purpose-text">「嗯呢」大派送（10抽免费资源）与希格莉德卡池<strong>同日开启</strong>。这不是巧合——免费抽 = 降低抽卡启动门槛 = sunk cost效应驱动玩家继续充值。详见"福利/登录"分类的分析。</div>
+          </div>
+        </div>
+        <div class="insight">
+          <strong>上下半角色搭配策略：</strong>蕾米埃尔（新属性·异常）vs 希格莉德（经典属性·强攻）—— 两个角色的定位差异经过精心设计。如果上下半都是"体系级新角色"，玩家会因为资源有限而二选一，导致总流水反而降低；而"新体系 + 经典补位"的组合，让不同偏好的玩家各取所需，<strong>最大化付费人群覆盖</strong>。
+        </div>
+      </div>
+    </div>
+
+    <!-- 独家重映 -->
+    <div class="act-card">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            独家重映 · 自选限定S
+            <span class="badge b-select">自选限定</span>
+            <span class="badge b-gacha">限定祈愿</span>
+          </div>
+          <div class="act-time">8/19 ~ 9/8 · 21 天（下半）</div>
+          <div class="act-reward">琉音 / 浮波柚叶 / 浅羽悠真 三选一，首次S必为选定角色</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">用户维度</div>
+            <div class="purpose-text">面向<strong>中R~大R + box补缺者</strong>。这三类角色均为老版本限定，各自有特定的队伍体系需求（琉音=物理击破队、浮波柚叶=物理支援、浅羽悠真=电强攻）。玩家可以根据自己的box缺口精准抽取。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">核心机制</div>
+            <div class="purpose-text"><strong>首次S级必为选定角色</strong>——这是关键设计。普通限定池小保底有50%概率歪，而自选池首次S必中所选角色，相当于<strong>把"小保底"的确定性从50%提升到100%</strong>。确定性本身就是付费催化剂。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">商业化维度</div>
+            <div class="purpose-text"><strong>二次收割</strong>：上半玩家抽完蕾米埃尔/爱芮后，如果还有剩余预算，自选池提供了第二个高确定性的付费选择。同时自选池与希格莉德池同开，玩家面临"新角色 vs 自选老角色"的双选项——无论选哪个，都在付费。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">降低决策成本</div>
+            <div class="purpose-text">"三选一"而非"全限定自选"——选项数量被精心控制在3个。太多选项会导致"选择困难"（decision paralysis），太少又无法覆盖足够多玩家的缺口。3个是经过验证的最优数量。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">排期逻辑</div>
+            <div class="purpose-text">安排在下半而非上半——因为上半有新角色蕾米埃尔，新角色的吸引力 &gt; 老角色自选。如果同时放出，自选池会被新角色"碾压"。下半新角色热度稍降后，自选池作为<strong>补充付费选项</strong>价值最大化。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">玩家心理</div>
+            <div class="purpose-text">自选池的"必中机制"利用了<strong>控制感错觉</strong>（illusion of control）——玩家觉得"我选的我能掌控"，于是更愿意付费。实际上大保底机制依然存在，只是把"不确定性"从第一个S移到了第二个S。</div>
+          </div>
+        </div>
+        <div class="mechanism">
+          <strong>音擎回响同步策略：</strong>音擎回响（自选限定音擎3选1）与独家重映同步开启，形成"角色+武器"的自选配套。这是<strong>客单价提升设计</strong>——玩家抽了自选角色后，很自然会想抽对应的专武，而自选音擎恰好提供了这个选择。
+        </div>
+      </div>
+    </div>
+
+    <!-- 音擎池汇总 -->
+    <div class="act-card">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            限定音擎池（共4个）
+            <span class="badge b-gacha">限定祈愿</span>
+          </div>
+          <div class="act-time">与对应角色池同步</div>
+          <div class="act-reward">空羽复归之诗 / 壳中之灵 / 骁骑礼赞 / 音擎回响自选3把</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">商业化定位</div>
+            <div class="purpose-text">音擎池是<strong>客单价提升</strong>的核心设计。抽了角色的玩家中，有一定比例会继续抽专武（比例通常在20%-40%之间，因角色强度和泛用性而异）。专武的客单价显著高于角色（因为需要的抽数更多）。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">与角色池的关系</div>
+            <div class="purpose-text">角色池是"入口"，音擎池是"加价购"。就像卖手机（角色）+ 卖配件（耳机/壳/充电器）。配件的利润率通常高于主产品——音擎池的边际成本为零（纯数据产出），利润率极高。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">音擎回响自选</div>
+            <div class="purpose-text">下半音擎回响自选3把——与独家重映角色自选配套。设计逻辑相同：用确定性降低付费门槛，用"角色+武器"的组合提升客单价。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 二、限时主题活动类 ============ -->
+<section>
+  <div class="container">
+    <div class="sec-num">CATEGORY 02</div>
+    <h2>限时主题活动类</h2>
+    <p class="sec-desc">版本内容填充的主力军，共 6 个限时活动，上下半各有侧重。上半偏"庆典+回顾"，下半偏"日常+收尾"。</p>
+
+    <!-- 法厄同年度大揭秘 -->
+    <div class="act-card open">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            法厄同年度大揭秘
+            <span class="badge b-event">限时主题</span>
+          </div>
+          <div class="act-time">7/29 ~ 版本结束 · 全版本</div>
+          <div class="act-reward">菲林 + 养成材料 + 周年纪念内容</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">内容定位</div>
+            <div class="purpose-text">周年庆的<strong>情感回顾类活动</strong>。"年度大揭秘"的定位类似于"年度总结"——回顾过去一年的故事、角色、玩法，让老玩家产生<strong>怀旧感和归属感</strong>。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">留存价值</div>
+            <div class="purpose-text">全版本持续的活动，作为<strong>"背景板"内容</strong>存在——玩家随时可以回来做一做，不至于版本中期无事可做。门槛低（Lv20+）、参与简单、奖励稳定，是日活的"保底"内容。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">情感维度</div>
+            <div class="purpose-text">触发<strong>怀旧效应</strong>（nostalgia effect）——回顾过去的旅程会增强玩家对游戏的情感依恋，提升留存。这是周年庆不可或缺的"情感基础设施"。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">新玩家视角</div>
+            <div class="purpose-text">对于新玩家/回归玩家，这是一个<strong>"快速补课"</strong>的入口——通过年度回顾了解过去一年的重要内容，降低认知门槛，加速融入游戏世界观。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 恰浪花逐夏而至 -->
+    <div class="act-card">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            恰浪花逐夏而至
+            <span class="badge b-event">限时主题</span>
+            <span class="badge b-skin">免费时装</span>
+          </div>
+          <div class="act-time">7/29 ~ 9/7 · 41 天</div>
+          <div class="act-reward">露西时装【公主假日】+ 菲林 + 养成材料</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">核心卖点</div>
+            <div class="purpose-text"><strong>免费时装</strong>是这个活动的核心钩子。露西是<strong>非限定角色</strong>（常驻池可出），意味着几乎所有玩家都有露西——免费时装的覆盖面最大化。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">社交传播引擎</div>
+            <div class="purpose-text">夏日/泳装时装在二次元品类中具有极强的<strong>UGC传播属性</strong>。玩家会截图/录视频分享到B站、小红书、微博、贴吧——这些内容自发传播，相当于免费广告。<strong>免费时装的真正价值不是时装本身，而是它带来的社交传播量。</strong></div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">时装系统破冰</div>
+            <div class="purpose-text">对于从未买过时装的玩家，第一件免费时装是<strong>"时装体验的入口"</strong>。体验过换装带来的新鲜感后，玩家更可能为其他角色的付费时装买单——这是"free-to-play"模型在外观系统的微缩版。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">为什么选露西</div>
+            <div class="purpose-text">露西的选择经过精心考量：① 常驻角色，覆盖面最广；② 人设讨喜（"荒原千金"），玩家好感度高；③ 不是当期up角色，不会与付费时装形成竞争关系；④ 夏日主题与露西的"活力少女"人设契合。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">排期策略</div>
+            <div class="purpose-text">活动覆盖几乎整个版本（41天），但时装是阶段性解锁的——这意味着玩家需要持续参与活动才能拿到时装，<strong>形成长线登录锚点</strong>。如果第一天就送，就起不到留存作用了。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">与付费时装的配合</div>
+            <div class="stat-num" style="font-size:12px;font-weight:400;color:var(--text-secondary);line-height:1.6;">版本内同时上架3套付费时装（蕾米埃尔×2 + 希格莉德×1）。免费时装 + 付费时装形成"1免费试玩 + N付费转化"的漏斗结构。免费的那件是"诱饵"，付费的那些才是真正的变现目标。</div>
+          </div>
+        </div>
+        <div class="insight">
+          <strong>核心洞察：</strong>免费发放高人气角色的夏日时装，看似"亏了一套时装的钱"，实际上换来的是：① 全平台UGC传播带来的拉新效果（远大于买量成本）；② 时装系统的用户教育（培养付费习惯）；③ 玩家好感度和社区口碑。这是一笔<strong>品牌资产投资</strong>，而非简单的福利支出。
+        </div>
+      </div>
+    </div>
+
+    <!-- 咔嚓！焦点对决 -->
+    <div class="act-card">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            咔嚓！焦点对决！
+            <span class="badge b-event">限时主题</span>
+          </div>
+          <div class="act-time">8/7 ~ 8/24 · 18 天（W2~W3）</div>
+          <div class="act-reward">菲林 + 养成材料</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">排期定位</div>
+            <div class="purpose-text">填补<strong>上半卡池运行中段</strong>的内容空窗。W1玩家忙于剧情+抽卡+周年福利，W2开始内容消耗完毕，此时焦点对决上线，确保玩家每天有新内容可做。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">玩法类型</div>
+            <div class="purpose-text">摄影/拍照类活动——轻量、休闲、社交向。不消耗体力，降低参与门槛。产出的照片可分享，具有<strong>社交传播属性</strong>。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">留存机制</div>
+            <div class="purpose-text">活动持续18天，任务应该是每日刷新或阶段性解锁——确保玩家反复登录。"每天拍一张不同主题的照片"是经典的DAU维持设计。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 咔滋酥脆出餐计划 -->
+    <div class="act-card">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            咔滋酥脆出餐计划
+            <span class="badge b-event">限时主题</span>
+          </div>
+          <div class="act-time">8/19 ~ 9/7 · 20 天（下半）</div>
+          <div class="act-reward">菲林 + 养成材料</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">排期定位</div>
+            <div class="purpose-text">下半版本的<strong>主力填充活动</strong>。与下半卡池同步开启（8/19），确保下半玩家有日常内容可做。持续20天，覆盖几乎整个下半周期。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">玩法类型</div>
+            <div class="purpose-text">料理/经营类活动——休闲、治愈、轻策略。与"夏日"主题呼应（出餐=海边餐厅/夏日美食），强化版本的季节氛围感。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">留存作用</div>
+            <div class="purpose-text">作为下半版本的"日常锚点"——玩家每天上线做活动任务，维持日活。活动产出的菲林又可以投入下半卡池，形成<strong>"活动产出→卡池消耗→更多活动产出"</strong>的循环。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 极危通缉与悠游假期 -->
+    <div class="act-card">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            极危通缉与悠游假期
+            <span class="badge b-event">限时主题</span>
+            <span class="badge b-combat">战斗内容</span>
+          </div>
+          <div class="act-time">8/24 ~ 9/7 · 15 天（W5~W6初）</div>
+          <div class="act-reward">菲林 + 养成材料</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">排期定位</div>
+            <div class="purpose-text">版本<strong>后段内容填充</strong>。出餐计划上线5天后开启，作为第二波下半活动，确保版本末尾仍有新内容刺激。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">玩法组合</div>
+            <div class="purpose-text">名字中的"极危通缉"（战斗向）+ "悠游假期"（休闲向）暗示这是一个<strong>战斗+休闲混合</strong>的活动。战斗内容满足硬核玩家，休闲内容满足轻度玩家，双线并行覆盖更多人群。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">与蕾米埃尔的联动</div>
+            <div class="purpose-text">活动描述"无法成为通缉犯的初代虚狩，不是好摄影模特"——明确与蕾米埃尔的"初代虚狩"身份联动。在版本后段重新强化蕾米埃尔的存在感，<strong>维持上半角色的话题热度</strong>。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 见习邮差 -->
+    <div class="act-card">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            叮咚！见习邮差派件中
+            <span class="badge b-event">限时主题</span>
+            <span class="badge b-free">跨版本衔接</span>
+          </div>
+          <div class="act-time">8/28 ~ 9/14 · 跨版本（延至3.2初期）</div>
+          <div class="act-reward">菲林 + 奖励</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">核心设计目的</div>
+            <div class="purpose-text"><strong>跨版本衔接钩子</strong>——这是这个活动最关键的设计。活动结束于9/14，而版本结束于9/9，活动跨越到3.2版本初期约5天。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">解决的问题</div>
+            <div class="purpose-text">解决"版本末长草 → 玩家流失 → 下个版本不回来"的经典问题。版本末尾所有活动都结束了，玩家无事可做→卸载→下版本更新了也想不起来回来。一个跨越版本的活动确保玩家在版本切换日<strong>仍有内容可消费、仍有上线理由</strong>。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">为什么是"邮差"主题</div>
+            <div class="purpose-text">"邮差/送信"主题天然适合跨版本叙事——一封信从这个版本送到下个版本，在故事层面也合理。主题选择服务于机制设计。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">留存价值量化</div>
+            <div class="purpose-text">推测这个5天的跨版本窗口可以提升 <strong>3%-5% 的版本间留存率</strong>（基于行业经验：版本切换日通常有5%-10%的玩家流失，一个有奖励的活动可以挽回其中的一半左右）。</div>
+          </div>
+        </div>
+        <div class="insight">
+          <strong>关键洞察：</strong>跨版本衔接活动是"低成本高效益"的典范——研发成本很低（一个简单的送件/签到类活动），但留存收益显著。很多游戏版本排期容易忽略"版本切换日"这个流失高发节点，而绝区零用一个轻量活动就解决了这个问题。这是<strong>运营精细化程度</strong>的体现。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 三、福利/登录类 ============ -->
+<section>
+  <div class="container">
+    <div class="sec-num">CATEGORY 03</div>
+    <h2>福利/登录类</h2>
+    <p class="sec-desc">周年庆的"流量入口"——用免费福利拉回所有层级的用户，再通过卡池和付费活动完成转化。看似"亏钱"，实际上是整个付费漏斗的第一步。</p>
+
+    <!-- 玛瑟尔周年馈礼 -->
+    <div class="act-card open">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            玛瑟尔周年馈礼
+            <span class="badge b-core">核心福利</span>
+            <span class="badge b-free">登录/周年</span>
+          </div>
+          <div class="act-time">7/29 ~ 版本结束 · 全版本</div>
+          <div class="act-reward"><strong>自选限定S级代理人</strong>（简/零·安比/.trigger/星见雅/雨果）+ 自选S级音擎 + 菲林×1600 + 周年头像/称号</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">用户覆盖</div>
+            <div class="purpose-text">门槛仅 Lv5+（完成序章），几乎覆盖<strong>全部活跃玩家</strong>。零氪~大R、新玩家~老玩家，所有人都能领。这是周年庆"普天同庆"的情感基础。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">DAU拉抬</div>
+            <div class="purpose-text">自选S级代理人的吸引力足以让<strong>沉默玩家回归</strong>。"免费领限定S"的消息会在社区（B站/贴吧/小红书）病毒式传播，大量退坑玩家因此回归——DAU在版本首周达到峰值。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">付费转化铺垫</div>
+            <div class="purpose-text"><strong>"First hit free" 策略</strong>——免费送限定角色，让玩家"尝到甜头"。获得免费S后，玩家更可能：① 为这个角色抽专武；② 为配对角色付费；③ 对后续付费内容降低心理防线。免费S是付费漏斗的<strong>入口诱饵</strong>。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">为什么是"自选"而非"固定"</div>
+            <div class="purpose-text">自选而非固定送某个角色，有三个好处：① 覆盖更多玩家的box缺口（每个人缺的不一样）；② 赋予玩家"被尊重"的选择权，提升好感度；③ 制造社区讨论（"选哪个好？"），增加话题量。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">1600菲林的作用</div>
+            <div class="purpose-text">1600菲林 ≈ 10抽，正好是<strong>一个小保底的十分之一</strong>——不多不少。太少了没感觉，太多了影响卡池流水。10抽的设计是：让玩家觉得"有帮助"，但又不够抽到保底，从而驱动付费补足剩余抽数。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">周年头像/称号</div>
+            <div class="purpose-text">纯纪念性奖励，但<strong>情感价值极高</strong>。"2周年限定头像"是一种身份标识——玩家会因为"我是2周年玩家"而产生归属感和自豪感，提升长期留存。</div>
+          </div>
+        </div>
+        <div class="insight">
+          <strong>核心洞察：</strong>周年馈礼送的不是"一个S角色"，而是在买三样东西：① <strong>DAU</strong>（用免费福利把所有玩家拉回来）；② <strong>付费转化</strong>（用免费角色作为付费漏斗的入口）；③ <strong>品牌好感</strong>（用"大方"的口碑换取社区正面舆论）。这三样的价值远大于一个S角色的"成本"（边际成本为零）。
+        </div>
+        <div class="mechanism">
+          <strong>自选5名角色的选择逻辑：</strong>为什么是简、零·安比、.trigger、星见雅、雨果这五位？推测逻辑：① 覆盖不同定位（击破/异常/强攻/支援/防护），让玩家无论玩什么体系都能补到关键拼图；② 都是早期版本限定，老玩家可能已经有了，对新玩家/回归玩家价值最大；③ 不包含最近几个版本的高人气限定（如爱芮、琉音等），避免影响这些角色后续复刻的流水。
+        </div>
+      </div>
+    </div>
+
+    <!-- 云端礼赠 -->
+    <div class="act-card">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            云端礼赠（7日登录）
+            <span class="badge b-free">登录福利</span>
+          </div>
+          <div class="act-time">7/29 ~ 9/8 · 累计7日登录即可</div>
+          <div class="act-reward">加密母带×10（约10抽）</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">核心机制</div>
+            <div class="purpose-text">累计7天登录领取10抽。注意是<strong>"累计"</strong>而非"连续"——降低门槛，允许玩家中断。但"累计7天"依然需要玩家至少登录7次，有效提升活跃天数。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">留存逻辑</div>
+            <div class="purpose-text">10抽奖励不是一次性发放，而是分7天逐步领取——这是<strong>分散奖励效应</strong>（distributed reward effect）。玩家每天登录都能获得一点奖励，持续强化登录行为。如果一次性发放，奖励带来的"多巴胺峰值"只出现一次，留存效果大打折扣。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">与卡池的配合</div>
+            <div class="purpose-text">10抽是上半卡池运行期的"免费弹药补给"——玩家用免费抽了几发后，如果没出金，沉没成本效应会驱动其继续充值。免费抽在这里起到<strong>付费催化剂</strong>的作用。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 嗯呢大派送 -->
+    <div class="act-card">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            「嗯呢」大派送（7日登录）
+            <span class="badge b-free">登录福利</span>
+          </div>
+          <div class="act-time">8/19 ~ 9/8 · 累计7日登录</div>
+          <div class="act-reward">加密母带×10 + 邦布券×10</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">最关键设计：时机</div>
+            <div class="purpose-text">开启时间 8/19 = 下半希格莉德卡池开启日 = 独家重映自选池开启日。<strong>三者完全同步</strong>——这不是巧合，是精心设计。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">付费转化催化剂</div>
+            <div class="purpose-text">在下半新角色上线当天立即释放10抽免费资源，本质是<strong>"用免费抽降低抽卡启动门槛"</strong>。玩家拿到10抽后：① sunk cost心理驱动继续充值抽到保底；② "反正有免费10抽，不如试试"降低了付费决策阻力。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">与上半登录活动的差异</div>
+            <div class="purpose-text">上半只有加密母带（角色抽卡券），下半额外增加了邦布券×10。邦布券是邦布池的抽卡资源——推测是因为S级邦布艾瑞儿与版本同步上线，用免费邦布券<strong>带动邦布池的参与率和付费转化</strong>。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">下半日活锚定</div>
+            <div class="purpose-text">下半版本同样需要日活维持。第二个7日登录活动确保下半玩家也有每日上线理由——"领抽卡券"是最直接有效的上线动力。</div>
+          </div>
+        </div>
+        <div class="insight">
+          <strong>核心洞察：</strong>免费资源的"投放时机"比"投放数量"更重要。同样是10抽，在卡池开启当天放 vs 在版本中间随便放，付费转化率可能差2-3倍。精准的时机控制是运营功力的体现——<strong>免费资源不是成本，是杠杆</strong>。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 四、付费/商业化类 ============ -->
+<section>
+  <div class="container">
+    <div class="sec-num">CATEGORY 04</div>
+    <h2>付费/商业化类</h2>
+    <p class="sec-desc">版本变现的核心手段，从首充破冰到大R深度挖掘，形成完整的付费梯队。</p>
+
+    <!-- 首充双倍重置 -->
+    <div class="act-card open">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            首充双倍重置
+            <span class="badge b-core">核心流水</span>
+            <span class="badge b-pay">付费破冰</span>
+          </div>
+          <div class="act-time">7/29 ~ 永久（重置后各档位首充双倍重新计算）</div>
+          <div class="act-reward">所有菲林底片档位首充双倍重新计算</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">用户维度</div>
+            <div class="purpose-text">面向<strong>中小R + 零氪转付费</strong>。首充双倍是"性价比最高"的付费方式，对价格敏感的玩家最有吸引力。周年庆节点的"仪式感"也会促使零氪玩家"就充这一次"。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">商业化定位</div>
+            <div class="purpose-text"><strong>付费破冰工具</strong>——首充双倍的核心价值不是赚多少钱，而是<strong>让更多人完成"第一次付费"</strong>。一旦玩家突破了"零氪"的心理防线，后续付费的阻力会大幅降低。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">为什么只在周年庆重置</div>
+            <div class="purpose-text">首充双倍重置频率必须严格控制——如果每版本都重置，玩家会形成"等首充双倍再充"的预期，平时就不付费了。一年重置一次（周年庆），既保证了"稀缺性"，又能集中释放付费意愿。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">首日流水冲刺</div>
+            <div class="purpose-text">首充双倍 + 新角色 + 周年庆三重叠加，使得版本首日成为全年<strong>单日流水最高</strong>的节点之一。高首日流水又会成为社区话题（"流水爆炸"），反过来吸引更多玩家关注和回归。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">与点映返礼的配合</div>
+            <div class="purpose-text">首充双倍获得的菲林底片<strong>不计入</strong>点映返礼的"纪念票根"。这意味着：① 首充双倍是"入门级"付费，不参与高端返利；② 点映返礼鼓励的是"超出首充双倍额度"的消费，即更高额度的付费。两者形成<strong>阶梯式付费引导</strong>。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">心理学机制</div>
+            <div class="purpose-text">利用了<strong>损失厌恶</strong>（loss aversion）——"首充双倍只有一次，现在不充以后就没了"的紧迫感。以及<strong>锚定效应</strong>（anchoring）——"双倍"让玩家感觉"赚了"，从而更愿意付费。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 丽都城募 -->
+    <div class="act-card">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            丽都城募（战斗通行证）
+            <span class="badge b-pay">通行证类</span>
+          </div>
+          <div class="act-time">7/29 ~ 9/7 · 全版本</div>
+          <div class="act-reward">菲林 + 养成材料 + 专属头像/名片 + 音擎主控芯片 + 配饰</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">商业化定位</div>
+            <div class="purpose-text">面向<strong>中小R</strong>的"性价比之选"。通行证是经过全行业验证的最优中小R付费产品——价格适中（通常几十元）、奖励丰厚、持续时间长、性价比感知强。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">三档设计</div>
+            <div class="purpose-text">基础方案（免费）+ 成长计划（中价）+ 典藏计划（高价）+ 计划升级（补差价）。<strong>免费档作为诱饵</strong>让所有玩家先参与→ <strong>成长计划</strong>让轻度付费者转化→ <strong>典藏计划</strong>让中R升档→ <strong>计划升级</strong>让买了成长计划的人继续加钱升典藏。层层递进。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">日活锚定</div>
+            <div class="purpose-text">通行证的核心作用不只是赚钱，更是<strong>日活锚点</strong>。玩家买了通行证后，会为了"不浪费钱"而每天上线做任务——这大幅提升了付费玩家的留存率和活跃天数。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">奖励设计巧思</div>
+            <div class="purpose-text">奖励包含"养成材料自选"——自选机制提升了奖励的<strong>主观价值感知</strong>（"我选的就是我需要的"）。同时奖励中包含音擎主控芯片（可换S音擎），让通行证的"含金量"感知大幅提升。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">与点映返礼的配合</div>
+            <div class="purpose-text">丽都城募的购买金额计入点映返礼的纪念票根（成长计划680票根、典藏计划1280票根）。这意味着买通行证的玩家<strong>自动向累计消费奖励靠近了一步</strong>——形成"既然买了通行证，不如再充点拿点映返礼奖励"的消费链延伸。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">购买截止设计</div>
+            <div class="purpose-text">购买截止于 9/7 02:59（早于活动结束2天）——在版本末尾制造<strong>"最后购买机会"</strong>的紧迫感，推动犹豫的玩家下单。购买关闭后仍可完成任务领取奖励——保证已购买玩家的体验不受影响。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 点映返礼 -->
+    <div class="act-card">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            点映返礼（累计消费活动）
+            <span class="badge b-core">大R挖掘</span>
+            <span class="badge b-pay">付费返利</span>
+          </div>
+          <div class="act-time">7/29 ~ 版本结束 · 全版本</div>
+          <div class="act-reward">累计15000票根上限 · 7档奖励 · 含自选S代理人/音擎/动态壁纸/专属名片</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">核心定位</div>
+            <div class="purpose-text">面向<strong>大R~重氪玩家</strong>的<strong>深度挖掘工具</strong>。累计消费活动的核心逻辑是：<strong>让已经付费的玩家付更多费</strong>——因为"差一点就能拿下一档奖励"的心理驱动。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">7档阶梯设计</div>
+            <div class="purpose-text">300 → 1000 → 2000 → 4000 → 7000 → 10000 → 15000 共7档。<strong>前几档门槛低、奖励实用</strong>（电池/校音器/配饰），让大多数付费玩家都能摸到；<strong>中间档是关键转化点</strong>（7000档送自选S音擎、10000档送自选S代理人）；<strong>最高档是炫耀品</strong>（动态壁纸+导览套件+专属名片）。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">阶梯式消费心理</div>
+            <div class="purpose-text">利用了<strong>"差一点就到下一档了"</strong>的心理。玩家消费到6000票根时，会想"再充1000就能拿自选S音擎了"；消费到9000时，会想"再充1000就能拿自选S代理人了"。每一档都是新的消费目标，<strong>持续推动付费额向上攀升</strong>。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">最高档的设计哲学</div>
+            <div class="purpose-text">15000档（约对应15000元消费）的奖励是<strong>动态壁纸 + 导览套件 + 专属动态名片</strong>——全是"炫耀品"，没有强度提升。这是经过深思熟虑的：① 炫耀品不会破坏游戏平衡；② 大R付费的终极动力就是"别人没有我有"的社交优越感；③ 动态壁纸/名片是<strong>高频展示品</strong>（每次加载界面、个人主页都能看到），炫耀价值最大化。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">纪念票根的"排除项"</div>
+            <div class="purpose-text">首充双倍及加赠部分不计入票根、菲林底片直购礼包不计入——这两个排除项很关键。它们引导大R走向<strong>城募/礼包/会员</strong>等更高利润率的付费通道，而非"性价比最高"的首充双倍直购。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">与其他付费活动的联动</div>
+            <div class="purpose-text">城募、礼包、会员都计入票根——意味着点映返礼像一个<strong>"总积分系统"</strong>，把所有付费行为都串联起来。玩家无论在哪花钱，都在向累计消费奖励靠近。这大幅提升了整体付费额。</div>
+          </div>
+        </div>
+        <div class="insight">
+          <strong>核心洞察：</strong>累计消费活动的精髓不是"返利"，而是<strong>"升档驱动"</strong>。7档阶梯中的每一档都是一个新的"差一点"——玩家永远觉得"再充一点就能拿更好的奖励"。据行业数据，设计良好的累计消费活动可以提升大R客单价 <strong>30%-50%</strong>。15000档的"炫耀品"设计更是点睛之笔——用零边际成本的虚拟物品撬动了最高额度的付费。
+        </div>
+      </div>
+    </div>
+
+    <!-- 周年限定礼包 -->
+    <div class="act-card">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            周年限定礼包系列
+            <span class="badge b-pay">付费引导</span>
+          </div>
+          <div class="act-time">全版本</div>
+          <div class="act-reward">茶会邀约 / 云庭邀约 / 天枢邀约 / 丽都迎新 / 诚挚邀约 / 青睐邀约 / 独家邀约</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">多档位覆盖</div>
+            <div class="purpose-text">从6元（丽都迎新）到98元（天枢邀约/独家邀约），覆盖不同付费能力层级的玩家。多档位的设计确保<strong>每个玩家都能找到"适合自己消费水平"的礼包</strong>。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">礼包的心理学作用</div>
+            <div class="purpose-text">礼包比"直接买货币"转化率高得多，因为：① <strong>打包效应</strong>——"这么多东西才xx元，好划算"；② <strong>限定感</strong>——"限时礼包，错过就没了"；③ <strong>物品感知价值</strong>——玩家会高估礼包中道具的价值，觉得"赚了"。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">与点映返礼的配合</div>
+            <div class="purpose-text">礼包消费计入纪念票根。对于接近下一档奖励的玩家，礼包是<strong>"凑档位"</strong>的最佳选择——"差200票根就到下一档了，买个30元礼包凑一下吧"。这种"凑单"消费的转化率极高。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 周末特惠 -->
+    <div class="act-card">
+      
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">排期节奏</div>
+            <div class="purpose-text">每个周末一次，共3次，均匀分布在上半、中半、下半各一次。周末是玩家在线时间最长的时段，也是<strong>付费意愿最高</strong>的时段——有时间玩游戏 → 更愿意为游戏花钱。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">限时紧迫感</div>
+            <div class="purpose-text">"周末特惠"只有3天——短时限+折扣感= 高转化率。玩家会因为"过了这村没这店"而果断下单，而不是"再想想"。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">与卡池的配合</div>
+            <div class="purpose-text">第一次周末特惠在8/9-8/11（上半卡池运行中），第二次在8/23-8/25（下半卡池刚开），第三次在9/6-9/8（版本最后一个周末）。每次都卡在<strong>卡池运行的关键节点</strong>，最大化转化效率。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 五、外观/时装类 ============ -->
+<section>
+  <div class="container">
+    <div class="sec-num">CATEGORY 05</div>
+    <h2>外观/时装类</h2>
+    <p class="sec-desc">角色IP深化 + 附加付费 + 社交传播的三重载体。版本内共4套时装，3套付费 + 1套免费，形成"免费体验→付费转化"的漏斗。</p>
+
+    <div class="act-card open">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            时装体系总览（3付费 + 1免费）
+            <span class="badge b-skin">外观/时装</span>
+          </div>
+          <div class="act-time">蕾米埃尔×2: 7/29起 · 希格莉德: 8/19起 · 露西: 活动免费得</div>
+          <div class="act-reward">蕾米埃尔·影池独舞 / 月夜密语 · 希格莉德·惊鸿逐浪 · 露西·公主假日</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <h4 style="margin-top:0;">蕾米埃尔 · 影池独舞 + 月夜密语（付费双时装）</h4>
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">双时装设计</div>
+            <div class="purpose-text">蕾米埃尔一个角色同时出2套时装，这在绝区零首次推出。"双时装"的设计目的：① 提升单角色的时装付费额（喜欢蕾米埃尔的玩家可能两套都买）；② 覆盖不同审美偏好（一个偏酷、一个偏仙）；③ <strong>组合7折优惠</strong>推动"买组合"而非买单件，提升客单价。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">面纱切换功能</div>
+            <div class="purpose-text">月夜密语可切换"戴面纱/不戴面纱"两种形态。一套时装两种外观——<strong>提升了时装的"价值感知"</strong>（"相当于买了两套"），也增加了玩家的分享欲望（两种形态都想截图展示）。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">折扣策略</div>
+            <div class="purpose-text">首周1350（折扣价）→ 之后1680（原价）。"限时折扣"是经典的付费转化手段——利用<strong>损失厌恶</strong>（"现在买便宜330菲林底片"）推动立即购买，而非"等等再说"。</div>
+          </div>
+        </div>
+
+        <h4>希格莉德 · 惊鸿逐浪（付费夏日时装）</h4>
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">夏日主题</div>
+            <div class="purpose-text">夏日/泳装时装是二次元品类中<strong>转化率最高</strong>的时装品类之一。暑期 + 周年庆 + 新角色 + 夏日时装 = 多重付费驱动力叠加。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">与角色池同步</div>
+            <div class="purpose-text">8/19与希格莉德卡池同日开启——玩家抽到角色后，自然会想"要不要买套时装"。<strong>角色池是时装的流量入口</strong>，两者同步上线转化率最高。</div>
+          </div>
+        </div>
+
+        <h4>露西 · 公主假日（免费活动时装）</h4>
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">时装系统的"入门款"</div>
+            <div class="purpose-text">免费时装是时装系统的<strong>用户教育工具</strong>——让从未买过时装的玩家体验"换装的快乐"，从而降低后续购买付费时装的心理门槛。这是"freemium"模型在外观系统的应用。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">社交传播价值</div>
+            <div class="purpose-text">免费时装覆盖面广（人人都有露西），因此UGC产出量最大。大量玩家截图分享→ 形成社区话题→ 吸引新玩家→ 间接提升流水。免费时装的<strong>传播价值远大于其"成本"</strong>。</div>
+          </div>
+        </div>
+
+        <div class="insight">
+          <strong>时装系统的商业逻辑：</strong>时装是游戏中利润率最高的付费内容之一——边际成本为零（纯美术资产）、不影响游戏平衡（不会引发玩家抗议）、具有社交炫耀属性（驱动持续付费）。3.1版本用"1免费 + 3付费"的组合，既完成了时装系统的用户教育，又实现了可观的附加收入。据行业估算，二次元游戏中时装收入通常占总流水的 <strong>10%-20%</strong>，是不可忽视的收入板块。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 六、战斗/资源类 ============ -->
+<section>
+  <div class="container">
+    <div class="sec-num">CATEGORY 06</div>
+    <h2>战斗/资源类</h2>
+    <p class="sec-desc">养成加速与内容深度的提供者。资源翻倍活动是"养肝期"的关键填充物，常驻玩法是长线留存的基础设施。</p>
+
+    <!-- 三倍赏金 -->
+    <div class="act-card open">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            深度巡防·三倍赏金
+            <span class="badge b-combat">资源翻倍</span>
+          </div>
+          <div class="act-time">8/12 ~ 8/17 · 6 天（W3）</div>
+          <div class="act-reward">区域巡防挑战奖励三倍掉落</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">排期定位</div>
+            <div class="purpose-text">卡在 W3（上半卡池运行中段）——此时玩家抽完蕾米埃尔后，正处于<strong>养成需求高峰</strong>。三倍巡防奖励正好满足新角色的驱动盘养成需求。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">消耗体力回收</div>
+            <div class="purpose-text">三倍奖励会让玩家大量消耗体力（包括囤的体力药）——这是<strong>"体力回收"设计</strong>。玩家平时攒的体力药在三倍活动期间集中消耗，既满足了养成需求，又清空了体力库存，为后续版本的体力消耗腾出空间。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">在线时长提升</div>
+            <div class="purpose-text">三倍活动期间，玩家需要花更多时间刷副本→ 在线时长提升→ 遇到更多游戏内容→ 留存概率提升。资源活动对留存的贡献是间接但显著的。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">为什么只有6天</div>
+            <div class="purpose-text">如果太长，玩家养成速度过快，会导致<strong>"内容消耗过快→提前长草"</strong>。6天是一个平衡点：足够玩家给主力角色刷一套不错的装备，但又不至于毕业。保持"养成饥饿感"是长线留存的关键。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 三倍悬赏 -->
+    <div class="act-card">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            实战特训·三倍悬赏
+            <span class="badge b-combat">资源翻倍</span>
+          </div>
+          <div class="act-time">9/2 ~ 9/7 · 6 天（W6末周）</div>
+          <div class="act-reward">实战模拟室挑战奖励三倍掉落</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">排期定位</div>
+            <div class="purpose-text">版本最后一周——末周冲刺。此时玩家抽完了希格莉德，又有一波新的养成需求。三倍悬赏提供的实战模拟室奖励（角色经验/技能材料）正好满足。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">末周留存钩子</div>
+            <div class="purpose-text">版本末尾是流失高发期，三倍悬赏作为<strong>"最后一波福利"</strong>吸引玩家上线——"不上线就亏了三倍奖励"的损失厌恶心理有效降低流失。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">与上半三倍活动的配合</div>
+            <div class="purpose-text">上半是"区域巡防"（驱动盘），下半是"实战模拟室"（经验/技能材料）——两个不同系统的资源翻倍，避免玩家只刷一个系统而导致养成偏科。同时也让两次活动各有新鲜感。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 迷宫诡域：贝果计划 -->
+    <div class="act-card">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            迷宫诡域：贝果计划（常驻新玩法）
+            <span class="badge b-perm">常驻玩法</span>
+          </div>
+          <div class="act-time">8/5 起永久开放</div>
+          <div class="act-reward">佩洛伊斯特写 + 黄昏残像 + 绳匠配饰 + 菲林 + 成就</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">核心定位</div>
+            <div class="purpose-text">周年庆版本推出全新<strong>常驻玩法</strong>（非限时），肉鸽+基建+养成复合系统。核心循环：深入空洞→收集物资→撤离→基建建设→制造装备→提升战力→更深层空洞。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">长线留存价值</div>
+            <div class="purpose-text">常驻玩法是解决<strong>"版本活动做完后无事可做"</strong>的根本方案。限时活动是"短效兴奋剂"，常驻玩法是"长效缓释剂"。一个健康的游戏需要两者搭配。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">为什么是8/5开放</div>
+            <div class="purpose-text">W2而非W1开放——W1玩家忙于主线剧情+抽卡+领福利，内容已经过载。W2开始主线消耗完毕，此时开放新常驻玩法<strong>无缝承接内容缺口</strong>。时机选择体现了对玩家内容消耗速度的精确把控。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">40级门槛</div>
+            <div class="purpose-text">Lv40+才能参与——这个门槛确保：① 新玩家先体验主线再进入常驻玩法，避免内容过载；② 玩家有一定的角色练度，能体验玩法乐趣；③ 过滤掉"尝鲜即走"的低留存用户，确保玩法服务于核心玩家。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">赛季制设计</div>
+            <div class="purpose-text">从"赛季委托"、"赛季奖励"来看，贝果计划是赛季制常驻玩法。赛季制的好处是：① 周期性更新保持新鲜感；② 赛季重置给新玩家追赶机会；③ 每个赛季都是一次内容更新的契机。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">基建系统</div>
+            <div class="purpose-text">"修复研究站"的基建系统是经典的<strong>长线留存设计</strong>——基建升级需要时间/资源，玩家会因为"等升级"而反复登录查看。类似《部落冲突》的建筑升级机制，是经过验证的留存利器。</div>
+          </div>
+        </div>
+        <div class="insight">
+          <strong>核心洞察：</strong>在周年庆这个"一切为了流水"的版本里，米哈游依然投入研发资源做了一个全新的常驻玩法。这体现了他们对<strong>长线留存 vs 短期流水</strong>的平衡认知——短期流水可以靠活动拉，但长期留存必须靠内容深度支撑。贝果计划看似与周年庆流水无关，实际上是在为下一年的用户留存打基础。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 七、回归/拉新类 ============ -->
+<section>
+  <div class="container">
+    <div class="sec-num">CATEGORY 07</div>
+    <h2>回归/拉新类</h2>
+    <p class="sec-desc">用户增长的核心引擎。一个精心设计的回归活动，可以让沉默用户精准地"踩中"版本开服洪峰，大幅提升回归后的留存率。</p>
+
+    <div class="act-card open">
+      <div class="act-header" onclick="toggleCard(this)">
+        <div class="act-left">
+          <div class="act-name">
+            回归丽都 · 羽落重逢
+            <span class="badge b-recall">回归/拉新</span>
+          </div>
+          <div class="act-time">7/17 ~ 9/9 · 55 天（早版本12天启动）</div>
+          <div class="act-reward">邀请回归/注册最多得菲林×340 + 抽奖（手机/游戏机/手办/周边）</div>
+        </div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="act-body">
+        <div class="purpose-grid">
+          <div class="purpose-item">
+            <div class="purpose-label">最关键设计：提前12天启动</div>
+            <div class="purpose-text">活动从7/17（前瞻直播日）启动，比版本上线（7/29）早12天。这是整个活动设计中最精妙的地方——<strong>提前蓄水</strong>。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">提前蓄水的逻辑</div>
+            <div class="purpose-text">沉默用户的激活需要时间：① 现有玩家看到活动 → ② 想起退坑的朋友 → ③ 发邀请 → ④ 朋友收到 → ⑤ 考虑回归 → ⑥ 下载/更新游戏。这个过程可能需要几天到一周。<strong>提前12天启动</strong>，确保回归玩家正好在版本开服日（7/29）上线，踩中周年庆福利洪峰——回归后的留存概率最大化。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">社交裂变机制</div>
+            <div class="purpose-text">"邀好友回归得菲林"是经典的<strong>社交裂变</strong>（viral loop）设计。现有玩家→邀请→回归玩家→回归玩家上线后又会邀请他的朋友→形成链式传播。每成功邀请一人奖励340菲林，成本可控但传播效率高。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">实物抽奖的作用</div>
+            <div class="purpose-text">手机、游戏机、手办——实物奖品的<strong>传播价值远大于实际成本</strong>。"抽手机"是极佳的社交传播话题，会被玩家分享到各个社区，带来大量曝光。而且中奖率极低（通常万分之一级别），实际成本很低，但感知价值很高。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">覆盖全版本</div>
+            <div class="purpose-text">活动持续到9/9（版本结束），覆盖整个版本周期。这意味着：① 版本中段任何时间点都能触发回归；② 回归玩家有足够时间体验版本内容；③ 配合版本内多个活动节点，可以在不同时点召回不同类型的玩家。</div>
+          </div>
+          <div class="purpose-item">
+            <div class="purpose-label">为什么是"前瞻日"启动</div>
+            <div class="purpose-text">7/17是前瞻直播日——这一天是社区讨论热度最高的日子。在热度最高的日子启动回归活动，<strong>传播效率最大化</strong>。玩家看完前瞻直播，热血沸腾，自然会想到"叫上朋友一起玩"。</div>
+          </div>
+        </div>
+        <div class="insight">
+          <strong>核心洞察：</strong>回归活动的关键不是"奖励有多丰厚"，而是<strong>"回归时机的精准度"</strong>。一个在版本中间随便上线的回归活动，哪怕奖励翻一倍，效果也远不如"提前蓄水 + 精准命中开服洪峰"的设计。因为回归玩家的留存率取决于他回归时看到的内容丰富度——如果他回来时正好有新角色、新剧情、新玩法、海量福利，他留下来的概率会大幅提升。这才是回归活动排期的精髓。
+        </div>
+        <div class="mechanism">
+          <strong>行业参考：</strong>据手游行业数据，设计良好的回归活动可以提升 MAU 约 5%-15%，回归玩家的 7 日留存率通常在 20%-40% 之间。而"提前蓄水 + 精准命中版本节点"的设计，可以将回归留存率再提升 <strong>10%-15%</strong>——因为回归体验更好。绝区零的这个"前瞻日启动 + 全版本覆盖"模式，是回归活动排期的教科书式设计。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 总结 ============ -->
+<section>
+  <div class="container">
+    <div class="sec-num">SUMMARY</div>
+    <h2>活动设计规律总结</h2>
+    <p class="sec-desc">从25个活动中提炼出的版本运营底层逻辑。</p>
+
+    <div class="cat-card">
+      <div class="cat-icon" style="background:rgba(255,217,61,0.15);color:#FFD93D;">⚡</div>
+      <div>
+        <div class="cat-title">规律一：免费资源是"杠杆"，不是"成本"</div>
+        <div class="cat-meta">周年馈礼 / 登录福利 / 免费时装 — 看似亏钱，实则撬动更大的付费转化</div>
+      </div>
+    </div>
+    <p style="margin-bottom:20px;">所有免费福利都有明确的"杠杆目标"：周年馈礼送S角色 → 撬动专武/配对角色付费；免费10抽与卡池同日开 → 撬动抽卡付费；免费时装 → 撬动产商系统付费+社交传播。免费资源的<strong>投放时机</strong>比<strong>投放数量</strong>更重要。</p>
+
+    <div class="cat-card">
+      <div class="cat-icon" style="background:rgba(168,85,247,0.15);color:#C4B5FD;">🪜</div>
+      <div>
+        <div class="cat-title">规律二：付费设计是"阶梯"，不是"门槛"</div>
+        <div class="cat-meta">首充重置 → 通行证 → 累计消费 → 自选池 — 每层都推动用户升一档</div>
+      </div>
+    </div>
+    <p style="margin-bottom:20px;">从6元礼包到15000元累计消费，形成完整的付费阶梯。每层之间的"跨度"经过精心设计——让玩家总觉得"差一点就能到下一档"。丽都城募计入点映返礼、礼包计入票根……所有付费行为相互串联，形成<strong>"消费飞轮"</strong>。</p>
+
+    <div class="cat-card">
+      <div class="cat-icon" style="background:rgba(103,232,249,0.15);color:#67E8F9;">🌊</div>
+      <div>
+        <div class="cat-title">规律三：排期节奏是"波浪"，不是"直线"</div>
+        <div class="cat-meta">高消耗 → 养肝期 → 再高消耗 — 波浪式前进防止玩家疲劳</div>
+      </div>
+    </div>
+    <p style="margin-bottom:20px;">42天版本被精确编排为"双波付费 + 双段养肝 + 首尾衔接"。W1高消耗（蕾米埃尔+首充重置）→ W2-W3养肝（贝果计划+焦点对决+三倍巡防）→ W4第二波（希格莉德+自选池）→ W5-W6收尾（极危通缉+三倍悬赏+跨版本活动）。每段之间张弛有度。</p>
+
+    <div class="cat-card">
+      <div class="cat-icon" style="background:rgba(74,222,128,0.15);color:#4ADE80;">🔗</div>
+      <div>
+        <div class="cat-title">规律四：留存设计是"链条"，不是"单点"</div>
+        <div class="cat-meta">回归活动提前蓄水 → 周年福利拉回 → 限时活动维持 → 跨版本活动衔接</div>
+      </div>
+    </div>
+    <p style="margin-bottom:20px;">留存不是某一个活动的事，而是从"版本前12天"到"版本后5天"的完整链条。回归活动提前蓄水拉人→ 周年福利洪峰留人→ 限时活动+常驻玩法消耗内容→ 跨版本活动衔接下版本。每个环节都有明确的留存职责。</p>
+
+    <div class="cat-card">
+      <div class="cat-icon" style="background:rgba(244,114,182,0.15);color:#F472B6;">📢</div>
+      <div>
+        <div class="cat-title">规律五：社交传播是"放大器"，不是"附加项"</div>
+        <div class="cat-meta">免费时装 / 实物抽奖 / 年度回顾 — 每个活动都考虑了"玩家会不会分享"</div>
+      </div>
+    </div>
+    <p>露西免费时装→UGC传播、实物抽奖→社交分享、年度大揭秘→怀旧话题……版本内多个活动的设计都包含了"社交传播"的考量。在买量成本日益攀升的今天，<strong>社区自发传播是性价比最高的增长方式</strong>。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>数据来源：绝区零官方更新公告 / 限时频段公告 / 庆典特惠公告 · 分析中标注"推测"的部分基于公开信息与行业常识推断 · 仅供学习研究用途</p>
+  </div>
+</footer>
+
+<script>
+function toggleCard(header) {
+  const card = header.parentElement;
+  card.classList.toggle('open');
+}
+</script>
+
+
+
+</body></html>
